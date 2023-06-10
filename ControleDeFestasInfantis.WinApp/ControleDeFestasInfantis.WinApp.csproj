@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="ModuloCliente\" />
+    <Folder Include="ModuloFesta\" />
+    <Folder Include="ModuloItem\" />
+    <Folder Include="ModuloTema\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ControleDeFestasInfantis.Dominio\ControleDeFestasInfantis.Dominio.csproj" />
+    <ProjectReference Include="..\ControleDeFestasInfantis.Infra.Dados.Arquivo\ControleDeFestasInfantis.Infra.Dados.Arquivo.csproj" />
+  </ItemGroup>
+
+</Project>

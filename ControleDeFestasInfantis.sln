@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleDeFestasInfantis.WinApp", "ControleDeFestasInfanis.WinApp\ControleDeFestasInfantis.WinApp.csproj", "{D6C83FA5-B878-4B20-9A13-95D6A85A9233}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Domínio", "1-Domínio", "{8AC90CBC-7453-4E04-8E7D-E9DCEA7318A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Apresentação", "3-Apresentação", "{8F29F109-ED5D-4D43-B865-35DFAFFED060}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleDeFestasInfantis.Dominio", "ControleDeFestasInfantis.Dominio\ControleDeFestasInfantis.Dominio.csproj", "{08A23F63-968E-49AE-BB3C-A4910AFBEFF1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Infraestrutura", "2-Infraestrutura", "{436E7BE5-7701-4A5D-AFB4-7008A0EFBF9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleDeFestasInfantis.Infra.Json", "ControleDeFestasInfantis.Infra.Json\ControleDeFestasInfantis.Infra.Json.csproj", "{AD58970C-8B20-4311-AF88-5ABE84603B69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6C83FA5-B878-4B20-9A13-95D6A85A9233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C83FA5-B878-4B20-9A13-95D6A85A9233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C83FA5-B878-4B20-9A13-95D6A85A9233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C83FA5-B878-4B20-9A13-95D6A85A9233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08A23F63-968E-49AE-BB3C-A4910AFBEFF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A23F63-968E-49AE-BB3C-A4910AFBEFF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A23F63-968E-49AE-BB3C-A4910AFBEFF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A23F63-968E-49AE-BB3C-A4910AFBEFF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD58970C-8B20-4311-AF88-5ABE84603B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD58970C-8B20-4311-AF88-5ABE84603B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD58970C-8B20-4311-AF88-5ABE84603B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD58970C-8B20-4311-AF88-5ABE84603B69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D6C83FA5-B878-4B20-9A13-95D6A85A9233} = {8F29F109-ED5D-4D43-B865-35DFAFFED060}
+		{08A23F63-968E-49AE-BB3C-A4910AFBEFF1} = {8AC90CBC-7453-4E04-8E7D-E9DCEA7318A8}
+		{AD58970C-8B20-4311-AF88-5ABE84603B69} = {436E7BE5-7701-4A5D-AFB4-7008A0EFBF9A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7B49020-FC5B-4B8C-BD4C-9A36C96517BE}
+	EndGlobalSection
+EndGlobal
