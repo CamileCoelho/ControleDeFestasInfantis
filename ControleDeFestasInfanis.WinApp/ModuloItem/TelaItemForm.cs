@@ -7,9 +7,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
     {
         private Item item { get; set; }
 
-        public TelaItemForm()
+        public TelaItemForm(bool edicaoDoItem)
         {
             InitializeComponent();
+
+            this.ConfigurarDialog();
+
+            if (edicaoDoItem)
+            {
+                numQtdLocada.Enabled = false;
+            }
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

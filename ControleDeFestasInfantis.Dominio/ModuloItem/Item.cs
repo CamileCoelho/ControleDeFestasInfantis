@@ -27,7 +27,6 @@ namespace ControleDeFestasInfantis.Dominio.ModuloItem
         {
             this.descricao = registroAtualizado.descricao;
             this.quantidadeDisponivel = registroAtualizado.quantidadeDisponivel;
-            this.quantidadeLocada = registroAtualizado.quantidadeLocada;
             this.valor = registroAtualizado.valor;
         }
 
@@ -39,8 +38,8 @@ namespace ControleDeFestasInfantis.Dominio.ModuloItem
                 return $"Você deve escrever uma descrição!";
             if (descricao.Length <= 5)
                 return $"A descrição deve conter no mínimo 6 caracteres!";
-            if (valida.ValidaString(valor.ToString()))
-                return $"Você deve escrever um valor!";
+            if (valor == 0)
+                return $"O valor deve ser maior que zero!";
 
             return "";
         }

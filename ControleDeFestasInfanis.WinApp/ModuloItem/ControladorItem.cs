@@ -29,7 +29,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
 
         public override void Inserir()
         {
-            TelaItemForm telaItem = new();
+            TelaItemForm telaItem = new(false);
 
             DialogResult opcaoEscolhida = telaItem.ShowDialog();
 
@@ -57,7 +57,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
                 return;
             }
 
-            TelaItemForm tela = new();
+            TelaItemForm tela = new(true);
 
             tela.ConfigurarTela(itemSelecionado);
 
