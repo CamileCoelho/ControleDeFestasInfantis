@@ -11,7 +11,7 @@ using ControleDeFestasInfantis.WinApp.ModuloFesta;
 using ControleDeFestasInfantis.WinApp.ModuloItem;
 using ControleDeFestasInfantis.WinApp.ModuloTema;
 
-namespace E_Agenda.WinApp
+namespace ControleDeFestasInfantis.WinApp
 {
     public partial class TelaPrincipalForm : Form
     {
@@ -58,7 +58,7 @@ namespace E_Agenda.WinApp
 
         private void itensParaLocaçãoMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorItem();
+            controlador = new ControladorItem(repositorioItem);
 
             ConfigurarTelaPrincipal(controlador);
         }
