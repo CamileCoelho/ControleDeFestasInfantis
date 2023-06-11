@@ -1,4 +1,4 @@
-﻿namespace E_Agenda.WinApp
+﻿namespace ControleDeFestasInfantis.WinApp
 {
     partial class TelaPrincipalForm
     {

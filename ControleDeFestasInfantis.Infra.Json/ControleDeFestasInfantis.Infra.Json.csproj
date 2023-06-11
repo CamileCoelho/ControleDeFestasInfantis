@@ -8,12 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Compartilhado\E-Agenda.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ModuloItem\" />
     <Folder Include="ModuloTema\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ControleDeFestasInfantis.Dominio\ControleDeFestasInfantis.Dominio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Compartilhado\ControladorDeFestasInfantis.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

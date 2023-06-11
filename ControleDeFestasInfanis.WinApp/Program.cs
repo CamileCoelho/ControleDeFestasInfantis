@@ -1,4 +1,3 @@
-using E_Agenda.WinApp;
 
 namespace ControleDeFestasInfantis.WinApp
 {
