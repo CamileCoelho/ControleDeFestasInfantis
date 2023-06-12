@@ -43,7 +43,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
             {
                 grid.Rows.Add(item.id, item.descricao,
                     item.quantidadeDisponivel, item.quantidadeLocada,
-                    "R$ "+item.valor);
+                    "R$ " + item.valor);
             }
         }
     }
