@@ -25,27 +25,24 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
-
-
+        public override bool AdicionarItensHabilitado => true;
 
         public override void Inserir()
         {
-            List<Item> itens = repositorioItem.SelecionarTodos();
-            TelaTemaForm telaTema = new TelaTemaForm(itens);
+            // List<Item> item = repositorioItem.SelecionarTodos();
+            TelaTemaForm tela = new TelaTemaForm();
 
-            DialogResult opcaoEscolhida = telaTema.ShowDialog();
+            DialogResult opcaoEscolhida = tela.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                Tema tema = telaTema.ObterTema();
+                Tema tema = tela.ObterTema();
 
                 repositorioTema.Inserir(tema);
+
+                CarregarTemas();
             }
-
-            CarregarTemas();
         }
-
-        //AQUI
 
         public override void Editar()
         {
@@ -61,8 +58,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 return;
             }
 
-            List<Item> itens = repositorioItem.SelecionarTodos();
-            TelaTemaForm telaTema = new TelaTemaForm(itens);
+            // List<Item> itens = repositorioItem.SelecionarTodos();
+            TelaTemaForm telaTema = new TelaTemaForm();
 
             telaTema.ConfigurarTela(temaSelecionado);
 
@@ -91,8 +88,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 return;
             }
 
-            DialogResult opcaoEscolhida = 
-                MessageBox.Show($"Deseja excluir o tema {temaSelecionado.nome}?",
+            DialogResult opcaoEscolhida =
+                MessageBox.Show($"Deseja excluir o tema {temaSelecionado.titulo}?",
                 "Exclusão de Temas",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Question);
@@ -104,7 +101,36 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             CarregarTemas();
         }
 
-        //ATÉ AQUI
+        public override void AdicionarItens()
+        {
+            Tema temaEscolhido = ObterTemaSelecionado();
+
+            if (temaEscolhido == null)
+            {
+                MessageBox.Show($"Selecione uma tema primeiro!",
+                    "Adição de Itens",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            List<Item> itens = CarregarItens();
+
+            TelaTemaAdicaoForm telaAdicao = new TelaTemaAdicaoForm(temaEscolhido, itens);
+
+            DialogResult opcaoEscolhida = telaAdicao.ShowDialog();
+
+            if (opcaoEscolhida == DialogResult.OK)
+            {
+                foreach (Item item in telaAdicao.ObterItensTema())
+                {
+                    temaEscolhido.InserirItem(item);
+                }
+
+                CarregarTemas();
+            }
+        }
 
         public override UserControl ObterListagem()
         {
@@ -132,6 +158,11 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             int id = tabelaTema.ObterNumeroTemaSelecionado();
 
             return repositorioTema.SelecionarPorId(id);
+        }
+
+        private List<Item> CarregarItens()
+        {
+            return repositorioItem.SelecionarTodos();
         }
     }
 }

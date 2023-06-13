@@ -47,7 +47,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             foreach (var tema in temas)
             {
-                grid.Rows.Add(tema.id, tema.nome);
+                grid.Rows.Add(tema.id, tema.titulo);
             }
         }
     }

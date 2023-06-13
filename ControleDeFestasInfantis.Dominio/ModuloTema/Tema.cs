@@ -1,4 +1,5 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloItem;
+﻿using ControleDeFestasInfantis.Dominio.ModuloFesta;
+using ControleDeFestasInfantis.Dominio.ModuloItem;
 using System.Drawing;
 
 namespace ControleDeFestasInfantis.Dominio.ModuloTema
@@ -6,38 +7,50 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
     [Serializable]
     public class Tema : EntidadeBase<Tema>
     {
-        public string nome { get; set; }
-        public Item item;
+        public string titulo { get; set; }
+        public DisponivelParaLocacaoEnum statusTema { get; set; }
+        public List<Item> itens { get; set; }
 
         public Tema()
         {
-            
+
         }
 
-        public Tema(int id, string nome, Item item)
+        public Tema(string titulo)
         {
-            this.id = id;
-            this.nome = nome;
-            this.item = item;
+            this.titulo = titulo;
+            itens = new List<Item>();
         }
 
         public override void AtualizarInformacoes(Tema registroAtualizado)
         {
-          nome = registroAtualizado.nome;
-          item = registroAtualizado.item;
+            titulo = registroAtualizado.titulo;
+            statusTema = registroAtualizado.statusTema;
+        }
+
+        public void InserirItem(Item item)
+        {
+            if (itens.Contains(item))
+                return;
+
+            itens.Add(item);
+        }
+
+        public void RemoverItem(Item item)
+        {
+            if (itens.Contains(item))
+                itens.Remove(item);
         }
 
         public override string Validar()
         {
             Validador valida = new();
 
-            if (valida.ValidaString(nome))
-                return $"Você deve escrever um tema!";
-            if (nome.Length <= 5)
-                return $"O tema deve conter no mínimo 5 caracteres!";
-            //if (valor == 0)
-            //    return $"O valor deve ser maior que zero!";
-
+            if (valida.ValidaString(titulo))
+                return $"Você deve escrever um titulo!";
+            if (titulo.Length <= 4)
+                return $"O titulo deve conter no mínimo 5 caracteres!";
+        
             return "";
         }
     }
