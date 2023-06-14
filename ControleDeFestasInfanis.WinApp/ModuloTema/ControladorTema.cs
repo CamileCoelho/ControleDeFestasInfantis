@@ -58,7 +58,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 return;
             }
 
-            // List<Item> itens = repositorioItem.SelecionarTodos();
             TelaTemaForm telaTema = new TelaTemaForm();
 
             telaTema.ConfigurarTela(temaSelecionado);
@@ -69,7 +68,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             {
                 Tema tema = telaTema.ObterTema();
 
-                repositorioTema.Editar(tema.id, tema);
+                repositorioTema.Editar(temaSelecionado, tema);
             }
             CarregarTemas();
         }
