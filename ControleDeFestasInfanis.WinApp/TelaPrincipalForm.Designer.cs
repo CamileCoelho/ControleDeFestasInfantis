@@ -75,7 +75,7 @@
             // contatosMenuItem
             // 
             contatosMenuItem.Name = "contatosMenuItem";
-            contatosMenuItem.Size = new Size(180, 22);
+            contatosMenuItem.Size = new Size(122, 22);
             contatosMenuItem.Text = "Contatos";
             contatosMenuItem.Click += contatosMenuItem_Click;
             // 
@@ -254,7 +254,7 @@
             Name = "TelaPrincipalForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "E-Agenda ";
+            Text = "Festas Infantis by Rafaela";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             rodape.ResumeLayout(false);

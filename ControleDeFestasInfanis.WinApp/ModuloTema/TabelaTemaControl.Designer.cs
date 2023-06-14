@@ -1,6 +1,6 @@
-﻿namespace ControleDeFestasInfantis.WinApp.ModuloItem
+﻿namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
-    partial class TabelaItemControl
+    partial class TabelaTemaControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -45,21 +45,21 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grid.Location = new Point(-127, -3);
+            grid.Location = new Point(-29, 0);
             grid.MultiSelect = false;
             grid.Name = "grid";
             grid.RowHeadersVisible = false;
             grid.RowTemplate.Height = 25;
-            grid.Size = new Size(793, 438);
-            grid.TabIndex = 0;
+            grid.Size = new Size(889, 468);
+            grid.TabIndex = 1;
             // 
-            // TabelaItemControl
+            // TabelaTemaControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(grid);
-            Name = "TabelaItemControl";
-            Size = new Size(666, 435);
+            Name = "TabelaTemaControl";
+            Size = new Size(860, 468);
             ((System.ComponentModel.ISupportInitialize)grid).EndInit();
             ResumeLayout(false);
         }

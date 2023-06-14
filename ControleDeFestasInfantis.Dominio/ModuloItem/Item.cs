@@ -38,5 +38,10 @@ namespace ControleDeFestasInfantis.Dominio.ModuloItem
 
             return "";
         }
+
+        public override string ToString()
+        {
+            return descricao;
+        }
     }
 }
