@@ -5,6 +5,9 @@
     {
         public int id { get; set; }
 
+        //
+        public int quantidade { get; set; }
+
         public abstract void AtualizarInformacoes(T registroAtualizado);
 
         public abstract string Validar();

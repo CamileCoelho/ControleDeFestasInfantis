@@ -37,23 +37,23 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         public Tema ObterItensTema()
         {
             string nome = txtTema.Text;
-
             Item item = (Item)cmbItensTema.SelectedItem;
-
+            string quantidade = numQtdDisponivel.Text;
 
             Tema tema = new Tema(nome);
 
             return tema;
 
-            listItensTema.Items.Add(item);
 
+                listItensTema.Items.Add(item);
+       
         }
 
         public void ConfigurarTela(Tema temaSelecionado)
         {
             txtId.Text = temaSelecionado.id.ToString();
             txtTema.Text = temaSelecionado.titulo;
-
+            
             cmbItensTema.SelectedItem = temaSelecionado.itens;
         }
 
@@ -62,8 +62,11 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         {
             string descricao = txtTema.Text;
 
+            string quantidade = numQtdDisponivel.Text;
+
             Item item = (Item)cmbItensTema.SelectedItem;
             listItensTema.Items.Add(item);
+            listItensTema.Items.Add(quantidade);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

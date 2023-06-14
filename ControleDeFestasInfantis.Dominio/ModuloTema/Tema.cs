@@ -1,6 +1,7 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloFesta;
 using ControleDeFestasInfantis.Dominio.ModuloItem;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace ControleDeFestasInfantis.Dominio.ModuloTema
 {
@@ -10,10 +11,10 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
         public string titulo { get; set; }
         public DisponivelParaLocacaoEnum statusTema { get; set; }
         public List<Item> itens { get; set; }
-
+        
         public Tema()
         {
-
+            
         }
 
         public Tema(string titulo)
@@ -26,6 +27,14 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
         {
             titulo = registroAtualizado.titulo;
             statusTema = registroAtualizado.statusTema;
+         //   quantidade = registroAtualizado.quantidade;
+           
+            //
+            if(registroAtualizado.itens != null)
+            {
+                this.itens = registroAtualizado.itens;
+            }
+            //
         }
 
         public void InserirItem(Item item)
@@ -50,7 +59,11 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
                 return $"Você deve escrever um titulo!";
             if (titulo.Length <= 4)
                 return $"O titulo deve conter no mínimo 5 caracteres!";
-        
+
+
+            //if (listItensTema.Items.Contains(Item))
+            //   return $"VocÊ deve adicionar algum intem na lista";
+
             return "";
         }
     }
