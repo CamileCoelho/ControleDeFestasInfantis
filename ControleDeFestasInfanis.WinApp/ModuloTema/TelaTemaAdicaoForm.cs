@@ -1,45 +1,67 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloItem;
+﻿
+using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
-
 namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
     public partial class TelaTemaAdicaoForm : Form
     {
+        private List<Item> listaItens;
+
+        public List<Item> ListaItens
+        {
+            get { return listaItens; }
+        }
+
+        private Tema tema { get; set; }
+
         public TelaTemaAdicaoForm(Tema tema, List<Item> itens)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
 
-            CarregarItens(itens);
+            ObterItens(itens);
 
             ConfigurarTela(tema);
         }
 
-        public List<Item> ObterItensTema()
+        public void ObterItens(List<Item> itens)
         {
-            return listItensTema.Items.Cast<Item>().ToList();
-        }
-
-        private void ConfigurarTela(Tema tema)
-        {
-            txtId.Text = tema.id.ToString();
-            txtTema.Text = tema.titulo;
-            listItensTema.Items.Add(tema.itens);
-
-        }
-
-        private void CarregarItens(List<Item> itens)
-        {
+            this.listaItens = itens;
             foreach (Item item in itens)
             {
                 cmbItensTema.Items.Add(item);
             }
         }
 
+        public Tema ObterItensTema()
+        {
+            string nome = txtTema.Text;
+
+            Item item = (Item)cmbItensTema.SelectedItem;
+
+
+            Tema tema = new Tema(nome);
+
+            return tema;
+
+            listItensTema.Items.Add(item);
+
+        }
+
+        public void ConfigurarTela(Tema temaSelecionado)
+        {
+            txtId.Text = temaSelecionado.id.ToString();
+            txtTema.Text = temaSelecionado.titulo;
+
+            cmbItensTema.SelectedItem = temaSelecionado.itens;
+        }
+
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
+            string descricao = txtTema.Text;
+
             Item item = (Item)cmbItensTema.SelectedItem;
             listItensTema.Items.Add(item);
         }
@@ -47,6 +69,17 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             TelaPrincipalForm.Tela.AtualizarRodape("");
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            tema = ObterItensTema();
+
+            string status = tema.Validar();
+
+            if (status != "")
+                DialogResult = DialogResult.None;
+
         }
     }
 }

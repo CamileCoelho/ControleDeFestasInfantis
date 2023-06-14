@@ -107,7 +107,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             if (temaEscolhido == null)
             {
-                MessageBox.Show($"Selecione uma tema primeiro!",
+                MessageBox.Show($"Selecione um tema primeiro!",
                     "Adição de Itens",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -123,9 +123,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                foreach (Item item in telaAdicao.ObterItensTema())
+                foreach (Item item in telaAdicao.ListaItens) 
                 {
-                    temaEscolhido.InserirItem(item);
+                    repositorioTema.InserirItem(temaEscolhido, item);
                 }
 
                 CarregarTemas();

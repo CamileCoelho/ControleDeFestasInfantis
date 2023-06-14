@@ -70,6 +70,7 @@
             btnGravar.Text = "Gravar";
             btnGravar.TextImageRelation = TextImageRelation.TextAboveImage;
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // txtTema
             // 
@@ -119,7 +120,6 @@
             // cmbItensTema
             // 
             cmbItensTema.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbItensTema.Enabled = false;
             cmbItensTema.FormattingEnabled = true;
             cmbItensTema.Location = new Point(86, 84);
             cmbItensTema.Name = "cmbItensTema";
