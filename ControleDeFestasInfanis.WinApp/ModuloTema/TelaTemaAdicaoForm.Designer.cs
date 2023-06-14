@@ -40,6 +40,7 @@
             label3 = new Label();
             label4 = new Label();
             numQtdDisponivel = new NumericUpDown();
+            listITema = new ListView();
             ((System.ComponentModel.ISupportInitialize)numQtdDisponivel).BeginInit();
             SuspendLayout();
             // 
@@ -115,8 +116,10 @@
             // 
             listItensTema.FormattingEnabled = true;
             listItensTema.ItemHeight = 15;
-            listItensTema.Location = new Point(115, 166);
+            listItensTema.Location = new Point(21, 166);
+            listItensTema.MultiColumn = true;
             listItensTema.Name = "listItensTema";
+            listItensTema.SelectionMode = SelectionMode.MultiExtended;
             listItensTema.Size = new Size(300, 289);
             listItensTema.TabIndex = 26;
             // 
@@ -168,11 +171,20 @@
             numQtdDisponivel.Size = new Size(209, 29);
             numQtdDisponivel.TabIndex = 37;
             // 
+            // listITema
+            // 
+            listITema.Location = new Point(340, 261);
+            listITema.Name = "listITema";
+            listITema.Size = new Size(121, 97);
+            listITema.TabIndex = 38;
+            listITema.UseCompatibleStateImageBehavior = false;
+            // 
             // TelaTemaAdicaoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(477, 531);
+            Controls.Add(listITema);
             Controls.Add(numQtdDisponivel);
             Controls.Add(label4);
             Controls.Add(cmbItensTema);
@@ -206,5 +218,6 @@
         private Label label3;
         private Label label4;
         private NumericUpDown numQtdDisponivel;
+        private ListView listITema;
     }
 }

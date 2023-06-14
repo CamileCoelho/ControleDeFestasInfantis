@@ -1,6 +1,7 @@
 ﻿
 using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
+
 namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
     public partial class TelaTemaAdicaoForm : Form
@@ -45,15 +46,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             return tema;
 
 
-                listItensTema.Items.Add(item);
-       
+            listItensTema.Items.Add(item);
+
         }
 
         public void ConfigurarTela(Tema temaSelecionado)
         {
             txtId.Text = temaSelecionado.id.ToString();
             txtTema.Text = temaSelecionado.titulo;
-            
+
             cmbItensTema.SelectedItem = temaSelecionado.itens;
         }
 
@@ -65,6 +66,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             string quantidade = numQtdDisponivel.Text;
 
             Item item = (Item)cmbItensTema.SelectedItem;
+
+         //   listItensTema.Items.Add(" item: " + item + " quantidade: " + quantidade);
             listItensTema.Items.Add(item);
             listItensTema.Items.Add(quantidade);
         }
