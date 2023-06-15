@@ -11,7 +11,7 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
         public string titulo { get; set; }
         public DisponivelParaLocacaoEnum statusTema { get; set; }
         public List<Item> itens { get; set; }
-        public decimal valorTotal { get; set; }
+        public decimal valorTotalTema { get; set; }
 
         public Tema()
         {
@@ -24,44 +24,59 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
             itens = new List<Item>();
         }
 
-        public Tema(List<Item> itens) 
-        {
-            foreach (Item item in itens)
-            {
-                valorTotal = item.valor * item.quantidade;
-            }
-        }
-
         public override void AtualizarInformacoes(Tema registroAtualizado)
         {
             titulo = registroAtualizado.titulo;
             statusTema = registroAtualizado.statusTema;
+        }
 
-            if(registroAtualizado.itens != null)
+        public void InserirItens(List<Item> itensToAdd)
+        {
+            decimal valor;
+
+            foreach (var item in itensToAdd)
             {
-                this.itens = registroAtualizado.itens;
-            }
-            foreach (Item item in itens)
-            {
-                registroAtualizado.valorTotal = item.valor * item.quantidade;
+                valor = item.valor * item.quantidade;
+
+                if (itens.Contains(item))
+                    return;
+
+                itens.Add(item);
+
+                AtualizarValorTotalTema(valor);
             }
         }
 
-        public void InserirItens(Tema tema)
+        public void AtualizarValorTotalTema(decimal valor)
         {
-            foreach (var item in tema.itens)
-            {
-                if (tema.itens.Contains(item))
-                    return;
+            valorTotalTema += valor;
+        }
 
-                tema.itens.Add(item);
-            }            
+        public void RemoverItens(List<Item> itensToRemove)
+        {
+            decimal valor;
+
+            foreach (var item in itensToRemove)
+            {
+                itens.Remove(item);
+
+                valor = -(item.valor * item.quantidade);
+
+                AtualizarValorTotalTema(valor);
+            }
+
         }
 
         public void RemoverItem(Item item)
         {
             if (itens.Contains(item))
+            {
                 itens.Remove(item);
+
+                decimal valor = -(item.valor * item.quantidade);
+
+                AtualizarValorTotalTema(valor);
+            }
         }
 
         public override string Validar()

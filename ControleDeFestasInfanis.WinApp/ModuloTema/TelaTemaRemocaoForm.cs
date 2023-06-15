@@ -6,10 +6,11 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
     public partial class TelaTemaRemocaoForm : Form
     {
         private Tema tema { get; set; }
+        public List<Item> itensToRemove { get; set; }
 
         private TabelaItensTema tabelaItensTema;
 
-        public TelaTemaRemocaoForm(Tema tema)
+        public TelaTemaRemocaoForm(Tema tema, List<Item> itens)
         {
             InitializeComponent();
 
@@ -18,21 +19,14 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             if (tabelaItensTema == null)
                 tabelaItensTema = new TabelaItensTema();
+
+            itensToRemove = new List<Item>();
         }
 
-        public void ConfigurarTela(Tema temaSelecionado)
+        public void ConfigurarTela()
         {
-            txtId.Text = temaSelecionado.id.ToString();
-            txtTema.Text = temaSelecionado.titulo;
-
-            //gridtensTema.ConfigurarGridZebrado();
-            //gridtensTema.ConfigurarGridSomenteLeitura();
-            //gridtensTema.Columns.AddRange(ObterColunas());
-
-            //foreach (var item in temaSelecionado.itens)
-            //{
-            //    gridtensTema.Rows.Add(item.id,item.descricao, item.quantidade, (item.valor * item.quantidade));
-            //}
+            txtId.Text = tema.id.ToString();
+            txtTema.Text = tema.titulo;
 
             tabelaItensTema.Dock = DockStyle.Fill;
 
@@ -40,7 +34,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             panelItensRemocao.Controls.Add(tabelaItensTema);
 
-            tabelaItensTema.AtualizarRegistrosItens(temaSelecionado);
+            tabelaItensTema.AtualizarRegistrosItens(tema.itens);
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
@@ -48,26 +42,14 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             int id = tabelaItensTema.ObterNumeroTemaSelecionado();
             Item item = tema.itens.FirstOrDefault(x => x.id == id);
 
-            tema.itens.Remove(item);
+            itensToRemove.Add(item);
 
-            tabelaItensTema.AtualizarRegistrosItens(tema);
+            tabelaItensTema.AtualizarRegistrosItens(tema.itens.Except(itensToRemove).ToList());
         }
 
-        private DataGridViewColumn[] ObterColunas()
+        private void btnGravar_Click(object sender, EventArgs e)
         {
-            var colunas = new DataGridViewColumn[]
-            {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Item", HeaderText = "Item"},
-
-                new DataGridViewTextBoxColumn { DataPropertyName = "Quantidade", HeaderText = "Quantidade"},
-
-                new DataGridViewTextBoxColumn { DataPropertyName = "Valor Total", HeaderText = "Valor Total"},
-
-            };
-
-            return colunas;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

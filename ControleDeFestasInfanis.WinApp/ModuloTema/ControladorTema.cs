@@ -45,8 +45,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
                 repositorioTema.Inserir(tema);
 
-                CarregarItensTema(tema);
-
                 CarregarTemas();
             }
         }
@@ -77,6 +75,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
                 repositorioTema.Editar(temaSelecionado, tema);
             }
+
             CarregarTemas();
         }
 
@@ -104,6 +103,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             {
                 repositorioTema.Excluir(temaSelecionado);
             }
+
             CarregarTemas();
         }
 
@@ -131,7 +131,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                temaEscolhido.InserirItens(temaEscolhido);
+                temaEscolhido.InserirItens(telaAdicao.itensToAdd);
 
                 CarregarTemas();
             }
@@ -160,17 +160,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 return;
             }
 
-            TelaTemaRemocaoForm telaRemocao = new(temaEscolhido);
+            TelaTemaRemocaoForm telaRemocao = new(temaEscolhido, temaEscolhido.itens);
 
-            telaRemocao.ConfigurarTela(temaEscolhido);
-
-            //Item itemSelecionado = ObterItemSelecionado();
+            telaRemocao.ConfigurarTela();
 
             DialogResult opcaoEscolhida = telaRemocao.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                //temaEscolhido.RemoverItem(itemSelecionado);
+                temaEscolhido.RemoverItens(telaRemocao.itensToRemove);
 
                 CarregarTemas();
             }
@@ -188,7 +186,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         private void CarregarItensTema(Tema tema)
         {
-            tabelaItensTema.AtualizarRegistrosItens(tema);
+            tabelaItensTema.AtualizarRegistrosItens(tema.itens);
         }
 
 

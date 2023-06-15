@@ -36,15 +36,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             return gridtensTema.SelecionarNumero<int>();
         }
 
-        public void AtualizarRegistrosItens(Tema tema)
+        public void AtualizarRegistrosItens(List<Item> itens)
         {
             gridtensTema.Rows.Clear();
 
-            foreach (var item in tema.itens)
+            foreach (var item in itens)
             {
                 gridtensTema.Rows.Add(item.id, item.descricao, item.quantidade, (item.valor * item.quantidade));
             }
         }
+
         public void AtualizarRegistrosItens(Item item)
         {
             gridtensTema.Rows.Add(item.id, item.descricao, item.quantidade, (item.valor * item.quantidade));
