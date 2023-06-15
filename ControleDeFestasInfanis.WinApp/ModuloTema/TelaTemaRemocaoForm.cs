@@ -1,35 +1,25 @@
-﻿
-using ControleDeFestasInfantis.Dominio.ModuloItem;
+﻿using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
+
 namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
-    public partial class TelaTemaAdicaoForm : Form
+    public partial class TelaTemaRemocaoForm : Form
     {
         private Tema tema { get; set; }
 
         private TabelaItensTema tabelaItensTema;
 
-        public TelaTemaAdicaoForm(Tema tema, List<Item> itens)
+        public TelaTemaRemocaoForm(Tema tema)
         {
             InitializeComponent();
 
             this.tema = tema;
             this.ConfigurarDialog();
 
-            ObterItens(itens);
-
             if (tabelaItensTema == null)
                 tabelaItensTema = new TabelaItensTema();
 
             ConfigurarTela(tema);
-        }
-
-        public void ObterItens(List<Item> itens)
-        {
-            foreach (Item item in itens)
-            {
-                cmbItensTema.Items.Add(item);
-            }
         }
 
         public void ConfigurarTela(Tema temaSelecionado)
@@ -49,24 +39,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             tabelaItensTema.AtualizarRegistrosItens(temaSelecionado);
         }
 
-
-        private void btnAdicionar_Click(object sender, EventArgs e)
-        {
-            Item item = (Item)cmbItensTema.SelectedItem;
-            item.quantidade = numQuantidadeItem.Value;
-
-            gridtensTema.Rows.Add(item.descricao, item.quantidade, (item.valor * item.quantidade));
-            tema.itens.Add(item);   
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            TelaPrincipalForm.Tela.AtualizarRodape("");
-        }
-
-        private void btnGravar_Click(object sender, EventArgs e)
+        private void btnRemover_Click(object sender, EventArgs e)
         {
 
+            foreach (var item in tema.itens)
+            {
+                tema.itens.Remove(item);
+            }
+
+            tabelaItensTema.AtualizarRegistrosItens(tema);
         }
 
         private DataGridViewColumn[] ObterColunas()
@@ -82,6 +63,11 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             };
 
             return colunas;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            TelaPrincipalForm.Tela.AtualizarRodape("");
         }
     }
 }

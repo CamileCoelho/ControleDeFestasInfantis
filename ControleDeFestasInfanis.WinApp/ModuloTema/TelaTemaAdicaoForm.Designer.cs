@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             btnCancelar = new Button();
             btnGravar = new Button();
             txtTema = new TextBox();
@@ -39,8 +40,10 @@
             btnAdicionar = new Button();
             label3 = new Label();
             label4 = new Label();
-            numQtdDisponivel = new NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)numQtdDisponivel).BeginInit();
+            numQuantidadeItem = new NumericUpDown();
+            gridtensTema = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)numQuantidadeItem).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridtensTema).BeginInit();
             SuspendLayout();
             // 
             // btnCancelar
@@ -49,7 +52,7 @@
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancelar.ImageAlign = ContentAlignment.BottomRight;
-            btnCancelar.Location = new Point(321, 462);
+            btnCancelar.Location = new Point(321, 523);
             btnCancelar.Margin = new Padding(4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 41);
@@ -65,7 +68,7 @@
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnGravar.ImageAlign = ContentAlignment.BottomRight;
-            btnGravar.Location = new Point(206, 462);
+            btnGravar.Location = new Point(206, 523);
             btnGravar.Margin = new Padding(4);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(94, 41);
@@ -77,37 +80,39 @@
             // 
             // txtTema
             // 
-            txtTema.Location = new Point(115, 56);
+            txtTema.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTema.Location = new Point(115, 53);
             txtTema.Name = "txtTema";
             txtTema.ReadOnly = true;
-            txtTema.Size = new Size(300, 23);
+            txtTema.Size = new Size(300, 26);
             txtTema.TabIndex = 25;
             // 
             // txtId
             // 
-            txtId.Location = new Point(115, 24);
+            txtId.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtId.Location = new Point(115, 21);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
-            txtId.Size = new Size(99, 23);
+            txtId.Size = new Size(99, 26);
             txtId.TabIndex = 24;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(60, 62);
+            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(52, 56);
             label2.Name = "label2";
-            label2.Size = new Size(43, 17);
+            label2.Size = new Size(53, 20);
             label2.TabIndex = 23;
             label2.Text = "Tema:";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(78, 30);
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(78, 24);
             label1.Name = "label1";
-            label1.Size = new Size(23, 17);
+            label1.Size = new Size(27, 20);
             label1.TabIndex = 22;
             label1.Text = "Id:";
             // 
@@ -115,25 +120,27 @@
             // 
             listItensTema.FormattingEnabled = true;
             listItensTema.ItemHeight = 15;
-            listItensTema.Location = new Point(115, 166);
+            listItensTema.Location = new Point(115, 160);
             listItensTema.Name = "listItensTema";
-            listItensTema.Size = new Size(300, 289);
+            listItensTema.Size = new Size(300, 319);
             listItensTema.TabIndex = 26;
             // 
             // cmbItensTema
             // 
             cmbItensTema.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbItensTema.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
             cmbItensTema.FormattingEnabled = true;
             cmbItensTema.Location = new Point(115, 86);
             cmbItensTema.Name = "cmbItensTema";
-            cmbItensTema.Size = new Size(300, 23);
+            cmbItensTema.Size = new Size(300, 28);
             cmbItensTema.TabIndex = 29;
             // 
             // btnAdicionar
             // 
-            btnAdicionar.Location = new Point(340, 125);
+            btnAdicionar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAdicionar.Location = new Point(327, 120);
             btnAdicionar.Name = "btnAdicionar";
-            btnAdicionar.Size = new Size(75, 23);
+            btnAdicionar.Size = new Size(88, 29);
             btnAdicionar.TabIndex = 28;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
@@ -142,38 +149,59 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(61, 91);
+            label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(60, 89);
             label3.Name = "label3";
-            label3.Size = new Size(39, 17);
+            label3.Size = new Size(45, 20);
             label3.TabIndex = 27;
             label3.Text = "Item:";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(21, 125);
+            label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(9, 124);
             label4.Name = "label4";
-            label4.Size = new Size(82, 17);
+            label4.Size = new Size(96, 20);
             label4.TabIndex = 30;
             label4.Text = "Quantidade:";
             // 
-            // numQtdDisponivel
+            // numQuantidadeItem
             // 
-            numQtdDisponivel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            numQtdDisponivel.Location = new Point(115, 120);
-            numQtdDisponivel.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
-            numQtdDisponivel.Name = "numQtdDisponivel";
-            numQtdDisponivel.Size = new Size(209, 29);
-            numQtdDisponivel.TabIndex = 37;
+            numQuantidadeItem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            numQuantidadeItem.Location = new Point(115, 120);
+            numQuantidadeItem.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
+            numQuantidadeItem.Name = "numQuantidadeItem";
+            numQuantidadeItem.Size = new Size(192, 29);
+            numQuantidadeItem.TabIndex = 37;
+            // 
+            // gridtensTema
+            // 
+            gridtensTema.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.LightGray;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            gridtensTema.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            gridtensTema.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridtensTema.Location = new Point(115, 160);
+            gridtensTema.MultiSelect = false;
+            gridtensTema.Name = "gridtensTema";
+            gridtensTema.RowHeadersVisible = false;
+            gridtensTema.RowTemplate.Height = 25;
+            gridtensTema.Size = new Size(300, 319);
+            gridtensTema.TabIndex = 38;
             // 
             // TelaTemaAdicaoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(477, 531);
-            Controls.Add(numQtdDisponivel);
+            ClientSize = new Size(461, 611);
+            Controls.Add(gridtensTema);
+            Controls.Add(numQuantidadeItem);
             Controls.Add(label4);
             Controls.Add(cmbItensTema);
             Controls.Add(btnAdicionar);
@@ -188,7 +216,8 @@
             Name = "TelaTemaAdicaoForm";
             ShowIcon = false;
             Text = "Adição de Itens";
-            ((System.ComponentModel.ISupportInitialize)numQtdDisponivel).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numQuantidadeItem).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridtensTema).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -205,6 +234,7 @@
         private Button btnAdicionar;
         private Label label3;
         private Label label4;
-        private NumericUpDown numQtdDisponivel;
+        private NumericUpDown numQuantidadeItem;
+        private DataGridView gridtensTema;
     }
 }

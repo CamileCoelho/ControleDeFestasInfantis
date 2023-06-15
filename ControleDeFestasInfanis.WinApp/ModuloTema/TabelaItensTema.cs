@@ -1,12 +1,14 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloItem;
+using ControleDeFestasInfantis.Dominio.ModuloTema;
 
-namespace ControleDeFestasInfantis.WinApp.ModuloItem
+namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
-    public partial class TabelaItemControl : UserControl
+    public partial class TabelaItensTema : UserControl
     {
-        public TabelaItemControl()
+        public TabelaItensTema()
         {
             InitializeComponent();
+
             grid.ConfigurarGridZebrado();
             grid.ConfigurarGridSomenteLeitura();
             grid.Columns.AddRange(ObterColunas());
@@ -18,27 +20,27 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Descrição", HeaderText = "Descrição"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Tema", HeaderText = "Tema"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor"}
+                new DataGridViewTextBoxColumn { DataPropertyName = "Valor Total", HeaderText = "Valor Total"},
+
             };
 
             return colunas;
         }
 
-        public int ObterNumeroItemSelecionado()
+        public int ObterNumeroTemaSelecionado()
         {
             return grid.SelecionarNumero<int>();
         }
 
-        public void AtualizarRegistros(List<Item> itens)
+        public void AtualizarRegistrosItens(Tema tema)
         {
             grid.Rows.Clear();
 
-            foreach (var item in itens)
+            foreach (var item in tema.itens)
             {
-                grid.Rows.Add(item.id, item.descricao,
-                    "R$ " + item.valor);
+                grid.Rows.Add(item.descricao, item.quantidade, (item.valor * item.quantidade));
             }
         }
     }

@@ -11,7 +11,8 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
         public string titulo { get; set; }
         public DisponivelParaLocacaoEnum statusTema { get; set; }
         public List<Item> itens { get; set; }
-        
+        public decimal valorTotal { get; set; }
+
         public Tema()
         {
             
@@ -23,26 +24,38 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
             itens = new List<Item>();
         }
 
+        public Tema(List<Item> itens) 
+        {
+            foreach (Item item in itens)
+            {
+                valorTotal = item.valor * item.quantidade;
+            }
+        }
+
         public override void AtualizarInformacoes(Tema registroAtualizado)
         {
             titulo = registroAtualizado.titulo;
             statusTema = registroAtualizado.statusTema;
-         //   quantidade = registroAtualizado.quantidade;
-           
-            //
+
             if(registroAtualizado.itens != null)
             {
                 this.itens = registroAtualizado.itens;
             }
-            //
+            foreach (Item item in itens)
+            {
+                registroAtualizado.valorTotal = item.valor * item.quantidade;
+            }
         }
 
-        public void InserirItem(Item item)
+        public void InserirItens(Tema tema)
         {
-            if (itens.Contains(item))
-                return;
+            foreach (var item in tema.itens)
+            {
+                if (tema.itens.Contains(item))
+                    return;
 
-            itens.Add(item);
+                tema.itens.Add(item);
+            }            
         }
 
         public void RemoverItem(Item item)
@@ -59,10 +72,6 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
                 return $"Você deve escrever um titulo!";
             if (titulo.Length <= 4)
                 return $"O titulo deve conter no mínimo 5 caracteres!";
-
-
-            //if (listItensTema.Items.Contains(Item))
-            //   return $"VocÊ deve adicionar algum intem na lista";
 
             return "";
         }

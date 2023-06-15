@@ -6,8 +6,6 @@ namespace ControleDeFestasInfantis.Dominio.Compartilhado
     {
         void Inserir(T novoRegistro);
 
-      //  void InserirItem(Tema tema, Item item);
-
         void Editar(T registroSelecionado, T registroAtualizado);
 
         void Editar(int id, T registro);

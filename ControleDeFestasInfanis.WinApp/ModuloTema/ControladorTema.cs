@@ -1,6 +1,6 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
-
+using ControleDeFestasInfantis.WinApp.ModuloItem;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
@@ -9,6 +9,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         IRepositorioItem repositorioItem;
         IRepositorioTema repositorioTema;
         TabelaTemaControl tabelaTema;
+        TabelaItensTema tabelaItensTema;
 
         public ControladorTema(IRepositorioItem repositorioItem, IRepositorioTema repositorioTema)
         {
@@ -20,17 +21,21 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public override string ToolTipEditar => "Editar tema existente";
 
-        public override string ToolTipExcluir => "Excluir tema existente ";
+        public override string ToolTipExcluir => "Excluir tema existente";
+
+        public override string ToolTipAdicionarItens => "Adicionar itens em um tema existente";
+
+        public override string ToolTipRemoverItens => "Remover itens de um tema existente";
 
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
         public override bool AdicionarItensHabilitado => true;
+        public override bool RemoverItensHabilitado => true;
 
         public override void Inserir()
         {
-            // List<Item> item = repositorioItem.SelecionarTodos();
-            TelaTemaForm tela = new TelaTemaForm();
+            TelaTemaForm tela = new();
 
             DialogResult opcaoEscolhida = tela.ShowDialog();
 
@@ -39,6 +44,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 Tema tema = tela.ObterTema();
 
                 repositorioTema.Inserir(tema);
+
+                CarregarItensTema(tema);
 
                 CarregarTemas();
             }
@@ -58,7 +65,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 return;
             }
 
-            TelaTemaForm telaTema = new TelaTemaForm();
+            TelaTemaForm telaTema = new();
 
             telaTema.ConfigurarTela(temaSelecionado);
 
@@ -116,17 +123,44 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             List<Item> itens = CarregarItens();
 
-            TelaTemaAdicaoForm telaAdicao = new TelaTemaAdicaoForm(temaEscolhido, itens);
+            TelaTemaAdicaoForm telaAdicao = new(temaEscolhido, itens);
 
             DialogResult opcaoEscolhida = telaAdicao.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                foreach (Item item in telaAdicao.ListaItens) 
-                {
-                    repositorioTema.InserirItem(temaEscolhido, item);
-                }
+                CarregarTemas();
+            }
+        }
 
+        public override void RemoverItens()
+        {
+            Tema temaEscolhido = ObterTemaSelecionado();
+
+            if (temaEscolhido == null)
+            {
+                MessageBox.Show($"Selecione um tema primeiro!",
+                    "Adição de Itens",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            if (temaEscolhido.itens == null)
+            {
+                MessageBox.Show($"Você deve cadastrar itens para poder remove-los!",
+                    "Remoção de Itens",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            TelaTemaRemocaoForm telaRemocao = new(temaEscolhido);
+
+            DialogResult opcaoEscolhida = telaRemocao.ShowDialog();
+
+            if (opcaoEscolhida == DialogResult.OK)
+            {
                 CarregarTemas();
             }
         }
@@ -140,6 +174,12 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             return tabelaTema;
         }
+
+        private void CarregarItensTema(Tema tema)
+        {
+            tabelaItensTema.AtualizarRegistrosItens(tema);
+        }
+
 
         public override string ObterTipoCadastro()
         {
@@ -157,6 +197,13 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             int id = tabelaTema.ObterNumeroTemaSelecionado();
 
             return repositorioTema.SelecionarPorId(id);
+        }
+
+        public Item ObterItemSelecionado()
+        {
+            int id = tabelaItensTema.ObterNumeroTemaSelecionado();
+
+            return repositorioItem.SelecionarPorId(id);
         }
 
         private List<Item> CarregarItens()

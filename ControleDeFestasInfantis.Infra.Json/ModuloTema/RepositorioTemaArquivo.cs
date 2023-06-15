@@ -10,13 +10,6 @@ namespace ControleDeFestasInfantis.Infra.Json.ModuloTema
 
         }
 
-        public void InserirItem(Tema tema, Item item)
-        {
-            Tema temaSelecionado = base.SelecionarPorId(tema.id);
-            temaSelecionado.itens.Add(item);
-            base.contextoDeDados.GravarEmArquivoJson();
-        }
-
         protected override List<Tema> ObterRegistros()
         {
             return contextoDeDados.temas;

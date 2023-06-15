@@ -27,9 +27,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Tema", HeaderText = "Descrição"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Tema", HeaderText = "Tema"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Itens Disponíveis", HeaderText = "Itens Disponíveis"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Valor Total", HeaderText = "Valor Total"},
 
             };
 
@@ -47,7 +47,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             foreach (var tema in temas)
             {
-                grid.Rows.Add(tema.id, tema.titulo);
+                grid.Rows.Add(tema.id, tema.titulo, tema.valorTotal);
             }
         }
     }

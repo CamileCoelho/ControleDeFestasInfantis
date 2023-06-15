@@ -1,6 +1,6 @@
 ﻿namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
-    partial class TabelaTemaControl
+    partial class TabelaItensTema
     {
         /// <summary> 
         /// Required designer variable.
@@ -45,12 +45,12 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grid.Location = new Point(0, 0);
+            grid.Location = new Point(-29, 0);
             grid.MultiSelect = false;
             grid.Name = "grid";
             grid.RowHeadersVisible = false;
             grid.RowTemplate.Height = 25;
-            grid.Size = new Size(860, 468);
+            grid.Size = new Size(889, 468);
             grid.TabIndex = 1;
             // 
             // TabelaTemaControl

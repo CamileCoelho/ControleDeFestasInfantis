@@ -12,15 +12,15 @@
 
         public virtual string? ToolTipAdicionarItens { get { return "Adição indisponível"; } }
 
-        public virtual string? ToolTipConcluirItens { get { return "Conclusão indisponível"; } }
-   //     public virtual string ToolTipVisualizar { get { return "Visualização indisponível"; } }
+        public virtual string? ToolTipRemoverItens { get { return "Conclusão indisponível"; } }
+
         public virtual bool InserirHabilitado { get { return true; } }
         public virtual bool EditarHabilitado { get { return true; } }
         public virtual bool ExcluirHabilitado { get { return true; } }
 
         public virtual bool FiltrarHabilitado { get { return true; } }
         public virtual bool AdicionarItensHabilitado { get { return true; } }
-        public virtual bool ConcluirItensHabilitado { get { return true; } }
+        public virtual bool RemoverItensHabilitado { get { return true; } }
 
         public abstract void Inserir();
 
@@ -32,7 +32,7 @@
 
         public virtual void AdicionarItens() { }
 
-        public virtual void ConcluirItens() { }
+        public virtual void RemoverItens() { }
 
         public virtual void Visualizar()
         {
