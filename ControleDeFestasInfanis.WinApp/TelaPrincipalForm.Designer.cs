@@ -46,7 +46,7 @@
             btnFiltrar = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
             btnAdicionarItens = new ToolStripButton();
-            btnConcluirItens = new ToolStripButton();
+            btnRemoverItens = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             labelTipoDoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
@@ -75,7 +75,7 @@
             // contatosMenuItem
             // 
             contatosMenuItem.Name = "contatosMenuItem";
-            contatosMenuItem.Size = new Size(180, 22);
+            contatosMenuItem.Size = new Size(122, 22);
             contatosMenuItem.Text = "Contatos";
             contatosMenuItem.Click += contatosMenuItem_Click;
             // 
@@ -125,7 +125,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, btnFiltrar, toolStripSeparator3, btnAdicionarItens, btnConcluirItens, toolStripSeparator1, labelTipoDoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, btnFiltrar, toolStripSeparator3, btnAdicionarItens, btnRemoverItens, toolStripSeparator1, labelTipoDoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1134, 35);
@@ -206,17 +206,17 @@
             btnAdicionarItens.Size = new Size(32, 32);
             btnAdicionarItens.Click += btnAdicionarItens_Click;
             // 
-            // btnConcluirItens
+            // btnRemoverItens
             // 
-            btnConcluirItens.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnConcluirItens.Enabled = false;
-            btnConcluirItens.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnConcluirItens.Image = (Image)resources.GetObject("btnConcluirItens.Image");
-            btnConcluirItens.ImageTransparentColor = Color.Magenta;
-            btnConcluirItens.Name = "btnConcluirItens";
-            btnConcluirItens.Padding = new Padding(6);
-            btnConcluirItens.Size = new Size(32, 32);
-            btnConcluirItens.Click += btnConcluirItens_Click;
+            btnRemoverItens.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnRemoverItens.Enabled = false;
+            btnRemoverItens.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRemoverItens.Image = (Image)resources.GetObject("btnRemoverItens.Image");
+            btnRemoverItens.ImageTransparentColor = Color.Magenta;
+            btnRemoverItens.Name = "btnRemoverItens";
+            btnRemoverItens.Padding = new Padding(6);
+            btnRemoverItens.Size = new Size(32, 32);
+            btnRemoverItens.Click += btnConcluirItens_Click;
             // 
             // toolStripSeparator1
             // 
@@ -254,7 +254,7 @@
             Name = "TelaPrincipalForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "E-Agenda ";
+            Text = "Festas Infantis by Rafaela";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             rodape.ResumeLayout(false);
@@ -283,7 +283,7 @@
         private ToolStripButton btnFiltrar;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripButton btnAdicionarItens;
-        private ToolStripButton btnConcluirItens;
+        private ToolStripButton btnRemoverItens;
         private ToolStripMenuItem festasToolStripMenuItem;
         private ToolStripMenuItem agendamentoDeFestaMenuItem;
         private ToolStripMenuItem itensParaLocaçãoMenuItem;

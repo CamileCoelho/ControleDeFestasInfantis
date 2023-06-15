@@ -1,4 +1,6 @@
-﻿namespace ControleDeFestasInfantis.Dominio.Compartilhado
+﻿using ControleDeFestasInfantis.Dominio.ModuloTema;
+
+namespace ControleDeFestasInfantis.Dominio.Compartilhado
 {
     public interface IRepositorio<T> where T : EntidadeBase<T>
     {

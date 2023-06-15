@@ -1,4 +1,5 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloTema;
+﻿using ControleDeFestasInfantis.Dominio.ModuloItem;
+using ControleDeFestasInfantis.Dominio.ModuloTema;
 
 namespace ControleDeFestasInfantis.Infra.Json.ModuloTema
 {

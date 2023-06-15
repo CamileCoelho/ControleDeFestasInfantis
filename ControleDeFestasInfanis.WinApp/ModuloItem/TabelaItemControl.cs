@@ -20,10 +20,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Descrição", HeaderText = "Descrição"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Quantidade Disponível", HeaderText = "Quantidade Disponível"},
-
-                new DataGridViewTextBoxColumn { DataPropertyName = "Quantidade Locada", HeaderText = "Quantidade Locada"},
-
                 new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor"}
             };
 
@@ -42,8 +38,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
             foreach (var item in itens)
             {
                 grid.Rows.Add(item.id, item.descricao,
-                    item.quantidadeDisponivel, item.quantidadeLocada,
-                    "R$ "+item.valor);
+                    "R$ " + item.valor);
             }
         }
     }

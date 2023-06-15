@@ -7,16 +7,11 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
     {
         private Item item { get; set; }
 
-        public TelaItemForm(bool edicaoDoItem)
+        public TelaItemForm()
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
-
-            if (edicaoDoItem)
-            {
-                numQtdLocada.Enabled = false;
-            }
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -35,21 +30,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
         {
             string descricao = txtDescricao.Text;
 
-            string quantidadeDisponivel = numQtdDisponivel.Text;
-
-            string qualtidadeLocada = numQtdLocada.Text;
-
             string valor = txtValor.Text;
 
-            return new(descricao, quantidadeDisponivel, qualtidadeLocada, valor);
+            return new(descricao, valor);
         }
 
         public void ConfigurarTela(Item itemSelecionado)
         {
             txtId.Text = itemSelecionado.id.ToString();
             txtDescricao.Text = itemSelecionado.descricao;
-            numQtdDisponivel.Text = itemSelecionado.quantidadeDisponivel.ToString();
-            numQtdLocada.Text = itemSelecionado.quantidadeLocada.ToString();
             txtValor.Text = itemSelecionado.valor.ToString();
         }
 

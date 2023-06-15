@@ -65,7 +65,7 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void temasMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorTema();
+            controlador = new ControladorTema(repositorioItem, repositorioTema);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -97,14 +97,14 @@ namespace ControleDeFestasInfantis.WinApp
             btnExcluir.ToolTipText = controlador.ToolTipExcluir;
             btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
             btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
-            btnConcluirItens.ToolTipText = controlador.ToolTipConcluirItens;
+            btnRemoverItens.ToolTipText = controlador.ToolTipRemoverItens;
 
             btnInserir.Enabled = controlador.InserirHabilitado;
             btnEditar.Enabled = controlador.EditarHabilitado;
             btnExcluir.Enabled = controlador.ExcluirHabilitado;
             btnFiltrar.Enabled = controlador.FiltrarHabilitado;
             btnAdicionarItens.Enabled = controlador.AdicionarItensHabilitado;
-            btnConcluirItens.Enabled = controlador.ConcluirItensHabilitado;
+            btnRemoverItens.Enabled = controlador.RemoverItensHabilitado;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -134,7 +134,7 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void btnConcluirItens_Click(object sender, EventArgs e)
         {
-            controlador.ConcluirItens();
+            controlador.RemoverItens();
         }
     }
 }
