@@ -53,6 +53,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             Item item = (Item)cmbItensTema.SelectedItem;
             item.quantidade = numQuantidadeItem.Value;
 
+            if (itensToAdd.Contains(item) || tema.itens.Contains(item))
+            {
+                MessageBox.Show($"Você não pode adicionar o mesmo item mais de uma vez!",
+                    "Adição de Itens",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
             itensToAdd.Add(item);
 
             tabelaItensTema.AtualizarRegistrosItens(item);

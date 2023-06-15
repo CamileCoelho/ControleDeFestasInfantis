@@ -81,6 +81,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public override void Excluir()
         {
+            //TO-DO  VERIFICAR SE CONTEM ALUGEUL PARA ESSE TEMA, SE SIM NÃO PODE REMOVER O TEMA
+
             Tema temaSelecionado = ObterTemaSelecionado();
 
             if (temaSelecionado == null)
@@ -139,6 +141,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public override void RemoverItens()
         {
+            //TO-DO  VERIFICAR SE CONTEM ALUGEUL PARA ESSE TEMA, SE SIM NÃO PODE REMOVER ITENS
+
             Tema temaEscolhido = ObterTemaSelecionado();
 
             if (temaEscolhido == null)
@@ -184,12 +188,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             return tabelaTema;
         }
 
-        private void CarregarItensTema(Tema tema)
-        {
-            tabelaItensTema.AtualizarRegistrosItens(tema.itens);
-        }
-
-
         public override string ObterTipoCadastro()
         {
             return "Cadastro de Temas";
@@ -206,13 +204,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             int id = tabelaTema.ObterNumeroTemaSelecionado();
 
             return repositorioTema.SelecionarPorId(id);
-        }
-
-        public Item ObterItemSelecionado()
-        {
-            int id = tabelaItensTema.ObterNumeroTemaSelecionado();
-
-            return repositorioItem.SelecionarPorId(id);
         }
 
         private List<Item> CarregarItens()

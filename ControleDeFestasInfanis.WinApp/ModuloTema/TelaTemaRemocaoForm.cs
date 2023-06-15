@@ -40,7 +40,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         private void btnRemover_Click(object sender, EventArgs e)
         {
             int id = tabelaItensTema.ObterNumeroTemaSelecionado();
-            Item item = tema.itens.FirstOrDefault(x => x.id == id);
+            Item item = tema.itens.FirstOrDefault(x => x.id == id); 
 
             itensToRemove.Add(item);
 
