@@ -2,14 +2,14 @@
 
 namespace ControleDeFestasInfantis.Infra.Json.ModuloFesta
 {
-    public class RepositorioFestaArquivo : RepositorioBaseArquivo<Festa>, IRepositorioFesta
+    public class RepositorioFestaArquivo : RepositorioBaseArquivo<Pagamento>, IRepositorioFesta
     {
         public RepositorioFestaArquivo(ContextoDeDados contexto) : base(contexto)
         {
 
         }
 
-        protected override List<Festa> ObterRegistros()
+        protected override List<Pagamento> ObterRegistros()
         {
             return contextoDeDados.festas;
         }

@@ -67,7 +67,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             Item item = (Item)cmbItensTema.SelectedItem;
 
-         //   listItensTema.Items.Add(" item: " + item + " quantidade: " + quantidade);
+            //   listItensTema.Items.Add(" item: " + item + " quantidade: " + quantidade);
             listItensTema.Items.Add(item);
             listItensTema.Items.Add(quantidade);
         }
