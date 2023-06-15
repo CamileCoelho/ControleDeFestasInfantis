@@ -1,5 +1,5 @@
 using ControleDeFestasInfantis.Dominio.ModuloCliente;
-using ControleDeFestasInfantis.Dominio.ModuloFesta;
+using ControleDeFestasInfantis.Dominio.ModuloAluguel;
 using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
 using ControleDeFestasInfantis.Infra.Json.ModuloCliente;
@@ -7,7 +7,7 @@ using ControleDeFestasInfantis.Infra.Json.ModuloFesta;
 using ControleDeFestasInfantis.Infra.Json.ModuloItem;
 using ControleDeFestasInfantis.Infra.Json.ModuloTema;
 using ControleDeFestasInfantis.WinApp.ModuloCliente;
-using ControleDeFestasInfantis.WinApp.ModuloFesta;
+using ControleDeFestasInfantis.WinApp.ModuloAluguel;
 using ControleDeFestasInfantis.WinApp.ModuloItem;
 using ControleDeFestasInfantis.WinApp.ModuloTema;
 
@@ -51,7 +51,7 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void agendamentoDeFestaMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ContoladorFesta();
+            controlador = new ContoladorAluguel();
 
             ConfigurarTelaPrincipal(controlador);
         }

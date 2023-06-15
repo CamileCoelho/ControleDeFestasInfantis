@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using ControleDeFestasInfantis.Dominio.ModuloCliente;
-using ControleDeFestasInfantis.Dominio.ModuloFesta;
+using ControleDeFestasInfantis.Dominio.ModuloAluguel;
 using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
 
@@ -12,14 +12,14 @@ namespace ControleDeFestasInfantis.Infra.Json.Compartilhado
         private const string NOME_ARQUIVO = "Compartilhado//ControleDeFestasInfantis.json";
 
         public List<Cliente> clientes { get; set; }
-        public List<Pagamento> festas { get; set; }
+        public List<Aluguel> festas { get; set; }
         public List<Item> itens { get; set; }
         public List<Tema> temas { get; set; }
 
         public ContextoDeDados()
         {
             clientes = new List<Cliente>();
-            festas = new List<Pagamento>();
+            festas = new List<Aluguel>();
             itens = new List<Item>();
             temas = new List<Tema>();
         }

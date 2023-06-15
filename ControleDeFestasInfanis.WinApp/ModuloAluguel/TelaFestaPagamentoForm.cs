@@ -1,12 +1,12 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloCliente;
-using ControleDeFestasInfantis.Dominio.ModuloFesta;
+using ControleDeFestasInfantis.Dominio.ModuloAluguel;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
     public partial class TelaFestaPagamentoForm : Form
     {
-        private Pagamento pagamento { get; set; }
+        private Aluguel pagamento { get; set; }
         private List<Cliente> listaClientes;
         private List<Tema> listaTemaClientes;
 
@@ -49,9 +49,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             //    cmbTema.Items.Add(new { Id = 1, Nome = "Item 2" });
             //}
         }
-        public Pagamento ObterPagamento()
+        public Aluguel ObterPagamento()
         {
-            Pagamento pagamento = (Pagamento)cmbPagamento.SelectedItem;
+            Aluguel pagamento = (Aluguel)cmbPagamento.SelectedItem;
 
             return new();
         }

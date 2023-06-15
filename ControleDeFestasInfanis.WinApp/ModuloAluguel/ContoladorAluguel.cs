@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ControleDeFestasInfantis.WinApp.ModuloFesta
+﻿namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 {
-    public class ContoladorFesta : ControladorBase
+    public class ContoladorAluguel : ControladorBase
     {
         public override string ToolTipInserir => throw new NotImplementedException();
 

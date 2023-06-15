@@ -1,4 +1,4 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloFesta;
+﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
 using ControleDeFestasInfantis.Dominio.ModuloItem;
 using System.Drawing;
 using System.Windows.Forms;

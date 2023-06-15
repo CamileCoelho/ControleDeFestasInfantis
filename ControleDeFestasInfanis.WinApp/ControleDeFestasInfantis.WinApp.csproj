@@ -14,6 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="ModuloAluguel\TabelaAluguelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="ModuloTema\TabelaItensTema.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -28,99 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
-            label1 = new Label();
             cmbPagamento = new ComboBox();
             lbPagamento = new Label();
             lbValor = new Label();
-            btnCancelar = new Button();
-            btnGravar = new Button();
             txtValorRest = new TextBox();
             label3 = new Label();
             label4 = new Label();
             txtValorEnt = new TextBox();
             txtValorTotal = new TextBox();
-            cmbCliente = new ComboBox();
-            cmbTema = new ComboBox();
+            btnCancelar = new Button();
+            btnGravar = new Button();
+            label1 = new Label();
+            textBox1 = new TextBox();
             SuspendLayout();
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(69, 53);
-            label2.Name = "label2";
-            label2.Size = new Size(46, 16);
-            label2.TabIndex = 28;
-            label2.Text = "Tema:";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(64, 23);
-            label1.Name = "label1";
-            label1.Size = new Size(51, 16);
-            label1.TabIndex = 27;
-            label1.Text = "Cliente:";
             // 
             // cmbPagamento
             // 
             cmbPagamento.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPagamento.FormattingEnabled = true;
-            cmbPagamento.Location = new Point(127, 189);
+            cmbPagamento.Location = new Point(195, 143);
             cmbPagamento.Name = "cmbPagamento";
-            cmbPagamento.Size = new Size(154, 24);
+            cmbPagamento.Size = new Size(378, 24);
             cmbPagamento.TabIndex = 35;
             // 
             // lbPagamento
             // 
             lbPagamento.AutoSize = true;
             lbPagamento.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbPagamento.Location = new Point(25, 196);
+            lbPagamento.Location = new Point(41, 143);
             lbPagamento.Name = "lbPagamento";
-            lbPagamento.Size = new Size(80, 16);
+            lbPagamento.Size = new Size(140, 16);
             lbPagamento.TabIndex = 34;
-            lbPagamento.Text = "Pagamento:";
+            lbPagamento.Text = "Forma de pagamento:";
             // 
             // lbValor
             // 
             lbValor.AutoSize = true;
             lbValor.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbValor.Location = new Point(279, 123);
+            lbValor.Location = new Point(355, 92);
             lbValor.Name = "lbValor";
-            lbValor.Size = new Size(42, 16);
+            lbValor.Size = new Size(74, 16);
             lbValor.TabIndex = 32;
-            lbValor.Text = "Valor:";
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(441, 235);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(86, 44);
-            btnCancelar.TabIndex = 37;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnGravar
-            // 
-            btnGravar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnGravar.DialogResult = DialogResult.OK;
-            btnGravar.Location = new Point(333, 235);
-            btnGravar.Name = "btnGravar";
-            btnGravar.Size = new Size(86, 44);
-            btnGravar.TabIndex = 36;
-            btnGravar.Text = "Gravar";
-            btnGravar.UseVisualStyleBackColor = true;
+            lbValor.Text = "Valor Final:";
             // 
             // txtValorRest
             // 
             txtValorRest.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtValorRest.Location = new Point(333, 116);
+            txtValorRest.Location = new Point(452, 85);
             txtValorRest.Name = "txtValorRest";
-            txtValorRest.Size = new Size(113, 29);
+            txtValorRest.Size = new Size(121, 29);
             txtValorRest.TabIndex = 38;
             txtValorRest.Text = "0.00";
             // 
@@ -128,7 +84,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(23, 90);
+            label3.Location = new Point(337, 38);
             label3.Name = "label3";
             label3.Size = new Size(92, 16);
             label3.TabIndex = 39;
@@ -138,7 +94,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(39, 123);
+            label4.Location = new Point(98, 92);
             label4.Name = "label4";
             label4.Size = new Size(76, 16);
             label4.TabIndex = 40;
@@ -147,56 +103,86 @@
             // txtValorEnt
             // 
             txtValorEnt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtValorEnt.Location = new Point(127, 75);
+            txtValorEnt.Location = new Point(452, 31);
             txtValorEnt.Name = "txtValorEnt";
-            txtValorEnt.Size = new Size(113, 29);
+            txtValorEnt.Size = new Size(121, 29);
             txtValorEnt.TabIndex = 41;
             txtValorEnt.Text = "0.00";
             // 
             // txtValorTotal
             // 
             txtValorTotal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtValorTotal.Location = new Point(127, 110);
+            txtValorTotal.Location = new Point(195, 85);
             txtValorTotal.Name = "txtValorTotal";
-            txtValorTotal.Size = new Size(113, 29);
+            txtValorTotal.Size = new Size(121, 29);
             txtValorTotal.TabIndex = 42;
             txtValorTotal.Text = "0.00";
             // 
-            // cmbCliente
+            // btnCancelar
             // 
-            cmbCliente.FormattingEnabled = true;
-            cmbCliente.Location = new Point(127, 15);
-            cmbCliente.Name = "cmbCliente";
-            cmbCliente.Size = new Size(121, 24);
-            cmbCliente.TabIndex = 43;
+            btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCancelar.DialogResult = DialogResult.Cancel;
+            btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancelar.ImageAlign = ContentAlignment.BottomRight;
+            btnCancelar.Location = new Point(479, 204);
+            btnCancelar.Margin = new Padding(4);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(94, 41);
+            btnCancelar.TabIndex = 46;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.TextImageRelation = TextImageRelation.TextAboveImage;
+            btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // cmbTema
+            // btnGravar
             // 
-            cmbTema.FormattingEnabled = true;
-            cmbTema.Location = new Point(127, 45);
-            cmbTema.Name = "cmbTema";
-            cmbTema.Size = new Size(121, 24);
-            cmbTema.TabIndex = 44;
+            btnGravar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnGravar.DialogResult = DialogResult.OK;
+            btnGravar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnGravar.ImageAlign = ContentAlignment.BottomRight;
+            btnGravar.Location = new Point(364, 204);
+            btnGravar.Margin = new Padding(4);
+            btnGravar.Name = "btnGravar";
+            btnGravar.Size = new Size(94, 41);
+            btnGravar.TabIndex = 45;
+            btnGravar.Text = "Gravar";
+            btnGravar.TextImageRelation = TextImageRelation.TextAboveImage;
+            btnGravar.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(123, 38);
+            label1.Name = "label1";
+            label1.Size = new Size(51, 16);
+            label1.TabIndex = 47;
+            label1.Text = "Cliente:";
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(195, 31);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(121, 29);
+            textBox1.TabIndex = 48;
             // 
             // TelaFestaPagamentoForm
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(557, 291);
-            Controls.Add(cmbTema);
-            Controls.Add(cmbCliente);
+            ClientSize = new Size(622, 279);
+            Controls.Add(textBox1);
+            Controls.Add(label1);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnGravar);
             Controls.Add(txtValorTotal);
             Controls.Add(txtValorEnt);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(txtValorRest);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnGravar);
             Controls.Add(cmbPagamento);
             Controls.Add(lbPagamento);
             Controls.Add(lbValor);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "TelaFestaPagamentoForm";
             Text = "TelaFestaPagamentoForm";
@@ -205,19 +191,17 @@
         }
 
         #endregion
-        private Label label2;
-        private Label label1;
         private ComboBox cmbPagamento;
         private Label lbPagamento;
         private Label lbValor;
-        private Button btnCancelar;
-        private Button btnGravar;
         private TextBox txtValorRest;
         private Label label3;
         private Label label4;
         private TextBox txtValorEnt;
         private TextBox txtValorTotal;
-        private ComboBox cmbCliente;
-        private ComboBox cmbTema;
+        private Button btnCancelar;
+        private Button btnGravar;
+        private Label label1;
+        private TextBox textBox1;
     }
 }

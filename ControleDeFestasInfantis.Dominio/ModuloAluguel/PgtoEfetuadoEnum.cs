@@ -1,4 +1,4 @@
-﻿namespace ControleDeFestasInfantis.Dominio.ModuloFesta
+﻿namespace ControleDeFestasInfantis.Dominio.ModuloAluguel
 {
     public enum DisponivelEnum
     {
