@@ -1,6 +1,6 @@
 ﻿namespace ControleDeFestasInfantis.Dominio.ModuloFesta
 {
-    public interface IRepositorioFesta : IRepositorio<Festa>
+    public interface IRepositorioFesta : IRepositorio<Pagamento>
     {
     }
 }

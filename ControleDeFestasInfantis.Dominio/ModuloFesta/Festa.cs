@@ -1,14 +1,19 @@
-﻿namespace ControleDeFestasInfantis.Dominio.ModuloFesta
+﻿using ControleDeFestasInfantis.Dominio.ModuloCliente;
+using ControleDeFestasInfantis.Dominio.ModuloTema;
+
+namespace ControleDeFestasInfantis.Dominio.ModuloFesta
 {
     [Serializable]
-    public class Festa : EntidadeBase<Festa>
+    public class Pagamento : EntidadeBase<Pagamento>
     {
-        public Festa()
+        public Cliente cliente { get; set; }
+        public Tema tema { get; set; }
+        public Pagamento()
         {
             
         }
 
-        public override void AtualizarInformacoes(Festa registroAtualizado)
+        public override void AtualizarInformacoes(Pagamento registroAtualizado)
         {
             throw new NotImplementedException();
         }

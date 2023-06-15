@@ -12,14 +12,14 @@ namespace ControleDeFestasInfantis.Infra.Json.Compartilhado
         private const string NOME_ARQUIVO = "Compartilhado//ControleDeFestasInfantis.json";
 
         public List<Cliente> clientes { get; set; }
-        public List<Festa> festas { get; set; }
+        public List<Pagamento> festas { get; set; }
         public List<Item> itens { get; set; }
         public List<Tema> temas { get; set; }
 
         public ContextoDeDados()
         {
             clientes = new List<Cliente>();
-            festas = new List<Festa>();
+            festas = new List<Pagamento>();
             itens = new List<Item>();
             temas = new List<Tema>();
         }

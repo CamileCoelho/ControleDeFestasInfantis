@@ -44,7 +44,7 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void contatosMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorCliente();
+            controlador = new ControladorCliente(repositorioCliente);
 
             ConfigurarTelaPrincipal(controlador);
         }
