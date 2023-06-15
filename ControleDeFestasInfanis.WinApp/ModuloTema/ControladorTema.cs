@@ -125,10 +125,14 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             TelaTemaAdicaoForm telaAdicao = new(temaEscolhido, itens);
 
+            telaAdicao.ConfigurarTela(temaEscolhido);
+
             DialogResult opcaoEscolhida = telaAdicao.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
+                temaEscolhido.InserirItens(temaEscolhido);
+
                 CarregarTemas();
             }
         }
@@ -146,21 +150,28 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
                 return;
             }
-            if (temaEscolhido.itens == null)
+            if (temaEscolhido.itens.Count() == 0)
             {
-                MessageBox.Show($"Você deve cadastrar itens para poder remove-los!",
+                MessageBox.Show($"Você deve cadastrar itens em um tema para poder remove-los!",
                     "Remoção de Itens",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
                 return;
             }
+
             TelaTemaRemocaoForm telaRemocao = new(temaEscolhido);
+
+            telaRemocao.ConfigurarTela(temaEscolhido);
+
+            //Item itemSelecionado = ObterItemSelecionado();
 
             DialogResult opcaoEscolhida = telaRemocao.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
+                //temaEscolhido.RemoverItem(itemSelecionado);
+
                 CarregarTemas();
             }
         }

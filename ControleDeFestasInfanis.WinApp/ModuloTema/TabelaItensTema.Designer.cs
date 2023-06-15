@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            grid = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)grid).BeginInit();
+            gridtensTema = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)gridtensTema).BeginInit();
             SuspendLayout();
             // 
-            // grid
+            // gridtensTema
             // 
-            grid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gridtensTema.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.LightGray;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -43,29 +43,30 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            grid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grid.Location = new Point(-29, 0);
-            grid.MultiSelect = false;
-            grid.Name = "grid";
-            grid.RowHeadersVisible = false;
-            grid.RowTemplate.Height = 25;
-            grid.Size = new Size(889, 468);
-            grid.TabIndex = 1;
+            gridtensTema.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            gridtensTema.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridtensTema.Location = new Point(0, 0);
+            gridtensTema.MultiSelect = false;
+            gridtensTema.Name = "gridtensTema";
+            gridtensTema.RowHeadersVisible = false;
+            gridtensTema.RowTemplate.Height = 25;
+            gridtensTema.Size = new Size(860, 468);
+            gridtensTema.TabIndex = 1;
             // 
-            // TabelaTemaControl
+            // TabelaItensTema
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(grid);
-            Name = "TabelaTemaControl";
+            Controls.Add(gridtensTema);
+            Name = "TabelaItensTema";
             Size = new Size(860, 468);
-            ((System.ComponentModel.ISupportInitialize)grid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridtensTema).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private DataGridView grid;
+        private DataGridView gridtensTema;
     }
 }

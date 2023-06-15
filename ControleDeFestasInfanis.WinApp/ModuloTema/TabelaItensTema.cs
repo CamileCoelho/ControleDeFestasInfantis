@@ -9,9 +9,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         {
             InitializeComponent();
 
-            grid.ConfigurarGridZebrado();
-            grid.ConfigurarGridSomenteLeitura();
-            grid.Columns.AddRange(ObterColunas());
+            gridtensTema.ConfigurarGridZebrado();
+            gridtensTema.ConfigurarGridSomenteLeitura();
+            gridtensTema.Columns.AddRange(ObterColunas());
         }
 
         private DataGridViewColumn[] ObterColunas()
@@ -20,7 +20,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Tema", HeaderText = "Tema"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Item", HeaderText = "Item"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Quantidade", HeaderText = "Quantidade"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Valor Total", HeaderText = "Valor Total"},
 
@@ -31,17 +33,21 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public int ObterNumeroTemaSelecionado()
         {
-            return grid.SelecionarNumero<int>();
+            return gridtensTema.SelecionarNumero<int>();
         }
 
         public void AtualizarRegistrosItens(Tema tema)
         {
-            grid.Rows.Clear();
+            gridtensTema.Rows.Clear();
 
             foreach (var item in tema.itens)
             {
-                grid.Rows.Add(item.descricao, item.quantidade, (item.valor * item.quantidade));
+                gridtensTema.Rows.Add(item.id, item.descricao, item.quantidade, (item.valor * item.quantidade));
             }
+        }
+        public void AtualizarRegistrosItens(Item item)
+        {
+            gridtensTema.Rows.Add(item.id, item.descricao, item.quantidade, (item.valor * item.quantidade));
         }
     }
 }

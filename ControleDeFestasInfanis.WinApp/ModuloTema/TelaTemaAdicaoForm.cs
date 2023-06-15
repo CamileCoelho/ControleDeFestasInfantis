@@ -20,8 +20,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             if (tabelaItensTema == null)
                 tabelaItensTema = new TabelaItensTema();
-
-            ConfigurarTela(tema);
         }
 
         public void ObterItens(List<Item> itens)
@@ -37,14 +35,20 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             txtId.Text = temaSelecionado.id.ToString();
             txtTema.Text = temaSelecionado.titulo;
 
-            gridtensTema.ConfigurarGridZebrado();
-            gridtensTema.ConfigurarGridSomenteLeitura();
-            gridtensTema.Columns.AddRange(ObterColunas());
+            //gridtensTema.ConfigurarGridZebrado();
+            //gridtensTema.ConfigurarGridSomenteLeitura();
+            //gridtensTema.Columns.AddRange(ObterColunas());
 
-            foreach (var item in temaSelecionado.itens)
-            {
-                gridtensTema.Rows.Add(item.descricao, item.quantidade, (item.valor * item.quantidade));
-            }
+            tabelaItensTema.Dock = DockStyle.Fill;
+
+            panelItensTema.Controls.Clear();
+
+            panelItensTema.Controls.Add(tabelaItensTema);
+
+            //foreach (var item in temaSelecionado.itens)
+            //{
+            //    gridtensTema.Rows.Add(item.id, item.descricao, item.quantidade, (item.valor * item.quantidade));
+            //}
 
             tabelaItensTema.AtualizarRegistrosItens(temaSelecionado);
         }
@@ -55,8 +59,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             Item item = (Item)cmbItensTema.SelectedItem;
             item.quantidade = numQuantidadeItem.Value;
 
-            gridtensTema.Rows.Add(item.descricao, item.quantidade, (item.valor * item.quantidade));
-            tema.itens.Add(item);   
+            tabelaItensTema.AtualizarRegistrosItens(item);
+
+            tema.itens.Add(item);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -73,6 +78,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         {
             var colunas = new DataGridViewColumn[]
             {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+
                 new DataGridViewTextBoxColumn { DataPropertyName = "Item", HeaderText = "Item"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Quantidade", HeaderText = "Quantidade"},

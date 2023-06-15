@@ -28,22 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             btnCancelar = new Button();
             btnGravar = new Button();
             txtTema = new TextBox();
             txtId = new TextBox();
             label2 = new Label();
             label1 = new Label();
-            listItensTema = new ListBox();
             cmbItensTema = new ComboBox();
             btnAdicionar = new Button();
             label3 = new Label();
             label4 = new Label();
             numQuantidadeItem = new NumericUpDown();
-            gridtensTema = new DataGridView();
+            panelItensTema = new Panel();
             ((System.ComponentModel.ISupportInitialize)numQuantidadeItem).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gridtensTema).BeginInit();
             SuspendLayout();
             // 
             // btnCancelar
@@ -52,7 +49,7 @@
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancelar.ImageAlign = ContentAlignment.BottomRight;
-            btnCancelar.Location = new Point(321, 523);
+            btnCancelar.Location = new Point(321, 562);
             btnCancelar.Margin = new Padding(4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 41);
@@ -68,7 +65,7 @@
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnGravar.ImageAlign = ContentAlignment.BottomRight;
-            btnGravar.Location = new Point(206, 523);
+            btnGravar.Location = new Point(206, 562);
             btnGravar.Margin = new Padding(4);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(94, 41);
@@ -115,15 +112,6 @@
             label1.Size = new Size(27, 20);
             label1.TabIndex = 22;
             label1.Text = "Id:";
-            // 
-            // listItensTema
-            // 
-            listItensTema.FormattingEnabled = true;
-            listItensTema.ItemHeight = 15;
-            listItensTema.Location = new Point(115, 160);
-            listItensTema.Name = "listItensTema";
-            listItensTema.Size = new Size(300, 319);
-            listItensTema.TabIndex = 26;
             // 
             // cmbItensTema
             // 
@@ -175,38 +163,24 @@
             numQuantidadeItem.Size = new Size(192, 29);
             numQuantidadeItem.TabIndex = 37;
             // 
-            // gridtensTema
+            // panelItensTema
             // 
-            gridtensTema.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.LightGray;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            gridtensTema.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            gridtensTema.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridtensTema.Location = new Point(115, 160);
-            gridtensTema.MultiSelect = false;
-            gridtensTema.Name = "gridtensTema";
-            gridtensTema.RowHeadersVisible = false;
-            gridtensTema.RowTemplate.Height = 25;
-            gridtensTema.Size = new Size(300, 319);
-            gridtensTema.TabIndex = 38;
+            panelItensTema.Location = new Point(115, 155);
+            panelItensTema.Name = "panelItensTema";
+            panelItensTema.Size = new Size(300, 361);
+            panelItensTema.TabIndex = 38;
             // 
             // TelaTemaAdicaoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(461, 611);
-            Controls.Add(gridtensTema);
+            ClientSize = new Size(462, 650);
+            Controls.Add(panelItensTema);
             Controls.Add(numQuantidadeItem);
             Controls.Add(label4);
             Controls.Add(cmbItensTema);
             Controls.Add(btnAdicionar);
             Controls.Add(label3);
-            Controls.Add(listItensTema);
             Controls.Add(txtTema);
             Controls.Add(txtId);
             Controls.Add(label2);
@@ -217,7 +191,6 @@
             ShowIcon = false;
             Text = "Adição de Itens";
             ((System.ComponentModel.ISupportInitialize)numQuantidadeItem).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gridtensTema).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -236,5 +209,6 @@
         private Label label4;
         private NumericUpDown numQuantidadeItem;
         private DataGridView gridtensTema;
+        private Panel panelItensTema;
     }
 }

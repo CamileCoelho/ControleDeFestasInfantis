@@ -28,17 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             txtTema = new TextBox();
             txtId = new TextBox();
             label2 = new Label();
             label1 = new Label();
-            gridtensTema = new DataGridView();
             btnCancelar = new Button();
             btnGravar = new Button();
             label3 = new Label();
             btnRemover = new Button();
-            ((System.ComponentModel.ISupportInitialize)gridtensTema).BeginInit();
+            panelItensRemocao = new Panel();
             SuspendLayout();
             // 
             // txtTema
@@ -78,26 +76,6 @@
             label1.Size = new Size(27, 20);
             label1.TabIndex = 26;
             label1.Text = "Id:";
-            // 
-            // gridtensTema
-            // 
-            gridtensTema.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.LightGray;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            gridtensTema.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            gridtensTema.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridtensTema.Location = new Point(90, 121);
-            gridtensTema.MultiSelect = false;
-            gridtensTema.Name = "gridtensTema";
-            gridtensTema.RowHeadersVisible = false;
-            gridtensTema.RowTemplate.Height = 25;
-            gridtensTema.Size = new Size(340, 363);
-            gridtensTema.TabIndex = 39;
             // 
             // btnCancelar
             // 
@@ -151,23 +129,29 @@
             btnRemover.UseVisualStyleBackColor = true;
             btnRemover.Click += btnRemover_Click;
             // 
+            // panelItensRemocao
+            // 
+            panelItensRemocao.Location = new Point(90, 121);
+            panelItensRemocao.Name = "panelItensRemocao";
+            panelItensRemocao.Size = new Size(340, 363);
+            panelItensRemocao.TabIndex = 44;
+            // 
             // TelaTemaRemocaoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(469, 644);
+            Controls.Add(panelItensRemocao);
             Controls.Add(btnRemover);
             Controls.Add(label3);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
-            Controls.Add(gridtensTema);
             Controls.Add(txtTema);
             Controls.Add(txtId);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "TelaTemaRemocaoForm";
             Text = "TelaTemaRemocaoForm";
-            ((System.ComponentModel.ISupportInitialize)gridtensTema).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -178,10 +162,10 @@
         private TextBox txtId;
         private Label label2;
         private Label label1;
-        private DataGridView gridtensTema;
         private Button btnCancelar;
         private Button btnGravar;
         private Label label3;
         private Button btnRemover;
+        private Panel panelItensRemocao;
     }
 }
