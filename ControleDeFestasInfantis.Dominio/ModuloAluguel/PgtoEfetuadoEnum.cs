@@ -1,9 +1,9 @@
 ﻿namespace ControleDeFestasInfantis.Dominio.ModuloAluguel
 {
-    public enum DisponivelEnum
+    public enum PgtoEfetuadoEnum
     {
-        Não, 
-        Sim, 
-        Metade
+        Pendente,
+        Parcial, 
+        Completo
     }
 }

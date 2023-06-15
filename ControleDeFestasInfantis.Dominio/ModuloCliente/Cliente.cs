@@ -8,11 +8,17 @@
         public string email { get; set; }
         public int qtdAlugueisRealizados { get; set; }
 
+        public Cliente()
+        {
+            
+        }
+
         public Cliente(string nome, string telefone, string email)
         {
             this.nome = nome;
             this.telefone = telefone;
             this.email = email;
+            qtdAlugueisRealizados = 0;
         }
 
         public override void AtualizarInformacoes(Cliente registroAtualizado)

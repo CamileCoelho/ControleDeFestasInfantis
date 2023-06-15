@@ -20,7 +20,7 @@ namespace ControleDeFestasInfantis.WinApp
         static ContextoDeDados contextoDeDados = new(carregarDados: true);
 
         private IRepositorioCliente repositorioCliente = new RepositorioClienteArquivo(contextoDeDados);
-        private IRepositorioFesta repositorioFesta = new RepositorioFestaArquivo(contextoDeDados);
+        private IRepositorioAluguel repositorioAluguel = new RepositorioAluguelArquivo(contextoDeDados);
         private IRepositorioItem repositorioItem = new RepositorioItemArquivo(contextoDeDados);
         private IRepositorioTema repositorioTema = new RepositorioTemaArquivo(contextoDeDados);
 
@@ -51,14 +51,14 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void agendamentoDeFestaMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ContoladorAluguel();
+            controlador = new ContoladorAluguel(repositorioCliente, repositorioTema, repositorioAluguel);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void itensParaLocaçãoMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorItem(repositorioTema,repositorioItem);
+            controlador = new ControladorItem(repositorioTema, repositorioItem);
 
             ConfigurarTelaPrincipal(controlador);
         }

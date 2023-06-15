@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipalForm));
             menuStrip1 = new MenuStrip();
             cadastrosMenuItem = new ToolStripMenuItem();
-            contatosMenuItem = new ToolStripMenuItem();
+            clientesMenuItem = new ToolStripMenuItem();
             festasToolStripMenuItem = new ToolStripMenuItem();
-            agendamentoDeFestaMenuItem = new ToolStripMenuItem();
+            alugueisMenuItem = new ToolStripMenuItem();
             itensParaLocaçãoMenuItem = new ToolStripMenuItem();
             temasMenuItem = new ToolStripMenuItem();
             rodape = new StatusStrip();
@@ -66,44 +66,44 @@
             // 
             // cadastrosMenuItem
             // 
-            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contatosMenuItem });
+            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesMenuItem });
             cadastrosMenuItem.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             cadastrosMenuItem.Name = "cadastrosMenuItem";
             cadastrosMenuItem.Size = new Size(71, 20);
             cadastrosMenuItem.Text = "Cadastros";
             // 
-            // contatosMenuItem
+            // clientesMenuItem
             // 
-            contatosMenuItem.Name = "contatosMenuItem";
-            contatosMenuItem.Size = new Size(122, 22);
-            contatosMenuItem.Text = "Contatos";
-            contatosMenuItem.Click += contatosMenuItem_Click;
+            clientesMenuItem.Name = "clientesMenuItem";
+            clientesMenuItem.Size = new Size(116, 22);
+            clientesMenuItem.Text = "Clientes";
+            clientesMenuItem.Click += contatosMenuItem_Click;
             // 
             // festasToolStripMenuItem
             // 
-            festasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agendamentoDeFestaMenuItem, itensParaLocaçãoMenuItem, temasMenuItem });
+            festasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { alugueisMenuItem, itensParaLocaçãoMenuItem, temasMenuItem });
             festasToolStripMenuItem.Name = "festasToolStripMenuItem";
             festasToolStripMenuItem.Size = new Size(51, 20);
             festasToolStripMenuItem.Text = "Festas";
             // 
-            // agendamentoDeFestaMenuItem
+            // alugueisMenuItem
             // 
-            agendamentoDeFestaMenuItem.Name = "agendamentoDeFestaMenuItem";
-            agendamentoDeFestaMenuItem.Size = new Size(194, 22);
-            agendamentoDeFestaMenuItem.Text = "Agendamento de festa";
-            agendamentoDeFestaMenuItem.Click += agendamentoDeFestaMenuItem_Click;
+            alugueisMenuItem.Name = "alugueisMenuItem";
+            alugueisMenuItem.Size = new Size(169, 22);
+            alugueisMenuItem.Text = "Alugueis";
+            alugueisMenuItem.Click += agendamentoDeFestaMenuItem_Click;
             // 
             // itensParaLocaçãoMenuItem
             // 
             itensParaLocaçãoMenuItem.Name = "itensParaLocaçãoMenuItem";
-            itensParaLocaçãoMenuItem.Size = new Size(194, 22);
+            itensParaLocaçãoMenuItem.Size = new Size(169, 22);
             itensParaLocaçãoMenuItem.Text = "Itens para locação";
             itensParaLocaçãoMenuItem.Click += itensParaLocaçãoMenuItem_Click;
             // 
             // temasMenuItem
             // 
             temasMenuItem.Name = "temasMenuItem";
-            temasMenuItem.Size = new Size(194, 22);
+            temasMenuItem.Size = new Size(169, 22);
             temasMenuItem.Text = "Temas";
             temasMenuItem.Click += temasMenuItem_Click;
             // 
@@ -254,7 +254,7 @@
             Name = "TelaPrincipalForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Festas Infantis by Rafaela";
+            Text = "Festas Infantis";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             rodape.ResumeLayout(false);
@@ -269,7 +269,7 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem cadastrosMenuItem;
-        private ToolStripMenuItem contatosMenuItem;
+        private ToolStripMenuItem clientesMenuItem;
         private StatusStrip rodape;
         private ToolStripStatusLabel lableRodape;
         private ToolStrip toolStrip1;
@@ -285,7 +285,7 @@
         private ToolStripButton btnAdicionarItens;
         private ToolStripButton btnRemoverItens;
         private ToolStripMenuItem festasToolStripMenuItem;
-        private ToolStripMenuItem agendamentoDeFestaMenuItem;
+        private ToolStripMenuItem alugueisMenuItem;
         private ToolStripMenuItem itensParaLocaçãoMenuItem;
         private ToolStripMenuItem temasMenuItem;
     }

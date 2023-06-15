@@ -18,16 +18,19 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             {
                 new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
 
+                new DataGridViewTextBoxColumn { DataPropertyName = "Data", HeaderText = "Data"},
+
                 new DataGridViewTextBoxColumn { DataPropertyName = "Cliente", HeaderText = "Cliente"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Data da Festa", HeaderText = "Data da Festa"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Pagamento", HeaderText = "Pagamento"},
 
+                new DataGridViewTextBoxColumn { DataPropertyName = "Status", HeaderText = "Status"}
             };
 
             return colunas;
         }
 
-        public int ObterNumeroTemaSelecionado()
+        public int ObterNumeroAluguelSelecionado()
         {
             return grid.SelecionarNumero<int>();
         }
@@ -38,7 +41,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             foreach (var aluguel in alugueis)
             {
-                grid.Rows.Add(aluguel.id, aluguel.cliente, aluguel.festa.data);
+                grid.Rows.Add(aluguel.id, DateOnly.FromDateTime(aluguel.festa.data),
+                    aluguel.cliente,  aluguel.status);
             }
         }
     }

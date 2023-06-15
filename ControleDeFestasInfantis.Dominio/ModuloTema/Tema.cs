@@ -78,5 +78,10 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
 
             return "";
         }
+
+        public override string ToString()
+        {
+            return titulo;
+        }
     }
 }

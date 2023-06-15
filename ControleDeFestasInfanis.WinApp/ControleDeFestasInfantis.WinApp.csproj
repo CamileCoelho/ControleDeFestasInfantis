@@ -16,9 +16,23 @@
   <ItemGroup>
     <Compile Update="ModuloAluguel\TabelaAluguelControl.cs">
       <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="ModuloAluguel\TelaFestaPagamentoForm.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="ModuloCliente\TabelaClienteControl.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="ModuloItem\TabelaItemControl.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Update="ModuloTema\TabelaItensTema.cs">
       <SubType>UserControl</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="ModuloTema\TabelaTemaControl.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>

@@ -2,9 +2,9 @@
 
 namespace ControleDeFestasInfantis.Infra.Json.ModuloFesta
 {
-    public class RepositorioFestaArquivo : RepositorioBaseArquivo<Aluguel>, IRepositorioFesta
+    public class RepositorioAluguelArquivo : RepositorioBaseArquivo<Aluguel>, IRepositorioAluguel
     {
-        public RepositorioFestaArquivo(ContextoDeDados contexto) : base(contexto)
+        public RepositorioAluguelArquivo(ContextoDeDados contexto) : base(contexto)
         {
 
         }
