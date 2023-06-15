@@ -52,6 +52,10 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             Item item = (Item)cmbItensTema.SelectedItem;
+
+            if (item == null)
+                return;
+
             item.quantidade = numQuantidadeItem.Value;
 
             if (itensToAdd.Contains(item) || tema.itens.Contains(item))
@@ -63,9 +67,17 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
                 return;
             }
+            if (item.quantidade == 0)
+            {
+                MessageBox.Show($"Você não pode adicionar zero unidades de um item!",
+                    "Adição de Itens",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
 
+                return;
+            }
             itensToAdd.Add(item);
-
+            numQuantidadeItem.Value = 0;
             tabelaItensTema.AtualizarRegistrosItens(item);
         }
 

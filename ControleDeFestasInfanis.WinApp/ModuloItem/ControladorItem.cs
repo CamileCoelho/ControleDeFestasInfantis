@@ -1,4 +1,5 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloItem;
+using ControleDeFestasInfantis.Dominio.ModuloTema;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,13 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
 {
     public class ControladorItem : ControladorBase
     {
+        IRepositorioTema repositorioTema;
         IRepositorioItem repositorioItem;
         TabelaItemControl tabelaItens;
 
-        public ControladorItem(IRepositorioItem repositorioItem)
+        public ControladorItem(IRepositorioTema repositorioTema, IRepositorioItem repositorioItem)
         {
+            this.repositorioTema = repositorioTema;
             this.repositorioItem = repositorioItem;
         }
 
@@ -80,6 +83,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
             if (item == null)
             {
                 MessageBox.Show($"Selecione um item primeiro!",
+                    "Exclusão de Itens",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            if (repositorioTema.SelecionarTodos().Any(x => x.itens.Any(i => i.id == item.id)))
+            {
+                MessageBox.Show($"Não é possivel remover esse item pois ele possuí vinculo com ao menos um Tema!",
                     "Exclusão de Itens",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);

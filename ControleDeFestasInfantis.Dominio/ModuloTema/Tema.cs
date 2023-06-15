@@ -67,18 +67,6 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
 
         }
 
-        public void RemoverItem(Item item)
-        {
-            if (itens.Contains(item))
-            {
-                itens.Remove(item);
-
-                decimal valor = -(item.valor * item.quantidade);
-
-                AtualizarValorTotalTema(valor);
-            }
-        }
-
         public override string Validar()
         {
             Validador valida = new();

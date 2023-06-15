@@ -5,10 +5,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
     public partial class TelaTemaRemocaoForm : Form
     {
+        private TabelaItensTema tabelaItensTema;
         private Tema tema { get; set; }
         public List<Item> itensToRemove { get; set; }
-
-        private TabelaItensTema tabelaItensTema;
 
         public TelaTemaRemocaoForm(Tema tema, List<Item> itens)
         {
@@ -19,6 +18,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             if (tabelaItensTema == null)
                 tabelaItensTema = new TabelaItensTema();
+
+            tabelaItensTema.AtualizarRegistrosItens(tema.itens);
 
             itensToRemove = new List<Item>();
         }
@@ -40,7 +41,10 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         private void btnRemover_Click(object sender, EventArgs e)
         {
             int id = tabelaItensTema.ObterNumeroTemaSelecionado();
-            Item item = tema.itens.FirstOrDefault(x => x.id == id); 
+            Item item = tema.itens.FirstOrDefault(x => x.id == id);
+
+            if (item == null)
+                return;
 
             itensToRemove.Add(item);
 
