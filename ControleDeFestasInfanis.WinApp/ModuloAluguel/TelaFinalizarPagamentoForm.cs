@@ -27,9 +27,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         internal void ConfigurarTela(Aluguel aluguel)
         {
             txtCliente.Text = aluguel.cliente.nome;
-            decimal valorTotal = (aluguel.festa.tema.valorTotalTema - Convert.ToDecimal(aluguel.pagamento.valorDesconto / 10));
+            decimal valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10);
             txtValorTotal.Text = valorTotal.ToString();
-            txtValorFinal.Text = (aluguel.pagamento.valorFinal).ToString();
+            txtValorFinal.Text = aluguel.pagamento.valorFinal.ToString();
         }
 
         private void CarregarOpcoesDePgto()
@@ -42,31 +42,18 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
             cmbPagamento.SelectedIndex = 0;
         }
-
-        private void txtValorEntrada_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
-            {
-                System.Windows.Forms.TextBox txt = (System.Windows.Forms.TextBox)sender;
-                string s = Regex.Replace(txt.Text, "[^0-9]", string.Empty);
-
-                if (s == string.Empty)
-                    s = "00";
-                if (e.KeyChar.Equals((char)Keys.Back))
-                    s = s.Substring(0, s.Length - 1);
-                else
-                    s += e.KeyChar;
-
-                txt.Text = string.Format("{0:#,##0.00}", double.Parse(s) / 100);
-
-                txt.Select(txt.Text.Length, 0);
-            }
-            e.Handled = true;
-        }
-
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            aluguel.formaPagamento = (OpcoesPgtoEnum)cmbPagamento.SelectedItem;
 
+            if (aluguel.formaPagamento == OpcoesPgtoEnum.Nenhum)
+            {
+                TelaPrincipalForm.Tela.AtualizarRodape($"Você deve selecionar sua forma de pagamento!");
+
+                DialogResult = DialogResult.None;
+
+                return;
+            }
         }
     }
 }

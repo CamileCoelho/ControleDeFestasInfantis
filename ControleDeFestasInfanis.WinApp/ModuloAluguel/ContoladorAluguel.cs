@@ -62,9 +62,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 Aluguel aluguel = tela.ObterAluguel();
 
                 repositorioAluguel.Inserir(aluguel);
-
-                CarregarAlugueis();
             }
+
+            CarregarAlugueis();
         }
 
         public override void Editar()
@@ -74,6 +74,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             if (aluguelSelecionado == null)
             {
                 MessageBox.Show($"Selecione um aluguel primeiro!",
+                    "Edição de Alugueis",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            if (aluguelSelecionado.status == StatusAluguelEnum.Finalizado)
+            {
+                MessageBox.Show($"Esse aluguel já foi finalizado, você não pode editá-lo!",
                     "Edição de Alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -94,7 +103,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 repositorioAluguel.Editar(aluguelSelecionado, aluguel);
             }
 
-            CarregarTemas();
+            CarregarAlugueis();
         }
 
         public override void Excluir()
@@ -104,6 +113,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             if (aluguelSelecionado == null)
             {
                 MessageBox.Show($"Selecione um aluguel primeiro!",
+                    "Exclusão de alugueis",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            if (aluguelSelecionado.status == StatusAluguelEnum.Finalizado)
+            {
+                MessageBox.Show($"Esse aluguel já foi finalizado, você não pode excluí-lo!",
                     "Exclusão de alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -121,6 +139,47 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             {
                 repositorioAluguel.Excluir(aluguelSelecionado);
                 aluguelSelecionado.cliente.qtdAlugueisRealizados--;
+            }
+
+            CarregarAlugueis();
+        }
+
+        public override void FinalizarPagamento()
+        {
+            Aluguel aluguelSelecionado = ObterAluguelSelecionado();
+
+            if (aluguelSelecionado == null)
+            {
+                MessageBox.Show($"Selecione um aluguel primeiro!",
+                    "Pagamento de alugueis",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            if (aluguelSelecionado.pagamento.pgtoEfetuado == PgtoEfetuadoEnum.Completo)
+            {
+                MessageBox.Show($"Esse aluguel já teve seu pagamento efetuado!",
+                    "Pagamento de alugueis",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            TelaFinalizarPagamentoForm tela = new(aluguelSelecionado);
+
+            tela.ConfigurarTela(aluguelSelecionado);
+
+            DialogResult opcaoEscolhida = tela.ShowDialog();
+
+            if (opcaoEscolhida == DialogResult.OK)
+            {
+                aluguelSelecionado.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Completo;
+
+                aluguelSelecionado.status = StatusAluguelEnum.Finalizado;
+
+                TelaPrincipalForm.Tela.AtualizarRodape("");
             }
 
             CarregarAlugueis();
