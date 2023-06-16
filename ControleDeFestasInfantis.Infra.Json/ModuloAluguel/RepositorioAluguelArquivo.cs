@@ -1,4 +1,5 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
+using ControleDeFestasInfantis.Dominio.ModuloTema;
 
 namespace ControleDeFestasInfantis.Infra.Json.ModuloFesta
 {
@@ -11,7 +12,7 @@ namespace ControleDeFestasInfantis.Infra.Json.ModuloFesta
 
         protected override List<Aluguel> ObterRegistros()
         {
-            return contextoDeDados.festas;
+            return contextoDeDados.alugueis;
         }
     }
 }

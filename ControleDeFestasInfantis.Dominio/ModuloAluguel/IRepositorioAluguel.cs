@@ -2,5 +2,6 @@
 {
     public interface IRepositorioAluguel : IRepositorio<Aluguel>
     {
+
     }
 }

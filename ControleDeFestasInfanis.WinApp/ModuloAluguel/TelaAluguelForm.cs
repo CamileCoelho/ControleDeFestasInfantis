@@ -100,32 +100,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 return;
             }
 
-            TelaFestaPagamentoForm telaPgto = new(aluguel);
+            TelaPrincipalForm.Tela.AtualizarRodape("");
 
-            telaPgto.ConfigurarTela(aluguel);
-            telaPgto.ShowDialog();
-
-            if (telaPgto.DialogResult == DialogResult.Cancel)
-            {
-                DialogResult = DialogResult.Cancel;
-
-                return;
-            }
-            if (telaPgto.DialogResult == DialogResult.OK)
-            {
-                aluguel = telaPgto.aluguel;
-
-                DialogResult = DialogResult.OK;
-
-                aluguel.pagamento.valorFinal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10) - (aluguel.pagamento.valorEntrada);
-                aluguel.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Parcial;
-
-                aluguel.cliente.qtdAlugueisRealizados++;
-
-                TelaPrincipalForm.Tela.AtualizarRodape("");
-
-                return;
-            }
+            return;
         }
     }
 }

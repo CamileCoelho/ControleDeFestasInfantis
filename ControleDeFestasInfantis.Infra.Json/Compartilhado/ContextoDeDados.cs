@@ -9,17 +9,17 @@ namespace ControleDeFestasInfantis.Infra.Json.Compartilhado
 {
     public class ContextoDeDados
     {
-        private const string NOME_ARQUIVO = "Compartilhado//ControleDeFestasInfantis.json";
+        private const string NOME_ARQUIVO = "Compartilhado//FestasInfantis.json";
 
         public List<Cliente> clientes { get; set; }
-        public List<Aluguel> festas { get; set; }
+        public List<Aluguel> alugueis { get; set; }
         public List<Item> itens { get; set; }
         public List<Tema> temas { get; set; }
 
         public ContextoDeDados()
         {
             clientes = new List<Cliente>();
-            festas = new List<Aluguel>();
+            alugueis = new List<Aluguel>();
             itens = new List<Item>();
             temas = new List<Tema>();
         }
@@ -45,7 +45,7 @@ namespace ControleDeFestasInfantis.Infra.Json.Compartilhado
                 ContextoDeDados ctx = JsonSerializer.Deserialize<ContextoDeDados>(File.ReadAllText(NOME_ARQUIVO), config);
 
                 clientes = ctx.clientes;
-                festas = ctx.festas;
+                alugueis = ctx.alugueis;
                 itens = ctx.itens;
                 temas = ctx.temas;
             }

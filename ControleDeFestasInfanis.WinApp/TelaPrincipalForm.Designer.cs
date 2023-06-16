@@ -47,11 +47,11 @@
             toolStripSeparator3 = new ToolStripSeparator();
             btnAdicionarItens = new ToolStripButton();
             btnRemoverItens = new ToolStripButton();
+            toolStripSeparator4 = new ToolStripSeparator();
+            btnFinalizarPgto = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             labelTipoDoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
-            btnFinalizarPgto = new ToolStripButton();
-            toolStripSeparator4 = new ToolStripSeparator();
             menuStrip1.SuspendLayout();
             rodape.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -62,7 +62,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { cadastrosMenuItem, festasToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1134, 24);
+            menuStrip1.Size = new Size(1184, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -112,9 +112,9 @@
             // rodape
             // 
             rodape.Items.AddRange(new ToolStripItem[] { lableRodape });
-            rodape.Location = new Point(0, 635);
+            rodape.Location = new Point(0, 735);
             rodape.Name = "rodape";
-            rodape.Size = new Size(1134, 26);
+            rodape.Size = new Size(1184, 26);
             rodape.TabIndex = 1;
             rodape.Text = "statusStrip1";
             // 
@@ -130,7 +130,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, btnFiltrar, toolStripSeparator3, btnAdicionarItens, btnRemoverItens, toolStripSeparator4, btnFinalizarPgto, toolStripSeparator1, labelTipoDoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1134, 35);
+            toolStrip1.Size = new Size(1184, 35);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -220,6 +220,23 @@
             btnRemoverItens.Size = new Size(32, 32);
             btnRemoverItens.Click += btnConcluirItens_Click;
             // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(6, 35);
+            // 
+            // btnFinalizarPgto
+            // 
+            btnFinalizarPgto.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnFinalizarPgto.Enabled = false;
+            btnFinalizarPgto.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFinalizarPgto.Image = (Image)resources.GetObject("btnFinalizarPgto.Image");
+            btnFinalizarPgto.ImageTransparentColor = Color.Magenta;
+            btnFinalizarPgto.Name = "btnFinalizarPgto";
+            btnFinalizarPgto.Padding = new Padding(6);
+            btnFinalizarPgto.Size = new Size(32, 32);
+            btnFinalizarPgto.Click += btnFinalizarPgto_Click;
+            // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
@@ -236,34 +253,15 @@
             panelRegistros.BorderStyle = BorderStyle.FixedSingle;
             panelRegistros.Dock = DockStyle.Fill;
             panelRegistros.Location = new Point(0, 59);
-            panelRegistros.MaximumSize = new Size(1134, 576);
-            panelRegistros.MinimumSize = new Size(1134, 576);
             panelRegistros.Name = "panelRegistros";
-            panelRegistros.Size = new Size(1134, 576);
+            panelRegistros.Size = new Size(1184, 676);
             panelRegistros.TabIndex = 3;
-            // 
-            // btnFinalizarPgto
-            // 
-            btnFinalizarPgto.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnFinalizarPgto.Enabled = false;
-            btnFinalizarPgto.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnFinalizarPgto.Image = (Image)resources.GetObject("btnFinalizarPgto.Image");
-            btnFinalizarPgto.ImageTransparentColor = Color.Magenta;
-            btnFinalizarPgto.Name = "btnFinalizarPgto";
-            btnFinalizarPgto.Padding = new Padding(6);
-            btnFinalizarPgto.Size = new Size(32, 32);
-            btnFinalizarPgto.Click += btnFinalizarPgto_Click;
-            // 
-            // toolStripSeparator4
-            // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 35);
             // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1134, 661);
+            ClientSize = new Size(1184, 761);
             Controls.Add(panelRegistros);
             Controls.Add(toolStrip1);
             Controls.Add(rodape);
@@ -271,10 +269,10 @@
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
-            MaximumSize = new Size(1150, 700);
+            MaximumSize = new Size(1200, 800);
             MdiChildrenMinimizedAnchorBottom = false;
             MinimizeBox = false;
-            MinimumSize = new Size(1150, 700);
+            MinimumSize = new Size(1200, 736);
             Name = "TelaPrincipalForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;

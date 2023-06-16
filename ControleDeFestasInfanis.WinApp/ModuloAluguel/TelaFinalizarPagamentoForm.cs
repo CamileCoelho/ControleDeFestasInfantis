@@ -19,6 +19,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         public TelaFinalizarPagamentoForm(Aluguel aluguel)
         {
             InitializeComponent();
+
             this.aluguel = aluguel;
 
             CarregarOpcoesDePgto();
@@ -26,8 +27,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
         internal void ConfigurarTela(Aluguel aluguel)
         {
-            txtCliente.Text = aluguel.cliente.nome;
             decimal valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10);
+
+            txtCliente.Text = aluguel.cliente.nome;
             txtValorTotal.Text = valorTotal.ToString();
             txtValorFinal.Text = aluguel.pagamento.valorFinal.ToString();
         }
@@ -42,6 +44,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
             cmbPagamento.SelectedIndex = 0;
         }
+
         private void btnGravar_Click(object sender, EventArgs e)
         {
             aluguel.formaPagamento = (OpcoesPgtoEnum)cmbPagamento.SelectedItem;

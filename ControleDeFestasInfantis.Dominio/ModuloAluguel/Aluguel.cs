@@ -47,14 +47,14 @@ namespace ControleDeFestasInfantis.Dominio.ModuloAluguel
             if (valida.ValidaString(festa.endereco.cidade))
                 return $"Você deve escrever a cidade onde será sua festa!";
 
-            if (valida.ValidaString(festa.endereco.rua))
-                return $"Você deve escrever a rua onde será sua festa!";
-
             if (festa.endereco.numero <= 0)
                 return $"O seu numero deve ser positivo e maior que zero!";
 
-            if (valida.ValidaDateTime(festa.data))
-                return $"Você deve adicionar a data de sua festa!";
+            if (valida.ValidaString(festa.endereco.rua))
+                return $"Você deve escrever a rua onde será sua festa!";
+
+            if (festa.data <= DateTime.Now)
+                return $"A data da sua festa não pode ser hoje ou anterior a hoje!";
 
             if (valida.ValidaDateTimeComTimeOnly(festa.horarioInicio))
                 return $"Você deve adicionar o horario de início!";

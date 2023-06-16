@@ -18,14 +18,15 @@
             this.nome = nome;
             this.telefone = telefone;
             this.email = email;
-            qtdAlugueisRealizados = 0;
+            this.qtdAlugueisRealizados = 0;
         }
 
         public override void AtualizarInformacoes(Cliente registroAtualizado)
         {
-            this.nome = registroAtualizado.nome;
-            this.telefone = registroAtualizado.telefone;
-            this.email = registroAtualizado.email;
+            nome = registroAtualizado.nome;
+            telefone = registroAtualizado.telefone;
+            email = registroAtualizado.email;
+            qtdAlugueisRealizados = registroAtualizado.qtdAlugueisRealizados;
         }
 
         public override string Validar()

@@ -62,6 +62,20 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 Aluguel aluguel = tela.ObterAluguel();
 
                 repositorioAluguel.Inserir(aluguel);
+
+                TelaFestaPagamentoForm telaPgto = new(aluguel);
+
+                RealizarPagamentoDaEntrada(aluguel);
+
+                telaPgto.ConfigurarTela(aluguel);
+                telaPgto.ShowDialog();
+
+                if (telaPgto.DialogResult == DialogResult.Cancel)
+                {
+                    tela.DialogResult = DialogResult.Cancel;
+
+                    return;
+                }
             }
 
             CarregarAlugueis();
@@ -142,6 +156,19 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
 
             CarregarAlugueis();
+        }
+
+        public void RealizarPagamentoDaEntrada(Aluguel aluguel)
+        {
+            
+            //aluguel.pagamento = telaPgto.ObterPagamento();
+
+            aluguel.pagamento.valorFinal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10) - (aluguel.pagamento.valorEntrada);
+            aluguel.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Parcial;
+
+            aluguel.cliente.qtdAlugueisRealizados++;
+
+            TelaPrincipalForm.Tela.AtualizarRodape("");
         }
 
         public override void FinalizarPagamento()

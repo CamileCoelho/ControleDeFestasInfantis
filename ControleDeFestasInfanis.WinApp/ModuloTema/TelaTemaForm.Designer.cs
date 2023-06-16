@@ -30,47 +30,38 @@
         {
             label1 = new Label();
             label2 = new Label();
-            txtId = new TextBox();
             txtTema = new TextBox();
             btnCancelar = new Button();
             btnGravar = new Button();
+            txtId = new TextBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(57, 50);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(56, 41);
             label1.Name = "label1";
-            label1.Size = new Size(27, 20);
+            label1.Size = new Size(26, 21);
             label1.TabIndex = 0;
             label1.Text = "Id:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(31, 93);
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(33, 90);
             label2.Name = "label2";
-            label2.Size = new Size(53, 20);
+            label2.Size = new Size(49, 21);
             label2.TabIndex = 1;
             label2.Text = "Tema:";
             // 
-            // txtId
-            // 
-            txtId.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtId.Location = new Point(94, 44);
-            txtId.Name = "txtId";
-            txtId.ReadOnly = true;
-            txtId.Size = new Size(99, 26);
-            txtId.TabIndex = 3;
-            // 
             // txtTema
             // 
-            txtTema.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTema.Location = new Point(94, 87);
+            txtTema.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTema.Location = new Point(96, 87);
             txtTema.Name = "txtTema";
-            txtTema.Size = new Size(303, 26);
+            txtTema.Size = new Size(369, 29);
             txtTema.TabIndex = 4;
             // 
             // btnCancelar
@@ -79,7 +70,7 @@
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancelar.ImageAlign = ContentAlignment.BottomRight;
-            btnCancelar.Location = new Point(303, 142);
+            btnCancelar.Location = new Point(371, 153);
             btnCancelar.Margin = new Padding(4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 41);
@@ -95,7 +86,7 @@
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnGravar.ImageAlign = ContentAlignment.BottomRight;
-            btnGravar.Location = new Point(188, 142);
+            btnGravar.Location = new Point(256, 153);
             btnGravar.Margin = new Padding(4);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(94, 41);
@@ -105,15 +96,25 @@
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
             // 
+            // txtId
+            // 
+            txtId.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtId.Location = new Point(96, 38);
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(128, 29);
+            txtId.TabIndex = 33;
+            txtId.Text = "0";
+            // 
             // TelaTemaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(441, 225);
+            ClientSize = new Size(509, 236);
+            Controls.Add(txtId);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
             Controls.Add(txtTema);
-            Controls.Add(txtId);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "TelaTemaForm";
@@ -127,9 +128,9 @@
 
         private Label label1;
         private Label label2;
-        private TextBox txtId;
         private TextBox txtTema;
         private Button btnCancelar;
         private Button btnGravar;
+        private TextBox txtId;
     }
 }

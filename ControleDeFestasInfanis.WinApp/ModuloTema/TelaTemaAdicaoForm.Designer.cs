@@ -49,7 +49,7 @@
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancelar.ImageAlign = ContentAlignment.BottomRight;
-            btnCancelar.Location = new Point(321, 562);
+            btnCancelar.Location = new Point(478, 562);
             btnCancelar.Margin = new Padding(4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 41);
@@ -65,7 +65,7 @@
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnGravar.ImageAlign = ContentAlignment.BottomRight;
-            btnGravar.Location = new Point(206, 562);
+            btnGravar.Location = new Point(363, 562);
             btnGravar.Margin = new Padding(4);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(94, 41);
@@ -80,7 +80,7 @@
             txtTema.Location = new Point(115, 53);
             txtTema.Name = "txtTema";
             txtTema.ReadOnly = true;
-            txtTema.Size = new Size(300, 26);
+            txtTema.Size = new Size(457, 26);
             txtTema.TabIndex = 25;
             // 
             // txtId
@@ -89,7 +89,7 @@
             txtId.Location = new Point(115, 21);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
-            txtId.Size = new Size(99, 26);
+            txtId.Size = new Size(151, 26);
             txtId.TabIndex = 24;
             // 
             // label2
@@ -119,15 +119,15 @@
             cmbItensTema.FormattingEnabled = true;
             cmbItensTema.Location = new Point(115, 86);
             cmbItensTema.Name = "cmbItensTema";
-            cmbItensTema.Size = new Size(300, 28);
+            cmbItensTema.Size = new Size(457, 28);
             cmbItensTema.TabIndex = 29;
             // 
             // btnAdicionar
             // 
             btnAdicionar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAdicionar.Location = new Point(327, 120);
+            btnAdicionar.Location = new Point(478, 119);
             btnAdicionar.Name = "btnAdicionar";
-            btnAdicionar.Size = new Size(88, 29);
+            btnAdicionar.Size = new Size(94, 29);
             btnAdicionar.TabIndex = 28;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
@@ -159,21 +159,21 @@
             numQuantidadeItem.Location = new Point(115, 120);
             numQuantidadeItem.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
             numQuantidadeItem.Name = "numQuantidadeItem";
-            numQuantidadeItem.Size = new Size(192, 29);
+            numQuantidadeItem.Size = new Size(342, 29);
             numQuantidadeItem.TabIndex = 37;
             // 
             // panelItensTema
             // 
             panelItensTema.Location = new Point(115, 155);
             panelItensTema.Name = "panelItensTema";
-            panelItensTema.Size = new Size(300, 361);
+            panelItensTema.Size = new Size(457, 368);
             panelItensTema.TabIndex = 38;
             // 
             // TelaTemaAdicaoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(462, 650);
+            ClientSize = new Size(619, 650);
             Controls.Add(panelItensTema);
             Controls.Add(numQuantidadeItem);
             Controls.Add(label4);

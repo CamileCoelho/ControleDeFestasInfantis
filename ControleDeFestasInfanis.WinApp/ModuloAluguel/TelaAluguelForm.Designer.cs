@@ -94,7 +94,7 @@
             txtData.Name = "txtData";
             txtData.Size = new Size(195, 29);
             txtData.TabIndex = 61;
-            txtData.Value = new DateTime(2023, 6, 2, 17, 15, 5, 0);
+            txtData.Value = new DateTime(2023, 6, 16, 0, 0, 0, 0);
             // 
             // label6
             // 
@@ -232,7 +232,7 @@
             txtId.Location = new Point(102, 37);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
-            txtId.Size = new Size(201, 29);
+            txtId.Size = new Size(183, 29);
             txtId.TabIndex = 68;
             txtId.Text = "0";
             // 

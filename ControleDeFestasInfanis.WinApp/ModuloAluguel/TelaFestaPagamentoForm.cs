@@ -10,34 +10,30 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         public TelaFestaPagamentoForm(Aluguel aluguel)
         {
             InitializeComponent();
+
             this.aluguel = aluguel;
 
             CarregarOpcoesDePgto();
-
-            ObterPagamento(aluguel);
         }
 
-        public Pagamento ObterPagamento(Aluguel aluguel)
+        public Pagamento ObterPagamento()
         {
-            decimal valorEntrada = aluguel.pagamento.valorEntrada;
-
-            PgtoEfetuadoEnum pgtoEfetuado = aluguel.pagamento.pgtoEfetuado;
-
             decimal valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10);
 
+            decimal valorEntrada = Convert.ToDecimal(String.Format("{0:0.00}", txtValorEntrada.Text));
+            
             decimal valorFinal = valorTotal - valorEntrada;
 
             TelaPrincipalForm.Tela.AtualizarRodape("O valor de entrada deve ser entre 40% e 50% do valor total!");
 
-            return new(aluguel.pagamento.valorDesconto, valorEntrada, valorFinal, pgtoEfetuado);
+            return new(valorEntrada, valorFinal, valorTotal);
         }
 
         internal void ConfigurarTela(Aluguel aluguel)
         {
             txtCliente.Text = aluguel.cliente.nome;
-            decimal valorTotal = (aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10));
-            txtValorTotal.Text = valorTotal.ToString();
-            txtValorEntrada.Text = (aluguel.pagamento.valorEntrada).ToString();
+            txtValorTotal.Text = aluguel.pagamento.valorTotal.ToString();
+            txtValorEntrada.Text = (String.Format("{0:0.00}", aluguel.pagamento.valorEntrada).ToString());
         }
 
         private void CarregarOpcoesDePgto()
@@ -53,14 +49,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            decimal valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10);
+            aluguel.pagamento.valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10);
 
-            aluguel.pagamento.valorEntrada = Convert.ToDecimal(txtValorEntrada.Text);
+            aluguel.pagamento = ObterPagamento();
+
             aluguel.formaPagamento = (OpcoesPgtoEnum)cmbPagamento.SelectedItem;
 
-            if (aluguel.pagamento.valorEntrada < valorTotal * 40 / 100 || aluguel.pagamento.valorEntrada > valorTotal * 50 / 100)
+            if (aluguel.pagamento.valorEntrada < aluguel.pagamento.valorTotal * 40 / 100 || aluguel.pagamento.valorEntrada > aluguel.pagamento.valorTotal * 50 / 100)
             {
-                TelaPrincipalForm.Tela.AtualizarRodape($"O valor de entrada mínimo é de R$ {valorTotal * 40 / 100} e o valor máximo é de R$ {valorTotal * 50 / 100}!");
+                TelaPrincipalForm.Tela.AtualizarRodape($"O valor de entrada mínimo é de R$ {aluguel.pagamento.valorTotal * 40 / 100} e o valor máximo é de R$ {aluguel.pagamento.valorTotal * 50 / 100}!");
 
                 DialogResult = DialogResult.None;
 
@@ -71,16 +68,18 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 TelaPrincipalForm.Tela.AtualizarRodape($"Você deve selecionar sua forma de pagamento!");
 
                 DialogResult = DialogResult.None;
-
-                return;
             }
+
+            aluguel.pagamento.valorFinal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10) - (aluguel.pagamento.valorEntrada);
+            aluguel.pagamento.pgtoEfetuado =  PgtoEfetuadoEnum.Parcial;
+            aluguel.cliente.qtdAlugueisRealizados++;
         }
 
         private void txtValorEntrada_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
             {
-                System.Windows.Forms.TextBox txt = (System.Windows.Forms.TextBox)sender;
+                TextBox txt = (TextBox)sender;
                 string s = Regex.Replace(txt.Text, "[^0-9]", string.Empty);
 
                 if (s == string.Empty)
