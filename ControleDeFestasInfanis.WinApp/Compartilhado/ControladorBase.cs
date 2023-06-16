@@ -14,13 +14,15 @@
 
         public virtual string? ToolTipRemoverItens { get { return "Conclusão indisponível"; } }
 
+        public virtual string? ToolTipFinalizarPagamento { get { return "Finalizar pagamento indisponível"; } }
+
         public virtual bool InserirHabilitado { get { return true; } }
         public virtual bool EditarHabilitado { get { return true; } }
         public virtual bool ExcluirHabilitado { get { return true; } }
-
         public virtual bool FiltrarHabilitado { get { return true; } }
         public virtual bool AdicionarItensHabilitado { get { return true; } }
         public virtual bool RemoverItensHabilitado { get { return true; } }
+        public virtual bool FinalizarPagamentoHabilitado { get { return true; } }
 
         public abstract void Inserir();
 
@@ -33,6 +35,8 @@
         public virtual void AdicionarItens() { }
 
         public virtual void RemoverItens() { }
+
+        public virtual void FinalizarPagamento() { }
 
         public virtual void Visualizar()
         {

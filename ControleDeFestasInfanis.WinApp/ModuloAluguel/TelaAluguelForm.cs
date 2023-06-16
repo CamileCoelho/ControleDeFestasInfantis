@@ -101,7 +101,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             TelaFestaPagamentoForm telaPgto = new(aluguel);
 
-            telaPgto.ConfigurarTela(aluguel, aluguel.pagamento);
+            telaPgto.ConfigurarTela(aluguel);
             telaPgto.ShowDialog();
 
             if (telaPgto.DialogResult == DialogResult.Cancel)

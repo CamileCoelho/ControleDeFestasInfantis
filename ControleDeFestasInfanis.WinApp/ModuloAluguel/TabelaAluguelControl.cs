@@ -42,7 +42,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             foreach (var aluguel in alugueis)
             {
                 grid.Rows.Add(aluguel.id, DateOnly.FromDateTime(aluguel.festa.data),
-                    aluguel.cliente,  aluguel.status);
+                    aluguel.cliente, aluguel.pagamento.pgtoEfetuado, aluguel.status);
             }
         }
     }

@@ -50,6 +50,8 @@
             toolStripSeparator1 = new ToolStripSeparator();
             labelTipoDoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
+            btnFinalizarPgto = new ToolStripButton();
+            toolStripSeparator4 = new ToolStripSeparator();
             menuStrip1.SuspendLayout();
             rodape.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -91,7 +93,7 @@
             alugueisMenuItem.Name = "alugueisMenuItem";
             alugueisMenuItem.Size = new Size(169, 22);
             alugueisMenuItem.Text = "Alugueis";
-            alugueisMenuItem.Click += agendamentoDeFestaMenuItem_Click;
+            alugueisMenuItem.Click += alugueisMenuItem_Click;
             // 
             // itensParaLocaçãoMenuItem
             // 
@@ -125,7 +127,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, btnFiltrar, toolStripSeparator3, btnAdicionarItens, btnRemoverItens, toolStripSeparator1, labelTipoDoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, btnFiltrar, toolStripSeparator3, btnAdicionarItens, btnRemoverItens, toolStripSeparator4, btnFinalizarPgto, toolStripSeparator1, labelTipoDoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1134, 35);
@@ -234,9 +236,28 @@
             panelRegistros.BorderStyle = BorderStyle.FixedSingle;
             panelRegistros.Dock = DockStyle.Fill;
             panelRegistros.Location = new Point(0, 59);
+            panelRegistros.MaximumSize = new Size(1134, 576);
+            panelRegistros.MinimumSize = new Size(1134, 576);
             panelRegistros.Name = "panelRegistros";
             panelRegistros.Size = new Size(1134, 576);
             panelRegistros.TabIndex = 3;
+            // 
+            // btnFinalizarPgto
+            // 
+            btnFinalizarPgto.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnFinalizarPgto.Enabled = false;
+            btnFinalizarPgto.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFinalizarPgto.Image = (Image)resources.GetObject("btnFinalizarPgto.Image");
+            btnFinalizarPgto.ImageTransparentColor = Color.Magenta;
+            btnFinalizarPgto.Name = "btnFinalizarPgto";
+            btnFinalizarPgto.Padding = new Padding(6);
+            btnFinalizarPgto.Size = new Size(32, 32);
+            btnFinalizarPgto.Click += btnFinalizarPgto_Click;
+            // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(6, 35);
             // 
             // TelaPrincipalForm
             // 
@@ -249,8 +270,11 @@
             Controls.Add(menuStrip1);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             MaximumSize = new Size(1150, 700);
-            MinimumSize = new Size(900, 700);
+            MdiChildrenMinimizedAnchorBottom = false;
+            MinimizeBox = false;
+            MinimumSize = new Size(1150, 700);
             Name = "TelaPrincipalForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
@@ -288,5 +312,7 @@
         private ToolStripMenuItem alugueisMenuItem;
         private ToolStripMenuItem itensParaLocaçãoMenuItem;
         private ToolStripMenuItem temasMenuItem;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripButton btnFinalizarPgto;
     }
 }

@@ -21,14 +21,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         }
 
         public override string ToolTipInserir => "Realizar novo aluguel";
-
         public override string ToolTipEditar => "Editar aluguel existente";
-
         public override string ToolTipExcluir => "Excluir aluguel existente";
+        public override string ToolTipFiltrar => "Filtrar alugueis";
+        public override string ToolTipFinalizarPagamento => "Finalizar pagamento de um aluguel existente";
 
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
+        public override bool FiltrarHabilitado => true;
+        public override bool FinalizarPagamentoHabilitado => true;
 
         public override void Inserir()
         {

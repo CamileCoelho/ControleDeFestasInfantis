@@ -36,6 +36,7 @@
             label5 = new Label();
             label7 = new Label();
             groupBoxLocalizacao = new GroupBox();
+            cmbTemas = new ComboBox();
             label9 = new Label();
             label4 = new Label();
             txtCidade = new TextBox();
@@ -48,7 +49,6 @@
             btnCancelar = new Button();
             btnGravar = new Button();
             cmbClientes = new ComboBox();
-            cmbTemas = new ComboBox();
             groupBoxLocalizacao.SuspendLayout();
             SuspendLayout();
             // 
@@ -150,6 +150,16 @@
             groupBoxLocalizacao.TabIndex = 66;
             groupBoxLocalizacao.TabStop = false;
             groupBoxLocalizacao.Text = "Informações da Festa";
+            // 
+            // cmbTemas
+            // 
+            cmbTemas.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTemas.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            cmbTemas.FormattingEnabled = true;
+            cmbTemas.Location = new Point(184, 322);
+            cmbTemas.Name = "cmbTemas";
+            cmbTemas.Size = new Size(195, 28);
+            cmbTemas.TabIndex = 72;
             // 
             // label9
             // 
@@ -277,16 +287,6 @@
             cmbClientes.Size = new Size(395, 28);
             cmbClientes.TabIndex = 71;
             // 
-            // cmbTemas
-            // 
-            cmbTemas.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTemas.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            cmbTemas.FormattingEnabled = true;
-            cmbTemas.Location = new Point(184, 322);
-            cmbTemas.Name = "cmbTemas";
-            cmbTemas.Size = new Size(195, 28);
-            cmbTemas.TabIndex = 72;
-            // 
             // TelaAluguelForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -299,7 +299,13 @@
             Controls.Add(label8);
             Controls.Add(groupBoxLocalizacao);
             Controls.Add(label7);
+            MaximizeBox = false;
+            MaximumSize = new Size(588, 695);
+            MdiChildrenMinimizedAnchorBottom = false;
+            MinimizeBox = false;
+            MinimumSize = new Size(588, 695);
             Name = "TelaAluguelForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "TelaAluguelForm";
             groupBoxLocalizacao.ResumeLayout(false);
             groupBoxLocalizacao.PerformLayout();

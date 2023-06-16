@@ -49,7 +49,7 @@ namespace ControleDeFestasInfantis.WinApp
             ConfigurarTelaPrincipal(controlador);
         }
 
-        private void agendamentoDeFestaMenuItem_Click(object sender, EventArgs e)
+        private void alugueisMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ContoladorAluguel(repositorioCliente, repositorioTema, repositorioAluguel);
 
@@ -98,6 +98,7 @@ namespace ControleDeFestasInfantis.WinApp
             btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
             btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
             btnRemoverItens.ToolTipText = controlador.ToolTipRemoverItens;
+            btnFinalizarPgto.ToolTipText = controlador.ToolTipFinalizarPagamento;
 
             btnInserir.Enabled = controlador.InserirHabilitado;
             btnEditar.Enabled = controlador.EditarHabilitado;
@@ -105,6 +106,7 @@ namespace ControleDeFestasInfantis.WinApp
             btnFiltrar.Enabled = controlador.FiltrarHabilitado;
             btnAdicionarItens.Enabled = controlador.AdicionarItensHabilitado;
             btnRemoverItens.Enabled = controlador.RemoverItensHabilitado;
+            btnFinalizarPgto.Enabled = controlador.FinalizarPagamentoHabilitado;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -135,6 +137,11 @@ namespace ControleDeFestasInfantis.WinApp
         private void btnConcluirItens_Click(object sender, EventArgs e)
         {
             controlador.RemoverItens();
+        }
+
+        private void btnFinalizarPgto_Click(object sender, EventArgs e)
+        {
+            controlador.FinalizarPagamento();
         }
     }
 }
