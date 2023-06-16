@@ -73,6 +73,7 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
 
             if (valida.ValidaString(titulo))
                 return $"Você deve escrever um titulo!";
+
             if (titulo.Length <= 4)
                 return $"O titulo deve conter no mínimo 5 caracteres!";
 

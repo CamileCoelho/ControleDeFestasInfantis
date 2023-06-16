@@ -36,11 +36,14 @@
             if (valida.ValidaString(nome))
                 return $"Você deve escrever um nome!";
 
-            if (telefone == null || valida.ValidaTelefone(telefone))
-                return $"O telefone deve ser no formato (XX)XXXXX-XXXX";
+            if (nome.Length <= 4)
+                return $"O nome deve conter no mínimo 5 caracteres!";
 
             if (email == null || valida.ValidaFormatoEmail(email))
                 return $"O e-mail deve ser no formato xxxxxx@xxxxx.xxx";
+
+            if (telefone == null || valida.ValidaTelefone(telefone))
+                return $"O telefone deve ser no formato (XX)XXXXX-XXXX";
 
             return "";
         }
