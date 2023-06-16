@@ -1,5 +1,5 @@
 using ControleDeFestasInfantis.Dominio.ModuloCliente;
-using ControleDeFestasInfantis.Dominio.ModuloFesta;
+using ControleDeFestasInfantis.Dominio.ModuloAluguel;
 using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
 using ControleDeFestasInfantis.Infra.Json.ModuloCliente;
@@ -7,7 +7,7 @@ using ControleDeFestasInfantis.Infra.Json.ModuloFesta;
 using ControleDeFestasInfantis.Infra.Json.ModuloItem;
 using ControleDeFestasInfantis.Infra.Json.ModuloTema;
 using ControleDeFestasInfantis.WinApp.ModuloCliente;
-using ControleDeFestasInfantis.WinApp.ModuloFesta;
+using ControleDeFestasInfantis.WinApp.ModuloAluguel;
 using ControleDeFestasInfantis.WinApp.ModuloItem;
 using ControleDeFestasInfantis.WinApp.ModuloTema;
 
@@ -20,7 +20,7 @@ namespace ControleDeFestasInfantis.WinApp
         static ContextoDeDados contextoDeDados = new(carregarDados: true);
 
         private IRepositorioCliente repositorioCliente = new RepositorioClienteArquivo(contextoDeDados);
-        private IRepositorioFesta repositorioFesta = new RepositorioFestaArquivo(contextoDeDados);
+        private IRepositorioAluguel repositorioAluguel = new RepositorioAluguelArquivo(contextoDeDados);
         private IRepositorioItem repositorioItem = new RepositorioItemArquivo(contextoDeDados);
         private IRepositorioTema repositorioTema = new RepositorioTemaArquivo(contextoDeDados);
 
@@ -44,21 +44,21 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void contatosMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorCliente();
+            controlador = new ControladorCliente(repositorioCliente);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
-        private void agendamentoDeFestaMenuItem_Click(object sender, EventArgs e)
+        private void alugueisMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ContoladorFesta();
+            controlador = new ContoladorAluguel(repositorioCliente, repositorioTema, repositorioAluguel);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void itensParaLocaçãoMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorItem(repositorioItem);
+            controlador = new ControladorItem(repositorioTema, repositorioItem);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -98,6 +98,7 @@ namespace ControleDeFestasInfantis.WinApp
             btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
             btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
             btnRemoverItens.ToolTipText = controlador.ToolTipRemoverItens;
+            btnFinalizarPgto.ToolTipText = controlador.ToolTipFinalizarPagamento;
 
             btnInserir.Enabled = controlador.InserirHabilitado;
             btnEditar.Enabled = controlador.EditarHabilitado;
@@ -105,6 +106,7 @@ namespace ControleDeFestasInfantis.WinApp
             btnFiltrar.Enabled = controlador.FiltrarHabilitado;
             btnAdicionarItens.Enabled = controlador.AdicionarItensHabilitado;
             btnRemoverItens.Enabled = controlador.RemoverItensHabilitado;
+            btnFinalizarPgto.Enabled = controlador.FinalizarPagamentoHabilitado;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -135,6 +137,11 @@ namespace ControleDeFestasInfantis.WinApp
         private void btnConcluirItens_Click(object sender, EventArgs e)
         {
             controlador.RemoverItens();
+        }
+
+        private void btnFinalizarPgto_Click(object sender, EventArgs e)
+        {
+            controlador.FinalizarPagamento();
         }
     }
 }

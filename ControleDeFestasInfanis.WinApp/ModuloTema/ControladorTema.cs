@@ -133,7 +133,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                temaEscolhido.InserirItens(telaAdicao.itensToAdd);
+                repositorioTema.AdcionarItens(telaAdicao.itensToAdd, temaEscolhido);
 
                 CarregarTemas();
             }
@@ -172,7 +172,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                temaEscolhido.RemoverItens(telaRemocao.itensToRemove);
+                repositorioTema.RemoverItens(telaRemocao.itensToRemove, temaEscolhido);
 
                 CarregarTemas();
             }

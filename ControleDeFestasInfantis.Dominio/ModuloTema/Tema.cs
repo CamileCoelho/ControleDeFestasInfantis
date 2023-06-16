@@ -1,4 +1,4 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloFesta;
+﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
 using ControleDeFestasInfantis.Dominio.ModuloItem;
 using System.Drawing;
 using System.Windows.Forms;
@@ -67,18 +67,6 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
 
         }
 
-        public void RemoverItem(Item item)
-        {
-            if (itens.Contains(item))
-            {
-                itens.Remove(item);
-
-                decimal valor = -(item.valor * item.quantidade);
-
-                AtualizarValorTotalTema(valor);
-            }
-        }
-
         public override string Validar()
         {
             Validador valida = new();
@@ -89,6 +77,11 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
                 return $"O titulo deve conter no mínimo 5 caracteres!";
 
             return "";
+        }
+
+        public override string ToString()
+        {
+            return titulo;
         }
     }
 }
