@@ -162,7 +162,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
         public void RealizarPagamentoDaEntrada(Aluguel aluguel)
         {
-            aluguel.pagamento.valorFinal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10) - (aluguel.pagamento.valorEntrada);
+            aluguel.pagamento.valorFinal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.porcentagemDesconto / 10) - (aluguel.pagamento.valorEntrada);
             aluguel.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Parcial;
 
             aluguel.cliente.qtdAlugueisRealizados++;

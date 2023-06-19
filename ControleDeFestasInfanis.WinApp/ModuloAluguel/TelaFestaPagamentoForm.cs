@@ -20,7 +20,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public Pagamento ObterPagamento()
         {
-            decimal valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10);
+            decimal valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.porcentagemDesconto / 10);
 
             decimal valorEntrada = Convert.ToDecimal(String.Format("{0:0.00}", txtValorEntrada.Text));
             
@@ -51,7 +51,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            aluguel.pagamento.valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10);
+            aluguel.pagamento.valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.porcentagemDesconto / 10);
 
             aluguel.pagamento = ObterPagamento();
 
@@ -72,7 +72,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 DialogResult = DialogResult.None;
             }
 
-            aluguel.pagamento.valorFinal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10) - (aluguel.pagamento.valorEntrada);
+            aluguel.pagamento.valorFinal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.porcentagemDesconto / 10) - (aluguel.pagamento.valorEntrada);
             aluguel.pagamento.pgtoEfetuado =  PgtoEfetuadoEnum.Parcial;
             aluguel.cliente.qtdAlugueisRealizados++;
         }

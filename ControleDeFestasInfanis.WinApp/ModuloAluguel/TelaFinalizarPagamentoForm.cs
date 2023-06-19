@@ -29,7 +29,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
         internal void ConfigurarTela(Aluguel aluguel)
         {
-            decimal valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10);
+            decimal valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.porcentagemDesconto / 10);
 
             txtCliente.Text = aluguel.cliente.nome;
             txtValorTotal.Text = valorTotal.ToString();

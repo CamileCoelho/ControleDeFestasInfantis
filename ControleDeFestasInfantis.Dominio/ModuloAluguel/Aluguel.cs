@@ -25,7 +25,11 @@ namespace ControleDeFestasInfantis.Dominio.ModuloAluguel
             if (cliente != null)
             {
                 pagamento = new();
-                pagamento.valorDesconto = Convert.ToDecimal(cliente.qtdAlugueisRealizados * 2.5);
+                pagamento.porcentagemDesconto = Convert.ToDecimal(cliente.qtdAlugueisRealizados * 2.5);
+                if (pagamento.porcentagemDesconto > 15)
+                {
+                    pagamento.porcentagemDesconto = 15;
+                }
                 pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Pendente;
             }
             
