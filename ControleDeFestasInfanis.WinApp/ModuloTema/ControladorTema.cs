@@ -53,23 +53,13 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 return;
             }
 
-            TelaTemaForm tela = new();
+            TelaTemaForm tela = new(repositorioTema.SelecionarTodos());
 
             DialogResult opcaoEscolhida = tela.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
                 Tema tema = tela.ObterTema();
-
-                if (repositorioTema.SelecionarTodos().Any(x => x.titulo == tema.titulo))
-                {
-                    MessageBox.Show($"Já existe um tema cadastrado com esse titulo!",
-                        "Inserção de Temas",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Exclamation);
-
-                    return;
-                }
 
                 repositorioTema.Inserir(tema);
 
@@ -90,17 +80,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
                 return;
             }
-            if (repositorioTema.SelecionarTodos().Any(x => x.titulo == temaSelecionado.titulo))
-            {
-                MessageBox.Show($"Já existe um tema cadastrado com esse titulo!", 
-                    "Edição de Temas",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
 
-                return;
-            }
-
-            TelaTemaForm telaTema = new();
+            TelaTemaForm telaTema = new(repositorioTema.SelecionarTodos());
 
             telaTema.ConfigurarTela(temaSelecionado);
 

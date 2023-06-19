@@ -2,6 +2,7 @@
 using ControleDeFestasInfantis.Dominio.ModuloCliente;
 using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 {
@@ -29,23 +30,13 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
         public override void Inserir()
         {
-            TelaClienteForm telaCliente = new();
+            TelaClienteForm telaCliente = new(repositorioCliente.SelecionarTodos());
 
             DialogResult opcaoEscolhida = telaCliente.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
                 Cliente cliente = telaCliente.ObterCliente();
-
-                if (repositorioCliente.SelecionarTodos().Any(x => x.nome == cliente.nome))
-                {
-                    MessageBox.Show($"Já existe um cliente cadastrado com esse nome!",
-                        "Inserção de clientes",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Exclamation);
-
-                    return;
-                }
 
                 repositorioCliente.Inserir(cliente);
 
@@ -66,17 +57,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
                 return;
             }
-            if (repositorioCliente.SelecionarTodos().Any(x => x.nome == clienteSelecionado.nome))
-            {
-                MessageBox.Show($"Já existe um cliente cadastrado com esse nome!",
-                    "Edição de clientes",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
 
-                return;
-            }
-
-            TelaClienteForm tela = new();
+            TelaClienteForm tela = new(repositorioCliente.SelecionarTodos());
 
             tela.ConfigurarTela(clienteSelecionado);
 

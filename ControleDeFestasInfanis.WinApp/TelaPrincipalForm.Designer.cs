@@ -112,7 +112,7 @@
             // rodape
             // 
             rodape.Items.AddRange(new ToolStripItem[] { lableRodape });
-            rodape.Location = new Point(0, 735);
+            rodape.Location = new Point(0, 635);
             rodape.Name = "rodape";
             rodape.Size = new Size(1184, 26);
             rodape.TabIndex = 1;
@@ -130,7 +130,7 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator1, btnFiltrar, toolStripSeparator2, btnAdicionarItens, btnRemoverItens, toolStripSeparator3, btnFinalizarPgto, toolStripSeparator4, labelTipoDoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1184, 35);
+            toolStrip1.Size = new Size(1184, 25);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -250,29 +250,29 @@
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 35);
+            toolStripSeparator4.Size = new Size(6, 25);
             toolStripSeparator4.Visible = false;
             // 
             // labelTipoDoCadastro
             // 
             labelTipoDoCadastro.Name = "labelTipoDoCadastro";
-            labelTipoDoCadastro.Size = new Size(76, 32);
+            labelTipoDoCadastro.Size = new Size(76, 22);
             labelTipoDoCadastro.Text = "                       ";
             // 
             // panelRegistros
             // 
             panelRegistros.BorderStyle = BorderStyle.FixedSingle;
             panelRegistros.Dock = DockStyle.Fill;
-            panelRegistros.Location = new Point(0, 59);
+            panelRegistros.Location = new Point(0, 49);
             panelRegistros.Name = "panelRegistros";
-            panelRegistros.Size = new Size(1184, 676);
+            panelRegistros.Size = new Size(1184, 586);
             panelRegistros.TabIndex = 3;
             // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1184, 761);
+            ClientSize = new Size(1184, 661);
             Controls.Add(panelRegistros);
             Controls.Add(toolStrip1);
             Controls.Add(rodape);
@@ -280,10 +280,10 @@
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
-            MaximumSize = new Size(1200, 800);
+            MaximumSize = new Size(1200, 700);
             MdiChildrenMinimizedAnchorBottom = false;
             MinimizeBox = false;
-            MinimumSize = new Size(1200, 736);
+            MinimumSize = new Size(1200, 700);
             Name = "TelaPrincipalForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;

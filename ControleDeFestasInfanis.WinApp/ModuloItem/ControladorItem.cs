@@ -32,23 +32,13 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
 
         public override void Inserir()
         {           
-            TelaItemForm telaItem = new();
+            TelaItemForm telaItem = new(repositorioItem.SelecionarTodos());
 
             DialogResult opcaoEscolhida = telaItem.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
                 Item item = telaItem.ObterItem();
-
-                if (repositorioItem.SelecionarTodos().Any(x => x.descricao == item.descricao))
-                {
-                    MessageBox.Show($"Já existe um item cadastrado com esse nome!",
-                        "Inserção de Itens",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Exclamation);
-
-                    return;
-                }
 
                 repositorioItem.Inserir(item);
 
@@ -69,17 +59,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
 
                 return;
             }
-            if (repositorioItem.SelecionarTodos().Any(x => x.descricao == itemSelecionado.descricao))
-            {
-                MessageBox.Show($"Já existe um item cadastrado com esse nome!",
-                    "Edição de Itens",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
 
-                return;
-            }
-
-            TelaItemForm tela = new();
+            TelaItemForm tela = new(repositorioItem.SelecionarTodos());
 
             tela.ConfigurarTela(itemSelecionado);
 

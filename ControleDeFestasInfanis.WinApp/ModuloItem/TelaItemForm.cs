@@ -6,19 +6,27 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
     public partial class TelaItemForm : Form
     {
         private Item item { get; set; }
+        private List<Item> itens { get; set; }
 
-        public TelaItemForm()
+        public TelaItemForm(List<Item> itens)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
+
+            this.itens = itens;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
             item = ObterItem();
 
-            string status = item.Validar();
+            string status = "";
+
+            if (itens.Any(x => x.descricao == item.descricao))
+                status = "Já existe um item cadastrado com esse nome!";
+            else
+                status = item.Validar();
 
             TelaPrincipalForm.Tela.AtualizarRodape(status);
 

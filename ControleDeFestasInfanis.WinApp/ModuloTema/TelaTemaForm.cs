@@ -1,16 +1,20 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloTema;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
     public partial class TelaTemaForm : Form
     {
         private Tema tema { get; set; }
+        private List<Tema> temas { get; set; }
 
-        public TelaTemaForm()
+        public TelaTemaForm(List<Tema> temas)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
+
+            this.temas = temas;
         }
 
         public Tema ObterTema()
@@ -30,7 +34,12 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         {
             tema = ObterTema();
 
-            string status = tema.Validar();
+            string status = "";
+
+            if (temas.Any(x => x.titulo == tema.titulo))
+                status = "Já existe um tema cadastrado com esse titulo!";
+            else
+                status = tema.Validar();
 
             TelaPrincipalForm.Tela.AtualizarRodape(status);
 

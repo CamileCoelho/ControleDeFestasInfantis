@@ -5,12 +5,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
     public partial class TelaClienteForm : Form
     {
         private Cliente cliente { get; set; }
+        private List<Cliente> clientes { get; set; }
 
-        public TelaClienteForm()
+
+        public TelaClienteForm(List<Cliente> clientes)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
+
+            this.clientes = clientes;
         }
 
         public void ConfigurarTela(Cliente clienteSelecionado)
@@ -23,9 +27,14 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            string status = "";
+            
             cliente = ObterCliente();
-
-            string status = cliente.Validar();
+            
+            if (clientes.Any(x => x.nome == cliente.nome))
+                status = $"Já existe um cliente cadastrado com esse nome!";
+            else
+                status = cliente.Validar();
 
             TelaPrincipalForm.Tela.AtualizarRodape(status);
 
