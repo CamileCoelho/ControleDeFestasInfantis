@@ -28,6 +28,8 @@ namespace ControleDeFestasInfantis.WinApp
         {
             InitializeComponent();
 
+            this.ConfigurarDialog();
+
             Tela = this;
         }
 
@@ -44,7 +46,7 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void contatosMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorCliente(repositorioCliente);
+            controlador = new ControladorCliente(repositorioAluguel, repositorioCliente);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -65,7 +67,7 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void temasMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorTema(repositorioItem, repositorioTema);
+            controlador = new ControladorTema(repositorioAluguel, repositorioItem, repositorioTema);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -107,6 +109,19 @@ namespace ControleDeFestasInfantis.WinApp
             btnAdicionarItens.Enabled = controlador.AdicionarItensHabilitado;
             btnRemoverItens.Enabled = controlador.RemoverItensHabilitado;
             btnFinalizarPgto.Enabled = controlador.FinalizarPagamentoHabilitado;
+
+            btnInserir.Visible = controlador.InserirVisivel;
+            btnEditar.Visible = controlador.EditarVisivel;
+            btnExcluir.Visible = controlador.ExcluirVisivel;
+            btnFiltrar.Visible = controlador.FiltrarVisivel;
+            btnAdicionarItens.Visible = controlador.AdicionarItensVisivel;
+            btnRemoverItens.Visible = controlador.RemoverItensVisivel;
+            btnFinalizarPgto.Visible = controlador.FinalizarPagamentoVisivel;
+
+            toolStripSeparator1.Visible = controlador.SeparadorVisivel1;
+            toolStripSeparator2.Visible = controlador.SeparadorVisivel2;
+            toolStripSeparator3.Visible = controlador.SeparadorVisivel3;
+            toolStripSeparator4.Visible = controlador.SeparadorVisivel4;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)

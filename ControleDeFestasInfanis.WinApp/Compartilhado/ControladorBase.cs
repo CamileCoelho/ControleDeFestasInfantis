@@ -24,6 +24,19 @@
         public virtual bool RemoverItensHabilitado { get { return true; } }
         public virtual bool FinalizarPagamentoHabilitado { get { return true; } }
 
+        public virtual bool InserirVisivel { get { return true; } }
+        public virtual bool EditarVisivel { get { return true; } }
+        public virtual bool ExcluirVisivel { get { return true; } }
+        public virtual bool FiltrarVisivel { get { return false; } }
+        public virtual bool AdicionarItensVisivel { get { return false; } }
+        public virtual bool RemoverItensVisivel { get { return false; } }
+        public virtual bool FinalizarPagamentoVisivel { get { return false; } }
+
+        public virtual bool SeparadorVisivel1 { get { return false; } }
+        public virtual bool SeparadorVisivel2 { get { return false; } }
+        public virtual bool SeparadorVisivel3 { get { return false; } }
+        public virtual bool SeparadorVisivel4 { get { return true; } }
+
         public abstract void Inserir();
 
         public abstract void Editar();

@@ -16,6 +16,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             InitializeComponent();
 
             this.tema = tema;
+
             this.ConfigurarDialog();
 
             ObterItens(itens);

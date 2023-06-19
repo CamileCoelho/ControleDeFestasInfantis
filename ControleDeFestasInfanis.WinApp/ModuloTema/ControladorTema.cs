@@ -34,8 +34,12 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
+        public override bool SeparadorVisivel1 => true;
         public override bool AdicionarItensHabilitado => true;
         public override bool RemoverItensHabilitado => true;
+        public override bool AdicionarItensVisivel => true;
+        public override bool RemoverItensVisivel => true;
+
 
         public override void Inserir()
         {

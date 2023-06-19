@@ -13,7 +13,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
         public ControladorCliente(IRepositorioAluguel repositorioAluguel, IRepositorioCliente repositorioCliente)
         {
-            this.repositorioAluguel = repositorioAluguel
+            this.repositorioAluguel = repositorioAluguel;
             this.repositorioCliente = repositorioCliente;
         }
 

@@ -11,6 +11,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         {
             InitializeComponent();
 
+            this.ConfigurarDialog();
+
             this.aluguel = aluguel;
 
             CarregarOpcoesDePgto();

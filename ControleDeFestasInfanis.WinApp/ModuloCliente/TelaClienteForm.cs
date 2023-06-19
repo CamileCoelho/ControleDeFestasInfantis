@@ -9,6 +9,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
         public TelaClienteForm()
         {
             InitializeComponent();
+
+            this.ConfigurarDialog();
         }
 
         public void ConfigurarTela(Cliente clienteSelecionado)

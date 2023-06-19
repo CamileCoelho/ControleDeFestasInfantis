@@ -30,7 +30,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
         public override bool FiltrarHabilitado => true;
+        public override bool SeparadorVisivel1 => true;
         public override bool FinalizarPagamentoHabilitado => true;
+        public override bool FinalizarPagamentoVisivel => true;
 
         public override void Inserir()
         {
