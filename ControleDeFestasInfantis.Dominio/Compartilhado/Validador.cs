@@ -27,8 +27,9 @@ namespace ControleDeFestasInfantis.Dominio.Compartilhado
 
         public bool ValidaTelefone(string telefone)
         {
-            // formato (XX)XXXXX-XXXX
-            Regex Rgx = new(@"^\(\d{2}\)\ \d{5}-\d{4}$");
+            // formato (XX)9XXXX-XXXX
+
+            Regex Rgx = new Regex(@"^\(\d{2}\)9\d{4}-\d{4}$");
 
             if (Rgx.IsMatch(telefone))
                 return false;

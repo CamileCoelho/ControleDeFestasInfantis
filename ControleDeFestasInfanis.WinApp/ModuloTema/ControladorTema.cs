@@ -1,4 +1,6 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloItem;
+﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
+using ControleDeFestasInfantis.Dominio.ModuloCliente;
+using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
 using ControleDeFestasInfantis.WinApp.ModuloItem;
 
@@ -6,13 +8,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
     public class ControladorTema : ControladorBase
     {
+        IRepositorioAluguel repositorioAluguel;
         IRepositorioItem repositorioItem;
         IRepositorioTema repositorioTema;
         TabelaTemaControl tabelaTema;
         TabelaItensTema tabelaItensTema;
 
-        public ControladorTema(IRepositorioItem repositorioItem, IRepositorioTema repositorioTema)
+        public ControladorTema(IRepositorioAluguel repositorioAluguel, IRepositorioItem repositorioItem, IRepositorioTema repositorioTema)
         {
+            this.repositorioAluguel = repositorioAluguel;
             this.repositorioItem = repositorioItem;
             this.repositorioTema = repositorioTema;
         }
@@ -35,6 +39,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public override void Inserir()
         {
+            if (CarregarItens().Count() == 0)
+            {
+                MessageBox.Show($"Você deve cadastrar ao menos um item para poder criar um tema!",
+                    "Inserção de Temas",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
             TelaTemaForm tela = new();
 
             DialogResult opcaoEscolhida = tela.ShowDialog();
@@ -42,6 +56,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             if (opcaoEscolhida == DialogResult.OK)
             {
                 Tema tema = tela.ObterTema();
+
+                if (repositorioTema.SelecionarTodos().Any(x => x.titulo == tema.titulo))
+                {
+                    MessageBox.Show($"Já existe um tema cadastrado com esse titulo!",
+                        "Inserção de Temas",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation);
+
+                    return;
+                }
 
                 repositorioTema.Inserir(tema);
 
@@ -56,6 +80,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             if (temaSelecionado == null)
             {
                 MessageBox.Show($"Selecione um tema primeiro!",
+                    "Edição de Temas",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            if (repositorioTema.SelecionarTodos().Any(x => x.titulo == temaSelecionado.titulo))
+            {
+                MessageBox.Show($"Já existe um tema cadastrado com esse titulo!", 
                     "Edição de Temas",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -81,8 +114,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public override void Excluir()
         {
-            //TO-DO  VERIFICAR SE CONTEM ALUGEUL PARA ESSE TEMA, SE SIM NÃO PODE REMOVER O TEMA
-
             Tema temaSelecionado = ObterTemaSelecionado();
 
             if (temaSelecionado == null)
@@ -90,11 +121,18 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 MessageBox.Show($"Selecione um tema primeiro!",
                     "Exclusão de temas",
                     MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (repositorioAluguel.SelecionarTodos().Any(x => x.festa.tema == temaSelecionado))
+            {
+                MessageBox.Show($"Não é possivel remover esse tema pois ele possuí vinculo com ao menos um Aluguel!",
+                    "Exclusão de temas",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
                 return;
             }
-
             DialogResult opcaoEscolhida =
                 MessageBox.Show($"Deseja excluir o tema {temaSelecionado.titulo}?",
                 "Exclusão de Temas",

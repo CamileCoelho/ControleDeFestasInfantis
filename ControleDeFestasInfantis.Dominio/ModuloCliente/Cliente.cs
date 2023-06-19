@@ -43,7 +43,7 @@
                 return $"O e-mail deve ser no formato xxxxxx@xxxxx.xxx";
 
             if (telefone == null || valida.ValidaTelefone(telefone))
-                return $"O telefone deve ser no formato (XX)XXXXX-XXXX";
+                return $"O telefone deve ser no formato (XX)9XXXX-XXXX";
 
             return "";
         }

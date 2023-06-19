@@ -1,14 +1,19 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloCliente;
+﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
+using ControleDeFestasInfantis.Dominio.ModuloCliente;
+using ControleDeFestasInfantis.Dominio.ModuloItem;
+using ControleDeFestasInfantis.Dominio.ModuloTema;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 {
     public class ControladorCliente : ControladorBase
     {
+        private IRepositorioAluguel repositorioAluguel;
         private IRepositorioCliente repositorioCliente;
         private TabelaClienteControl listagemCliente;
 
-        public ControladorCliente(IRepositorioCliente repositorioCliente)
+        public ControladorCliente(IRepositorioAluguel repositorioAluguel, IRepositorioCliente repositorioCliente)
         {
+            this.repositorioAluguel = repositorioAluguel
             this.repositorioCliente = repositorioCliente;
         }
 
@@ -32,6 +37,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             {
                 Cliente cliente = telaCliente.ObterCliente();
 
+                if (repositorioCliente.SelecionarTodos().Any(x => x.nome == cliente.nome))
+                {
+                    MessageBox.Show($"Já existe um cliente cadastrado com esse nome!",
+                        "Inserção de clientes",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation);
+
+                    return;
+                }
+
                 repositorioCliente.Inserir(cliente);
 
                 CarregarClientes();
@@ -44,8 +59,17 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
             if (clienteSelecionado == null)
             {
-                MessageBox.Show($"Selecione um contato primeiro!",
-                    "Edição de Contatos",
+                MessageBox.Show($"Selecione um cliente primeiro!",
+                    "Edição de clientes",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            if (repositorioCliente.SelecionarTodos().Any(x => x.nome == clienteSelecionado.nome))
+            {
+                MessageBox.Show($"Já existe um cliente cadastrado com esse nome!",
+                    "Edição de clientes",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
@@ -75,14 +99,23 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             if (cliente == null)
             {
                 MessageBox.Show($"Selecione um contato primeiro!",
-                    "Exclusão de Contatos",
+                    "Exclusão de clientes",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            if (repositorioAluguel.SelecionarTodos().Any(x => x.cliente == cliente))
+            {
+                MessageBox.Show($"Não é possivel remover esse cliente pois ele possuí vinculo com ao menos um Aluguel!",
+                    "Exclusão de clientes",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
                 return;
             }
 
-            DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir o contato {cliente.nome}?", "Exclusão de cliente",
+            DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir o cliente {cliente.nome}?", "Exclusão de clientes",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (opcaoEscolhida == DialogResult.OK)

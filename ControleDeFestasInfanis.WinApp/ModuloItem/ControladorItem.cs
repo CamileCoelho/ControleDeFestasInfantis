@@ -31,7 +31,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
         public override bool ExcluirHabilitado => true;
 
         public override void Inserir()
-        {
+        {           
             TelaItemForm telaItem = new();
 
             DialogResult opcaoEscolhida = telaItem.ShowDialog();
@@ -39,6 +39,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
             if (opcaoEscolhida == DialogResult.OK)
             {
                 Item item = telaItem.ObterItem();
+
+                if (repositorioItem.SelecionarTodos().Any(x => x.descricao == item.descricao))
+                {
+                    MessageBox.Show($"Já existe um item cadastrado com esse nome!",
+                        "Inserção de Itens",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Exclamation);
+
+                    return;
+                }
 
                 repositorioItem.Inserir(item);
 
@@ -53,6 +63,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
             if (itemSelecionado == null)
             {
                 MessageBox.Show($"Selecione um item primeiro!",
+                    "Edição de Itens",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            if (repositorioItem.SelecionarTodos().Any(x => x.descricao == itemSelecionado.descricao))
+            {
+                MessageBox.Show($"Já existe um item cadastrado com esse nome!",
                     "Edição de Itens",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);

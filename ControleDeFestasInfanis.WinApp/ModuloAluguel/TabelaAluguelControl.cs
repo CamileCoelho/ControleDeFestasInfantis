@@ -1,5 +1,4 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
-using ControleDeFestasInfantis.Dominio.ModuloTema;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 {
@@ -23,13 +22,17 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Cliente", HeaderText = "Cliente"},
 
+                new DataGridViewTextBoxColumn { DataPropertyName = "Telefone", HeaderText = "Telefone"},
+
                 new DataGridViewTextBoxColumn { DataPropertyName = "Tema", HeaderText = "Tema"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Valor Total", HeaderText = "Valor Total"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Pagamento", HeaderText = "Pagamento"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Status", HeaderText = "Status"}
+                new DataGridViewTextBoxColumn { DataPropertyName = "Status", HeaderText = "Status"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Data de quitação", HeaderText = "Data de quitação"}
             };
 
             return colunas;
@@ -47,8 +50,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             foreach (var aluguel in alugueis)
             {
                 grid.Rows.Add(aluguel.id, DateOnly.FromDateTime(aluguel.festa.data),
-                    aluguel.cliente, aluguel.festa.tema, aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10),
-                    aluguel.pagamento.pgtoEfetuado, aluguel.status);
+                    aluguel.cliente.nome, aluguel.cliente.telefone, aluguel.festa.tema, 
+                    aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10),
+                    aluguel.pagamento.pgtoEfetuado, aluguel.status, aluguel?.dataQuitacao);
             }
         }
     }

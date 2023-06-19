@@ -36,8 +36,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         {
             if (CarregarClientes().Count() == 0)
             {
-                MessageBox.Show($"Você deve cadastrar um cliente para poder realizar um aluguel!",
-                    "Inserção de Aluguel",
+                MessageBox.Show($"Você deve cadastrar ao menos um cliente para poder realizar um aluguel!",
+                    "Inserção de Alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
@@ -45,8 +45,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
             if (CarregarTemas().Count() == 0)
             {
-                MessageBox.Show($"Você deve cadastrar um tema para poder realizar um aluguel!",
-                    "Inserção de Aluguel",
+                MessageBox.Show($"Você deve cadastrar ao menos um tema para poder realizar um aluguel!",
+                    "Inserção de Alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
@@ -133,9 +133,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
                 return;
             }
-            if (aluguelSelecionado.status == StatusAluguelEnum.Finalizado)
+            if (aluguelSelecionado.status == StatusAluguelEnum.Em_andamento)
             {
-                MessageBox.Show($"Esse aluguel já foi finalizado, você não pode excluí-lo!",
+                MessageBox.Show($"Esse aluguel ainda não foi finalizado, você não pode excluí-lo!",
                     "Exclusão de alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -160,9 +160,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
         public void RealizarPagamentoDaEntrada(Aluguel aluguel)
         {
-            
-            //aluguel.pagamento = telaPgto.ObterPagamento();
-
             aluguel.pagamento.valorFinal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.valorDesconto / 10) - (aluguel.pagamento.valorEntrada);
             aluguel.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Parcial;
 
@@ -202,6 +199,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             if (opcaoEscolhida == DialogResult.OK)
             {
+                aluguelSelecionado.dataQuitacao = DateOnly.FromDateTime(DateTime.Now);
+
                 aluguelSelecionado.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Completo;
 
                 aluguelSelecionado.status = StatusAluguelEnum.Finalizado;
