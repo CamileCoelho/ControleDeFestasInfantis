@@ -78,8 +78,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 return;
             }
             itensToAdd.Add(item);
-            numQuantidadeItem.Value = 0;
             tabelaItensTema.AtualizarRegistrosItens(item);
+            numQuantidadeItem.Value = 0;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

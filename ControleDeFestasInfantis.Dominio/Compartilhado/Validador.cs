@@ -28,14 +28,12 @@ namespace ControleDeFestasInfantis.Dominio.Compartilhado
         public bool ValidaTelefone(string telefone)
         {
             // formato (XX)9XXXX-XXXX
-
-            //Regex rgx = new Regex(@"^\(\d{2}\)9\d{4}-\d{4}$");
-            Regex rgx = new Regex(@"^\(\d{2}\)\d{1}\d{4}-\d{4}$");
+            Regex rgx = new Regex(@"^\(\d{2}\)\s9\d{4}-\d{4}$");
 
             if (rgx.IsMatch(telefone))
-                return true;
-            else
                 return false;
+            else
+                return true;
         }
 
         public bool ValidaFormatoEmail(string email)

@@ -1,4 +1,5 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloItem;
+﻿using ControleDeFestasInfantis.Dominio.ModuloCliente;
+using ControleDeFestasInfantis.Dominio.ModuloItem;
 using System.Text.RegularExpressions;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloItem
@@ -6,6 +7,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
     public partial class TelaItemForm : Form
     {
         private Item item { get; set; }
+        private Item itemSelecionado { get; set; }
         private List<Item> itens { get; set; }
 
         public TelaItemForm(List<Item> itens)
@@ -17,13 +19,32 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
             this.itens = itens;
         }
 
+        public Item ObterItem()
+        {
+            int id = Convert.ToInt32(txtId.Text);
+
+            string descricao = txtDescricao.Text.Trim();
+
+            string valor = txtValor.Text;
+
+            return new(id, descricao, valor);
+        }
+
+        public void ConfigurarTela(Item itemSelecionado)
+        {
+            txtId.Text = itemSelecionado.id.ToString();
+            txtDescricao.Text = itemSelecionado.descricao;
+            txtValor.Text = itemSelecionado.valor.ToString();
+
+            this.itemSelecionado = itemSelecionado;
+        }
+
         private void btnGravar_Click(object sender, EventArgs e)
         {
             item = ObterItem();
-
             string status = "";
 
-            if (itens.Any(x => x.descricao == item.descricao))
+            if (itens.Where(i => item.id != itemSelecionado?.id).Any(x => x.descricao == item.descricao))
                 status = "Já existe um item cadastrado com esse nome!";
             else
                 status = item.Validar();
@@ -32,22 +53,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
 
             if (status != "")
                 DialogResult = DialogResult.None;
-        }
-
-        public Item ObterItem()
-        {
-            string descricao = txtDescricao.Text;
-
-            string valor = txtValor.Text;
-
-            return new(descricao, valor);
-        }
-
-        public void ConfigurarTela(Item itemSelecionado)
-        {
-            txtId.Text = itemSelecionado.id.ToString();
-            txtDescricao.Text = itemSelecionado.descricao;
-            txtValor.Text = itemSelecionado.valor.ToString();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

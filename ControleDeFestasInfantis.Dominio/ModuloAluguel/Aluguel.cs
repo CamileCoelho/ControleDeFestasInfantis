@@ -5,20 +5,21 @@ namespace ControleDeFestasInfantis.Dominio.ModuloAluguel
     [Serializable]
     public class Aluguel : EntidadeBase<Aluguel>
     {
-        public StatusAluguelEnum status { get; set; } // se pagamento.PgtoEfetuadoEnum = PgtoEfetuadoEnum.Completo status=finalizado
+        public StatusAluguelEnum status { get; set; } 
         public OpcoesPgtoEnum formaPagamento { get; set; }
         public Pagamento pagamento { get; set; }
         public Cliente cliente { get; set; }
         public Festa festa { get; set; }
-        public DateOnly dataQuitacao { get; set; }
+        public DateTime dataQuitacao { get; set; }
 
         public Aluguel()
         {
             
         }
 
-        public Aluguel(Cliente cliente, Festa festa)
+        public Aluguel(int id, Cliente cliente, Festa festa)
         {
+            this.id = id;
             this.cliente = cliente;
             this.festa = festa;
 

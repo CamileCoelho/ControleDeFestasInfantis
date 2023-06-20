@@ -1,7 +1,5 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
 using ControleDeFestasInfantis.Dominio.ModuloItem;
-using System.Drawing;
-using System.Windows.Forms;
 
 namespace ControleDeFestasInfantis.Dominio.ModuloTema
 {
@@ -18,8 +16,9 @@ namespace ControleDeFestasInfantis.Dominio.ModuloTema
             
         }
 
-        public Tema(string titulo)
+        public Tema(int id, string titulo)
         {
+            this.id = id;
             this.titulo = titulo;
             itens = new List<Item>();
         }

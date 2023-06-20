@@ -22,14 +22,18 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
         public Aluguel ObterAluguel()
         {
+            int id = Convert.ToInt32(txtId.Text);
+
             Cliente cliente = (Cliente)cmbClientes.SelectedItem;
 
             Tema tema = (Tema)cmbTemas.SelectedItem;
 
             string cidade = txtCidade.Text;
+
             string rua = txtRua.Text;
 
             string texto = txtNumero.Text;
+
             int numero;
 
             if (int.TryParse(texto, out numero))
@@ -45,7 +49,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             Festa festa = new(tema, endereco, data, horarioInicio, horarioTermino);
 
-            return new(cliente, festa);
+            return new(id, cliente, festa);
         }
 
         internal void ConfigurarTela(Aluguel aluguelSelecionado)
@@ -78,14 +82,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
         }
 
-        private void txtNuemro_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void btnGravar_Click(object sender, EventArgs e)
         {
             aluguel = ObterAluguel();
@@ -103,6 +99,14 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             TelaPrincipalForm.Tela.AtualizarRodape("");
 
             return;
+        }
+
+        private void txtNuemro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

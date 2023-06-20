@@ -22,18 +22,18 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             this.ConfigurarDialog();
 
-            this.aluguel = aluguel;
-
             CarregarOpcoesDePgto();
+
+            ConfigurarTela(aluguel);
         }
 
-        internal void ConfigurarTela(Aluguel aluguel)
+        internal void ConfigurarTela(Aluguel aluguelSelecionado)
         {
-            decimal valorTotal = aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.porcentagemDesconto / 10);
+            txtCliente.Text = aluguelSelecionado.cliente.nome;
+            txtValorTotal.Text = aluguelSelecionado.pagamento.valorTotal.ToString();
+            txtValorFinal.Text = aluguelSelecionado.pagamento.valorFinal.ToString();
 
-            txtCliente.Text = aluguel.cliente.nome;
-            txtValorTotal.Text = valorTotal.ToString();
-            txtValorFinal.Text = aluguel.pagamento.valorFinal.ToString();
+            this.aluguel = aluguelSelecionado;
         }
 
         private void CarregarOpcoesDePgto()

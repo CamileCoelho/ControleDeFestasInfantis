@@ -14,8 +14,9 @@ namespace ControleDeFestasInfantis.Dominio.ModuloItem
             
         }
 
-        public Item(string descricao, string valor)
+        public Item(int id, string descricao, string valor)
         {
+            this.id = id;
             this.descricao = descricao;
             this.valor = Decimal.Parse(valor); 
         }

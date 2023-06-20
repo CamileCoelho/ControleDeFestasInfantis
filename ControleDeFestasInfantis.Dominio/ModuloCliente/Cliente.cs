@@ -13,8 +13,9 @@
             
         }
 
-        public Cliente(string nome, string telefone, string email)
+        public Cliente(int id, string nome, string telefone, string email)
         {
+            this.id = id;
             this.nome = nome;
             this.telefone = telefone;
             this.email = email;
@@ -36,8 +37,8 @@
             if (valida.ValidaString(nome))
                 return $"Você deve escrever um nome!";
 
-            if (nome.Length <= 4)
-                return $"O nome deve conter no mínimo 5 caracteres!";
+            if (nome.Length <= 2)
+                return $"O nome deve conter no mínimo 3 caracteres!";
 
             if (email == null || valida.ValidaFormatoEmail(email))
                 return $"O e-mail deve ser no formato xxxxxx@xxxxx.xxx";

@@ -52,7 +52,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 grid.Rows.Add(aluguel.id, DateOnly.FromDateTime(aluguel.festa.data),
                     aluguel.cliente.nome, aluguel.cliente.telefone, aluguel.festa.tema, 
                     aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.porcentagemDesconto / 10),
-                    aluguel.pagamento.pgtoEfetuado, aluguel.status, aluguel?.dataQuitacao);
+                    aluguel.pagamento.pgtoEfetuado, aluguel.status, aluguel?.dataQuitacao.Date.ToString("dd/MM/yyyy"));
             }
         }
     }

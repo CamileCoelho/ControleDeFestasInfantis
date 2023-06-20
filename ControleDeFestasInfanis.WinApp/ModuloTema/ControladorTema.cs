@@ -1,8 +1,6 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
-using ControleDeFestasInfantis.Dominio.ModuloCliente;
 using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
-using ControleDeFestasInfantis.WinApp.ModuloItem;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
