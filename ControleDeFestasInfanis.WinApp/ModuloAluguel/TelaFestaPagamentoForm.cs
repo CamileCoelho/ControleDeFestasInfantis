@@ -7,7 +7,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
     {
         public Aluguel aluguelSelecionado { get; set; }
 
-        public TelaFestaPagamentoForm(Aluguel aluguel)
+        public TelaFestaPagamentoForm()
         {
             InitializeComponent();
 
@@ -15,37 +15,22 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             CarregarOpcoesDePgto();
 
-            ConfigurarTela(aluguel);
-
             TelaPrincipalForm.Tela.AtualizarRodape("O valor de entrada deve ser entre 40% e 50% do valor total!");
-        }
-
-        public Pagamento ObterPagamento()
-        {
-            decimal valorTotal = aluguelSelecionado.festa.tema.valorTotalTema - (aluguelSelecionado.pagamento.porcentagemDesconto / 10);
-
-            decimal valorEntrada = Convert.ToDecimal(String.Format("{0:0.00}", txtValorEntrada.Text));
-            
-            decimal valorFinal = valorTotal - valorEntrada;
-
-            return new(valorEntrada, valorFinal, valorTotal);
         }
 
         public void RealizarPagamentoDaEntrada()
         {
-            aluguelSelecionado.pagamento.valorFinal = aluguelSelecionado.festa.tema.valorTotalTema - (aluguelSelecionado.pagamento.porcentagemDesconto / 10) - (aluguelSelecionado.pagamento.valorEntrada);
+            aluguelSelecionado.pagamento.valorTotal = aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * aluguelSelecionado.pagamento.porcentagemDesconto) / 100);
+            aluguelSelecionado.pagamento.valorFinal = aluguelSelecionado.pagamento.valorTotal - aluguelSelecionado.pagamento.valorEntrada;
             aluguelSelecionado.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Parcial;
-
-            aluguelSelecionado.cliente.qtdAlugueisRealizados++;
-
-            TelaPrincipalForm.Tela.AtualizarRodape("");
         }
 
         internal void ConfigurarTela(Aluguel aluguel)
         {
             txtCliente.Text = aluguel.cliente.nome;
-            txtValorTotal.Text = (aluguel.festa.tema.valorTotalTema - (aluguel.pagamento.porcentagemDesconto / 10)).ToString();
+            txtValorTotal.Text = (aluguel.festa.tema.valorTotalTema - (aluguel.festa.tema.valorTotalTema * aluguel.pagamento.porcentagemDesconto / 100)).ToString();
             txtValorEntrada.Text = (String.Format("{0:0.00}", aluguel.pagamento.valorEntrada).ToString());
+            aluguel.formaPagamento = OpcoesPgtoEnum.Nenhum;
 
             this.aluguelSelecionado = aluguel;
         }
@@ -54,16 +39,18 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         {
             OpcoesPgtoEnum[] pagamentos = Enum.GetValues<OpcoesPgtoEnum>();
 
-            foreach (OpcoesPgtoEnum opcapPgto in pagamentos)
+            foreach (OpcoesPgtoEnum opcaoPgto in pagamentos)
             {
-                cmbPagamento.Items.Add(opcapPgto);
+                cmbPagamento.Items.Add(opcaoPgto);
             }
             cmbPagamento.SelectedIndex = 0;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            aluguelSelecionado.pagamento = ObterPagamento();
+            RealizarPagamentoDaEntrada();
+
+            aluguelSelecionado.pagamento.valorEntrada = Convert.ToDecimal(String.Format("{0:0.00}", txtValorEntrada.Text));
 
             aluguelSelecionado.formaPagamento = (OpcoesPgtoEnum)cmbPagamento.SelectedItem;
 
@@ -82,8 +69,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 DialogResult = DialogResult.None;
             }
 
-            //aluguelSelecionado.pagamento.valorFinal = aluguelSelecionado.festa.tema.valorTotalTema - (aluguelSelecionado.pagamento.porcentagemDesconto / 10) - (aluguelSelecionado.pagamento.valorEntrada);
-            aluguelSelecionado.pagamento.pgtoEfetuado =  PgtoEfetuadoEnum.Parcial;
             aluguelSelecionado.cliente.qtdAlugueisRealizados++;
         }
 

@@ -17,28 +17,19 @@ namespace ControleDeFestasInfantis.Dominio.ModuloAluguel
             
         }
 
-        public Aluguel(int id, Cliente cliente, Festa festa)
+        public Aluguel(int id, Pagamento pagamento, Cliente cliente, Festa festa)
         {
             this.id = id;
+            this.pagamento = pagamento;
             this.cliente = cliente;
             this.festa = festa;
 
-            if (cliente != null)
-            {
-                pagamento = new();
-                pagamento.porcentagemDesconto = Convert.ToDecimal(cliente.qtdAlugueisRealizados * 2.5);
-                if (pagamento.porcentagemDesconto > 15)
-                {
-                    pagamento.porcentagemDesconto = 15;
-                }
-                pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Pendente;
-            }
-            
             status = StatusAluguelEnum.Em_andamento;
         }
 
         public override void AtualizarInformacoes(Aluguel registroAtualizado)
         {
+            pagamento = registroAtualizado.pagamento;
             cliente = registroAtualizado.cliente;
             festa = registroAtualizado.festa;
         }

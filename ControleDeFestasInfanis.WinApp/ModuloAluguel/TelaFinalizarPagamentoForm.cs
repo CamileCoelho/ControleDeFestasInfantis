@@ -1,14 +1,4 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 {
@@ -16,7 +6,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
     {
         Aluguel aluguel { get; set; }
 
-        public TelaFinalizarPagamentoForm(Aluguel aluguel)
+        public TelaFinalizarPagamentoForm()
         {
             InitializeComponent();
 
@@ -24,7 +14,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             CarregarOpcoesDePgto();
 
-            ConfigurarTela(aluguel);
+            //ConfigurarTela(aluguel);
         }
 
         internal void ConfigurarTela(Aluguel aluguelSelecionado)
@@ -40,15 +30,21 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         {
             OpcoesPgtoEnum[] pagamentos = Enum.GetValues<OpcoesPgtoEnum>();
 
-            foreach (OpcoesPgtoEnum opcapPgto in pagamentos)
+            foreach (OpcoesPgtoEnum opcaoPgto in pagamentos)
             {
-                cmbPagamento.Items.Add(opcapPgto);
+                cmbPagamento.Items.Add(opcaoPgto);
             }
             cmbPagamento.SelectedIndex = 0;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            //aluguel.dataQuitacao = DateTime.Now;
+
+            //aluguel.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Completo;
+
+            //aluguel.status = StatusAluguelEnum.Finalizado;
+
             aluguel.formaPagamento = (OpcoesPgtoEnum)cmbPagamento.SelectedItem;
 
             if (aluguel.formaPagamento == OpcoesPgtoEnum.Nenhum)

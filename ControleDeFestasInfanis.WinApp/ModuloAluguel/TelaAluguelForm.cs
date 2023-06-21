@@ -24,10 +24,12 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         {
             int id = Convert.ToInt32(txtId.Text);
 
+            Pagamento pgto = new();
+
             Cliente cliente = (Cliente)cmbClientes.SelectedItem;
 
             Tema tema = (Tema)cmbTemas.SelectedItem;
-
+            
             string cidade = txtCidade.Text;
 
             string rua = txtRua.Text;
@@ -49,7 +51,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             Festa festa = new(tema, endereco, data, horarioInicio, horarioTermino);
 
-            return new(id, cliente, festa);
+            return new(id, pgto, cliente, festa);
         }
 
         internal void ConfigurarTela(Aluguel aluguelSelecionado)

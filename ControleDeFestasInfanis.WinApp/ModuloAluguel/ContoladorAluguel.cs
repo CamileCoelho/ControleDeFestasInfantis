@@ -38,7 +38,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         {
             if (CarregarClientes().Count() == 0)
             {
-                MessageBox.Show($"Você deve cadastrar ao menos um cliente para poder realizar um aluguelSelecionado!",
+                MessageBox.Show($"Você deve cadastrar ao menos um cliente para poder realizar um aluguel!",
                     "Inserção de Alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -47,7 +47,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
             if (CarregarTemas().Any(x => x.itens.Count() == 0))
             {
-                MessageBox.Show($"Você deve cadastrar ao menos um tema com itens dentro para poder realizar um aluguelSelecionado!",
+                MessageBox.Show($"Você deve cadastrar ao menos um tema com itens dentro para poder realizar um aluguel!",
                     "Inserção de Alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -65,11 +65,10 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
                 repositorioAluguel.Inserir(aluguel);
 
-                TelaFestaPagamentoForm telaPgto = new(aluguel);
+                TelaFestaPagamentoForm telaPgto = new();
 
+                telaPgto.ConfigurarTela(aluguel);                
                 telaPgto.ShowDialog();
-                //telaPgto.ConfigurarTela(aluguel);                
-                telaPgto.RealizarPagamentoDaEntrada();
 
                 TelaPrincipalForm.Tela.AtualizarRodape("");
 
@@ -92,7 +91,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             if (aluguelSelecionado == null)
             {
-                MessageBox.Show($"Selecione um aluguelSelecionado primeiro!",
+                MessageBox.Show($"Selecione um aluguel primeiro!",
                     "Edição de Alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -101,7 +100,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
             if (aluguelSelecionado.status == StatusAluguelEnum.Finalizado)
             {
-                MessageBox.Show($"Esse aluguelSelecionado já foi finalizado, você não pode editá-lo!",
+                MessageBox.Show($"Esse aluguel já foi finalizado, você não pode editá-lo!",
                     "Edição de Alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -121,8 +120,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
                 repositorioAluguel.Editar(aluguelSelecionado, aluguel);
 
-                TelaFestaPagamentoForm telaPgto = new(aluguel);
+                TelaFestaPagamentoForm telaPgto = new();
 
+                telaPgto.ConfigurarTela(aluguel);
                 telaPgto.ShowDialog();
                 telaPgto.RealizarPagamentoDaEntrada();
 
@@ -147,7 +147,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             if (aluguelSelecionado == null)
             {
-                MessageBox.Show($"Selecione um aluguelSelecionado primeiro!",
+                MessageBox.Show($"Selecione um aluguel primeiro!",
                     "Exclusão de alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -156,7 +156,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
             if (aluguelSelecionado.status == StatusAluguelEnum.Em_andamento)
             {
-                MessageBox.Show($"Esse aluguelSelecionado ainda não foi finalizado, você não pode excluí-lo!",
+                MessageBox.Show($"Esse aluguel ainda não foi finalizado, você não pode excluí-lo!",
                     "Exclusão de alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -165,7 +165,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
 
             DialogResult opcaoEscolhida =
-                MessageBox.Show($"Deseja excluir o aluguelSelecionado {aluguelSelecionado.id}?",
+                MessageBox.Show($"Deseja excluir o aluguel {aluguelSelecionado.id}?",
                 "Exclusão de Alugueis",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Question);
@@ -184,7 +184,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             if (aluguelSelecionado == null)
             {
-                MessageBox.Show($"Selecione um aluguelSelecionado primeiro!",
+                MessageBox.Show($"Selecione um aluguel primeiro!",
                     "Pagamento de alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -193,7 +193,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
             if (aluguelSelecionado.pagamento.pgtoEfetuado == PgtoEfetuadoEnum.Completo)
             {
-                MessageBox.Show($"Esse aluguelSelecionado já teve seu pagamento efetuado!",
+                MessageBox.Show($"Esse aluguel já teve seu pagamento efetuado!",
                     "Pagamento de alugueis",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -201,11 +201,13 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 return;
             }
 
-            TelaFinalizarPagamentoForm tela = new(aluguelSelecionado);
+            TelaFinalizarPagamentoForm tela = new();
+            tela.ConfigurarTela(aluguelSelecionado);
+            tela.ShowDialog();
 
-            DialogResult opcaoEscolhida = tela.ShowDialog();
+            //DialogResult opcaoEscolhida = tela.ShowDialog();
 
-            if (opcaoEscolhida == DialogResult.OK)
+            if (tela.DialogResult == DialogResult.OK)
             {
                 aluguelSelecionado.dataQuitacao = DateTime.Now;
 
