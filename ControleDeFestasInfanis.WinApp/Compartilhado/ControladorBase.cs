@@ -61,9 +61,9 @@
 
         public virtual void FinalizarPagamento() { }
 
-        public virtual void Visualizar() { }
-
         public virtual void ConfigurarDesconto() { }
+
+        public virtual void Visualizar() { }
                 
         public abstract UserControl ObterListagem();
 

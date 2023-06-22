@@ -1,8 +1,11 @@
-﻿namespace ControleDeFestasInfantis.Dominio.ModuloCliente
+﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
+
+namespace ControleDeFestasInfantis.Dominio.ModuloCliente
 {
     [Serializable]
     public class Cliente : EntidadeBase<Cliente>
     {
+        public List<Aluguel> alugueisCliente { get; set; }
         public string nome { get; set; }
         public string telefone { get; set; }
         public string email { get; set; }
@@ -13,12 +16,13 @@
             
         }
 
-        public Cliente(int id, string nome, string telefone, string email)
+        public Cliente(int id, string nome, string telefone, string email, List<Aluguel> alugueisCliente)
         {
             this.id = id;
             this.nome = nome;
             this.telefone = telefone;
             this.email = email;
+            this.alugueisCliente = alugueisCliente;
             this.qtdAlugueisRealizados = 0;
         }
 

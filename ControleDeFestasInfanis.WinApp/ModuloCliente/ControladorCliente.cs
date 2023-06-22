@@ -82,7 +82,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
             if (cliente == null)
             {
-                MessageBox.Show($"Selecione um contato primeiro!",
+                MessageBox.Show($"Selecione um cliente primeiro!",
                     "Exclusão de clientes",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -112,7 +112,28 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
         public override void Visualizar() 
         {
+            Cliente clienteSelecionado = ObterClienteSelecionado();
 
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show($"Selecione um cliente primeiro!",
+                    "Exclusão de clientes",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            foreach (Aluguel a in CarregarAlugueis())
+            {
+                foreach (Aluguel a2 in clienteSelecionado.alugueisCliente)
+                {
+                    if (a.cliente == clienteSelecionado && a2 != a)
+                    {
+                        clienteSelecionado.alugueisCliente.Add(a);
+                    }
+                }
+            }
         }
 
         private void CarregarClientes()
@@ -120,6 +141,11 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             List<Cliente> cliente = repositorioCliente.SelecionarTodos();
 
             listagemCliente.AtualizarRegistros(cliente);
+        }
+
+        private List<Aluguel> CarregarAlugueis()
+        {
+            return repositorioAluguel.SelecionarTodos();
         }
 
         public override UserControl ObterListagem()

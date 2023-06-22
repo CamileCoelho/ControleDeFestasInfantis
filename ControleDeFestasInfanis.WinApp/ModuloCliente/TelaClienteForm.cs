@@ -38,7 +38,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
             string email = txtEmail.Text;
 
-            return new(id, nome, telefone, email);
+            return new(id, nome, telefone, email, new());
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
