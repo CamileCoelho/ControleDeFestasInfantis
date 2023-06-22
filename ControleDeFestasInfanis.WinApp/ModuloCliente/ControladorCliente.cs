@@ -18,15 +18,17 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             this.repositorioCliente = repositorioCliente;
         }
 
-        public override string ToolTipInserir { get { return "Inserir novo contato"; } }
-
-        public override string ToolTipEditar { get { return "Editar contato existente"; } }
-
-        public override string ToolTipExcluir { get { return "Excluir contato existente"; } }
+        public override string ToolTipInserir { get { return "Inserir novo cliente"; } }
+        public override string ToolTipEditar { get { return "Editar cliente existente"; } }
+        public override string ToolTipExcluir { get { return "Excluir cliente existente"; } }
+        public override string ToolTipVisualizar { get { return "Visualizar historico de augueis de um cliente existente"; } }
 
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
+        public override bool SeparadorVisivel5 => true;
+        public override bool VisualizarHabilitado => true;
+        public override bool VisualizarVisivel => true;
 
         public override void Inserir()
         {
@@ -106,6 +108,11 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
                 CarregarClientes();
             }
+        }
+
+        public override void Visualizar() 
+        {
+
         }
 
         private void CarregarClientes()
