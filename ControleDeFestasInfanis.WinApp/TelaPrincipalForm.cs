@@ -100,7 +100,7 @@ namespace ControleDeFestasInfantis.WinApp
             btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
             btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
             btnRemoverItens.ToolTipText = controlador.ToolTipRemoverItens;
-            btnFinalizarPgto.ToolTipText = controlador.ToolTipFinalizarPagamento;
+            btnConfigDesconto.ToolTipText = controlador.ToolTipFinalizarPagamento;
 
             btnInserir.Enabled = controlador.InserirHabilitado;
             btnEditar.Enabled = controlador.EditarHabilitado;
@@ -109,6 +109,7 @@ namespace ControleDeFestasInfantis.WinApp
             btnAdicionarItens.Enabled = controlador.AdicionarItensHabilitado;
             btnRemoverItens.Enabled = controlador.RemoverItensHabilitado;
             btnFinalizarPgto.Enabled = controlador.FinalizarPagamentoHabilitado;
+            btnConfigDesconto.Enabled = controlador.ConfigDescontoHabilitado;
 
             btnInserir.Visible = controlador.InserirVisivel;
             btnEditar.Visible = controlador.EditarVisivel;
@@ -117,11 +118,13 @@ namespace ControleDeFestasInfantis.WinApp
             btnAdicionarItens.Visible = controlador.AdicionarItensVisivel;
             btnRemoverItens.Visible = controlador.RemoverItensVisivel;
             btnFinalizarPgto.Visible = controlador.FinalizarPagamentoVisivel;
+            btnConfigDesconto.Visible = controlador.ConfigDescontoVisivel;
 
             toolStripSeparator1.Visible = controlador.SeparadorVisivel1;
             toolStripSeparator2.Visible = controlador.SeparadorVisivel2;
             toolStripSeparator3.Visible = controlador.SeparadorVisivel3;
             toolStripSeparator4.Visible = controlador.SeparadorVisivel4;
+            toolStripSeparator5.Visible = controlador.SeparadorVisivel5;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -157,6 +160,11 @@ namespace ControleDeFestasInfantis.WinApp
         private void btnFinalizarPgto_Click(object sender, EventArgs e)
         {
             controlador.FinalizarPagamento();
+        }
+
+        private void btnConfigDesconto_Click(object sender, EventArgs e)
+        {
+            controlador.ConfigurarDesconto();
         }
     }
 }

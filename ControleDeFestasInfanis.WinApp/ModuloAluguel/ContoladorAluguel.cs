@@ -8,6 +8,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 {
     public class ContoladorAluguel : ControladorBase
     {
+        Desconto desconto { get; set; } = new();
         IRepositorioCliente repositorioCliente;
         IRepositorioTema repositorioTema;
         IRepositorioAluguel repositorioAluguel;
@@ -25,14 +26,18 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         public override string ToolTipExcluir => "Excluir aluguelSelecionado existente";
         public override string ToolTipFiltrar => "Filtrar alugueis";
         public override string ToolTipFinalizarPagamento => "Finalizar pagamento de um aluguelSelecionado existente";
+        public override string ToolTipConfigDesconto => "Configurar percentuais de desconto";
 
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
         public override bool FiltrarHabilitado => true;
         public override bool SeparadorVisivel1 => true;
+        public override bool SeparadorVisivel4 => true;
         public override bool FinalizarPagamentoHabilitado => true;
         public override bool FinalizarPagamentoVisivel => true;
+        public override bool ConfigDescontoHabilitado => true;
+        public override bool ConfigDescontoVisivel => true;
 
         public override void Inserir()
         {
@@ -65,7 +70,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
                 repositorioAluguel.Inserir(aluguel);
 
-                TelaFestaPagamentoForm telaPgto = new();
+                TelaPgtoEntradaForm telaPgto = new(desconto);
 
                 telaPgto.ConfigurarTela(aluguel);                
                 telaPgto.ShowDialog();
@@ -120,11 +125,10 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
                 repositorioAluguel.Editar(aluguelSelecionado, aluguel);
 
-                TelaFestaPagamentoForm telaPgto = new();
+                TelaPgtoEntradaForm telaPgto = new(desconto);
 
                 telaPgto.ConfigurarTela(aluguel);
                 telaPgto.ShowDialog();
-                telaPgto.RealizarPagamentoDaEntrada();
 
                 TelaPrincipalForm.Tela.AtualizarRodape("");
 
@@ -201,11 +205,10 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 return;
             }
 
-            TelaFinalizarPagamentoForm tela = new();
+            TelaPgtoFinalForm tela = new();
+
             tela.ConfigurarTela(aluguelSelecionado);
             tela.ShowDialog();
-
-            //DialogResult opcaoEscolhida = tela.ShowDialog();
 
             if (tela.DialogResult == DialogResult.OK)
             {
@@ -219,6 +222,23 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
 
             CarregarAlugueis();
+        }
+
+        public override void ConfigurarDesconto()
+        {
+            Desconto desconto = new();
+            TelaConfiguracaoDescontoForm tela = new();
+
+            tela.ConfigurarTela(desconto);
+            tela.ShowDialog();
+
+            if (tela.DialogResult == DialogResult.OK)
+            {
+                TelaPrincipalForm.Tela.AtualizarRodape("");
+
+                this.desconto = desconto;
+            }
+
         }
 
         public override UserControl ObterListagem()

@@ -16,6 +16,8 @@
 
         public virtual string? ToolTipFinalizarPagamento { get { return "Finalizar pagamento indisponível"; } }
 
+        public virtual string? ToolTipConfigDesconto { get { return "Configurar desconto indisponível"; } }
+
         public virtual bool InserirHabilitado { get { return true; } }
         public virtual bool EditarHabilitado { get { return true; } }
         public virtual bool ExcluirHabilitado { get { return true; } }
@@ -23,6 +25,7 @@
         public virtual bool AdicionarItensHabilitado { get { return true; } }
         public virtual bool RemoverItensHabilitado { get { return true; } }
         public virtual bool FinalizarPagamentoHabilitado { get { return true; } }
+        public virtual bool ConfigDescontoHabilitado { get { return true; } }
 
         public virtual bool InserirVisivel { get { return true; } }
         public virtual bool EditarVisivel { get { return true; } }
@@ -31,11 +34,13 @@
         public virtual bool AdicionarItensVisivel { get { return false; } }
         public virtual bool RemoverItensVisivel { get { return false; } }
         public virtual bool FinalizarPagamentoVisivel { get { return false; } }
+        public virtual bool ConfigDescontoVisivel { get { return false; } }
 
         public virtual bool SeparadorVisivel1 { get { return false; } }
         public virtual bool SeparadorVisivel2 { get { return false; } }
         public virtual bool SeparadorVisivel3 { get { return false; } }
-        public virtual bool SeparadorVisivel4 { get { return true; } }
+        public virtual bool SeparadorVisivel4 { get { return false; } }
+        public virtual bool SeparadorVisivel5 { get { return true; } }
 
         public abstract void Inserir();
 
@@ -50,6 +55,8 @@
         public virtual void RemoverItens() { }
 
         public virtual void FinalizarPagamento() { }
+
+        public virtual void ConfigurarDesconto() { }
 
         public virtual void Visualizar(){ }
         

@@ -2,19 +2,17 @@
 
 namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 {
-    public partial class TelaFinalizarPagamentoForm : Form
+    public partial class TelaPgtoFinalForm : Form
     {
         Aluguel aluguel { get; set; }
 
-        public TelaFinalizarPagamentoForm()
+        public TelaPgtoFinalForm()
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
 
             CarregarOpcoesDePgto();
-
-            //ConfigurarTela(aluguel);
         }
 
         internal void ConfigurarTela(Aluguel aluguelSelecionado)
@@ -39,12 +37,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            //aluguel.dataQuitacao = DateTime.Now;
-
-            //aluguel.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Completo;
-
-            //aluguel.status = StatusAluguelEnum.Finalizado;
-
             aluguel.formaPagamento = (OpcoesPgtoEnum)cmbPagamento.SelectedItem;
 
             if (aluguel.formaPagamento == OpcoesPgtoEnum.Nenhum)

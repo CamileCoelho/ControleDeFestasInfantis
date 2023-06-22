@@ -3,11 +3,13 @@ using System.Text.RegularExpressions;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
-    public partial class TelaFestaPagamentoForm : Form
+    public partial class TelaPgtoEntradaForm : Form
     {
         public Aluguel aluguelSelecionado { get; set; }
 
-        public TelaFestaPagamentoForm()
+        Desconto desconto { get; set; } 
+
+        public TelaPgtoEntradaForm(Desconto desconto)
         {
             InitializeComponent();
 
@@ -16,19 +18,21 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             CarregarOpcoesDePgto();
 
             TelaPrincipalForm.Tela.AtualizarRodape("O valor de entrada deve ser entre 40% e 50% do valor total!");
+
+            this.desconto = desconto;   
         }
 
         public void RealizarPagamentoDaEntrada()
         {
-            aluguelSelecionado.pagamento.valorTotal = aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * aluguelSelecionado.pagamento.porcentagemDesconto) / 100);
+            aluguelSelecionado.pagamento.valorTotal = aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * desconto.porcentagemDesconto) / 100);
             aluguelSelecionado.pagamento.valorFinal = aluguelSelecionado.pagamento.valorTotal - aluguelSelecionado.pagamento.valorEntrada;
             aluguelSelecionado.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Parcial;
         }
 
-        internal void ConfigurarTela(Aluguel aluguel)
+        public void ConfigurarTela(Aluguel aluguel)
         {
             txtCliente.Text = aluguel.cliente.nome;
-            txtValorTotal.Text = (aluguel.festa.tema.valorTotalTema - (aluguel.festa.tema.valorTotalTema * aluguel.pagamento.porcentagemDesconto / 100)).ToString();
+            txtValorTotal.Text = (aluguel.festa.tema.valorTotalTema - (aluguel.festa.tema.valorTotalTema * desconto.porcentagemDesconto / 100)).ToString();
             txtValorEntrada.Text = (String.Format("{0:0.00}", aluguel.pagamento.valorEntrada).ToString());
             aluguel.formaPagamento = OpcoesPgtoEnum.Nenhum;
 

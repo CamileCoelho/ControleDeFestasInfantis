@@ -50,6 +50,8 @@
             toolStripSeparator3 = new ToolStripSeparator();
             btnFinalizarPgto = new ToolStripButton();
             toolStripSeparator4 = new ToolStripSeparator();
+            btnConfigDesconto = new ToolStripButton();
+            toolStripSeparator5 = new ToolStripSeparator();
             labelTipoDoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
             menuStrip1.SuspendLayout();
@@ -127,10 +129,10 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator1, btnFiltrar, toolStripSeparator2, btnAdicionarItens, btnRemoverItens, toolStripSeparator3, btnFinalizarPgto, toolStripSeparator4, labelTipoDoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator1, btnFiltrar, toolStripSeparator2, btnAdicionarItens, btnRemoverItens, toolStripSeparator3, btnFinalizarPgto, toolStripSeparator4, btnConfigDesconto, toolStripSeparator5, labelTipoDoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(1184, 25);
+            toolStrip1.Size = new Size(1184, 35);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -250,22 +252,41 @@
             // toolStripSeparator4
             // 
             toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 25);
+            toolStripSeparator4.Size = new Size(6, 35);
             toolStripSeparator4.Visible = false;
+            // 
+            // btnConfigDesconto
+            // 
+            btnConfigDesconto.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnConfigDesconto.Enabled = false;
+            btnConfigDesconto.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnConfigDesconto.Image = (Image)resources.GetObject("btnConfigDesconto.Image");
+            btnConfigDesconto.ImageTransparentColor = Color.Magenta;
+            btnConfigDesconto.Name = "btnConfigDesconto";
+            btnConfigDesconto.Padding = new Padding(6);
+            btnConfigDesconto.Size = new Size(32, 32);
+            btnConfigDesconto.Visible = false;
+            btnConfigDesconto.Click += btnConfigDesconto_Click;
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(6, 35);
+            toolStripSeparator5.Visible = false;
             // 
             // labelTipoDoCadastro
             // 
             labelTipoDoCadastro.Name = "labelTipoDoCadastro";
-            labelTipoDoCadastro.Size = new Size(76, 22);
+            labelTipoDoCadastro.Size = new Size(76, 32);
             labelTipoDoCadastro.Text = "                       ";
             // 
             // panelRegistros
             // 
             panelRegistros.BorderStyle = BorderStyle.FixedSingle;
             panelRegistros.Dock = DockStyle.Fill;
-            panelRegistros.Location = new Point(0, 49);
+            panelRegistros.Location = new Point(0, 59);
             panelRegistros.Name = "panelRegistros";
-            panelRegistros.Size = new Size(1184, 586);
+            panelRegistros.Size = new Size(1184, 576);
             panelRegistros.TabIndex = 3;
             // 
             // TelaPrincipalForm
@@ -310,7 +331,7 @@
         private ToolStripButton btnEditar;
         private ToolStripButton btnExcluir;
         private Panel panelRegistros;
-        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripSeparator toolStripSeparator5;
         private ToolStripLabel labelTipoDoCadastro;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton btnFiltrar;
@@ -322,6 +343,8 @@
         private ToolStripMenuItem itensParaLocaçãoMenuItem;
         private ToolStripMenuItem temasMenuItem;
         private ToolStripSeparator toolStripSeparator3;
+        private ToolStripButton btnConfigDesconto;
         private ToolStripButton btnFinalizarPgto;
+        private ToolStripSeparator toolStripSeparator4;
     }
 }
