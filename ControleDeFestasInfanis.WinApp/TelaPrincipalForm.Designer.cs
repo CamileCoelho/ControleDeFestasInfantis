@@ -257,7 +257,7 @@
             btnConfigDesconto.Padding = new Padding(6);
             btnConfigDesconto.Size = new Size(32, 32);
             btnConfigDesconto.Visible = false;
-            btnConfigDesconto.Click += btnConfigDesconto_Click_1;
+            btnConfigDesconto.Click += btnConfigDesconto_Click;
             // 
             // btnVisualizar
             // 

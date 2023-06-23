@@ -168,15 +168,10 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnConfigDesconto_Click(object sender, EventArgs e)
-        {
             controlador.Visualizar();
         }
 
-        private void btnConfigDesconto_Click_1(object sender, EventArgs e)
+        private void btnConfigDesconto_Click(object sender, EventArgs e)
         {
             controlador.ConfigurarDesconto();
         }

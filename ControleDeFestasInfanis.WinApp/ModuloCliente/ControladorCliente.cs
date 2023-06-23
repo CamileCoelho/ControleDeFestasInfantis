@@ -21,6 +21,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
+        public override bool VisualizarHabilitado => true;
 
         public override void Inserir()
         {
@@ -36,6 +37,23 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
                 CarregarClientes();
             }
+        }
+
+        public override void Visualizar()
+        {
+            Cliente Cliente = ObterClienteSelecionado();
+
+            if (Cliente == null)
+            {
+                MessageBox.Show($"Selecione um cliente!!!",
+                    "Visualização de alkugueis de clientes",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+
         }
 
         public override void Editar()
