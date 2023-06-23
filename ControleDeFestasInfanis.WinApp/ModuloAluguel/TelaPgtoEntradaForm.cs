@@ -7,7 +7,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
     {
         public Aluguel aluguelSelecionado { get; set; }
 
-        Desconto desconto { get; set; } 
+        Desconto desconto { get; set; }
 
         public TelaPgtoEntradaForm(Desconto desconto)
         {
@@ -19,7 +19,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             TelaPrincipalForm.Tela.AtualizarRodape("O valor de entrada deve ser entre 40% e 50% do valor total!");
 
-            this.desconto = desconto;   
+            this.desconto = desconto;
         }
 
         public void RealizarPagamentoDaEntrada()
@@ -32,7 +32,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         public void ConfigurarTela(Aluguel aluguel)
         {
             txtCliente.Text = aluguel.cliente.nome;
-            txtValorTotal.Text = (aluguel.festa.tema.valorTotalTema - (aluguel.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguel.cliente.qtdAlugueisRealizados / 100)).ToString();
+            txtValorTotal.Text = (aluguel.festa.tema.valorTotalTema - (aluguel.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguel.cliente.qtdAlugueisRealizados / 100)).ToString("###,###.00");
             txtValorEntrada.Text = (String.Format("{0:0.00}", aluguel.pagamento.valorEntrada).ToString());
             aluguel.formaPagamento = OpcoesPgtoEnum.Nenhum;
 

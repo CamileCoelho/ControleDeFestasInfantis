@@ -7,7 +7,7 @@ namespace ControleDeFestasInfantis.Infra.Json.ModuloAluguel
     public class RepositorioDescontoEmArquivo : IRepositorioDesconto
     {
 
-        private const string NOME_ARQUIVO = "Compartilhado//Desconto.json";
+        private const string NOME_ARQUIVO = "Compartilhado//ConfigDesconto.json";
 
         public Desconto desconto { get; set; }
 
@@ -17,13 +17,11 @@ namespace ControleDeFestasInfantis.Infra.Json.ModuloAluguel
                 CarregarDoArquivoJson();
         }
 
-        public void GravarDesconto(Desconto desconto)
+        public void GravarDescontoEmArquivoJson(Desconto novoDesconto)
         {
-            this.desconto = desconto;
+            desconto = novoDesconto;
 
-            JsonSerializerOptions config = ObterConfiguracoes();
-
-            File.WriteAllText(NOME_ARQUIVO, JsonSerializer.Serialize(this, config));
+            File.WriteAllText(NOME_ARQUIVO, JsonSerializer.Serialize(novoDesconto, ObterConfiguracoes()));
         }
 
         public Desconto ObterDesconto()
@@ -31,31 +29,20 @@ namespace ControleDeFestasInfantis.Infra.Json.ModuloAluguel
             return desconto;
         }
 
-        public void GravarEmArquivoJson()
-        {
-            JsonSerializerOptions config = ObterConfiguracoes();
-
-            File.WriteAllText(NOME_ARQUIVO, JsonSerializer.Serialize(this, config));
-        }
-
         private void CarregarDoArquivoJson()
         {
             JsonSerializerOptions config = ObterConfiguracoes();
 
-            if (File.Exists(NOME_ARQUIVO))
-            {
-                if(File.ReadAllText(NOME_ARQUIVO).Length > 0)
-                    desconto = JsonSerializer.Deserialize<Desconto>(File.ReadAllText(NOME_ARQUIVO), config);
-            }
+            if (File.Exists(NOME_ARQUIVO) && File.ReadAllText(NOME_ARQUIVO).Length > 0)
+                desconto = JsonSerializer.Deserialize<Desconto>(File.ReadAllText(NOME_ARQUIVO), config);
             else
-            {
                 desconto = new Desconto();
-            }
         }
 
         private static JsonSerializerOptions ObterConfiguracoes()
         {
             JsonSerializerOptions opcoes = new();
+            opcoes.IncludeFields = true;
             opcoes.WriteIndented = true;
             opcoes.ReferenceHandler = ReferenceHandler.Preserve;
 

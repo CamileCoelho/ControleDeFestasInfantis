@@ -8,7 +8,7 @@ namespace ControleDeFestasInfantis.Dominio.ModuloAluguel
 {
     public interface IRepositorioDesconto
     {
-        void GravarDesconto(Desconto desconto);
+        void GravarDescontoEmArquivoJson(Desconto desconto);
         Desconto ObterDesconto();
     }
 }

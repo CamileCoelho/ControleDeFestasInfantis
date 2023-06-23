@@ -42,13 +42,13 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             foreach (var item in itens)
             {
-                gridtensTema.Rows.Add(item.id, item.descricao, item.quantidade, (item.valor * item.quantidade));
+                gridtensTema.Rows.Add(item.id, item.descricao, item.quantidade, "R$ " + (item.valor * item.quantidade));
             }
         }
 
         public void AtualizarRegistrosItens(Item item)
         {
-            gridtensTema.Rows.Add(item.id, item.descricao, item.quantidade, (item.valor * item.quantidade));
+            gridtensTema.Rows.Add(item.id, item.descricao, item.quantidade, "R$ " + (item.valor * item.quantidade));
         }
     }
 }

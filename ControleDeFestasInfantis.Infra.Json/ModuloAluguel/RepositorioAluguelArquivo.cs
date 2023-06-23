@@ -1,6 +1,7 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
 using ControleDeFestasInfantis.Dominio.ModuloCliente;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
+using ControleDeFestasInfantis.Infra.Json.Compartilhado;
 
 namespace ControleDeFestasInfantis.Infra.Json.ModuloFesta
 {
@@ -14,6 +15,12 @@ namespace ControleDeFestasInfantis.Infra.Json.ModuloFesta
         protected override List<Aluguel> ObterRegistros()
         {
             return contextoDeDados.alugueis;
+        }
+
+        public List<Aluguel> SelecionarConcluidas()
+        {
+            return ObterRegistros()
+                .Where(x => x.status == StatusAluguelEnum.Finalizado).ToList();
         }
     }
 }
