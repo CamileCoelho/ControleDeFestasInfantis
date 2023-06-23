@@ -9,7 +9,7 @@ namespace ControleDeFestasInfantis.Dominio.ModuloCliente
         public string nome { get; set; }
         public string telefone { get; set; }
         public string email { get; set; }
-        public int qtdAlugueisRealizados { get { return alugueisCliente.Where(x => x.pagamento.pgtoEfetuado == PgtoEfetuadoEnum.Parcial).Count(); } }
+        public int qtdAlugueisRealizados { get { return (alugueisCliente.Where(x => x.pagamento.pgtoEfetuado == PgtoEfetuadoEnum.Parcial).Count() + alugueisCliente.Where(x => x.pagamento.pgtoEfetuado == PgtoEfetuadoEnum.Completo).Count()); } }
 
         public Cliente()
         {

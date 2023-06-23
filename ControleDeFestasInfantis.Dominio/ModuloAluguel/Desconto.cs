@@ -2,7 +2,7 @@
 {
     public class Desconto
     {
-        public decimal porcentagemDesconto { get; set; } // calcula de acordo com a quantidade de alugueis realizados, com o desconto máximo de 15%
+        public decimal porcentagemDesconto { get; set; } 
         public decimal porcentagemDescontoMaximo { get; set; }
 
         public Desconto()

@@ -31,18 +31,14 @@ namespace ControleDeFestasInfantis.Infra.Json.Compartilhado
 
         public void GravarEmArquivoJson()
         {
-            JsonSerializerOptions config = ObterConfiguracoes();
-
-            File.WriteAllText(NOME_ARQUIVO, JsonSerializer.Serialize(this, config));
+            File.WriteAllText(NOME_ARQUIVO, JsonSerializer.Serialize(this, ObterConfiguracoes()));
         }
 
         private void CarregarDoArquivoJson()
         {
-            JsonSerializerOptions config = ObterConfiguracoes();
-
             if (File.Exists(NOME_ARQUIVO) && File.ReadAllText(NOME_ARQUIVO).Length > 0)
             {
-                ContextoDeDados ctx = JsonSerializer.Deserialize<ContextoDeDados>(File.ReadAllText(NOME_ARQUIVO), config);
+                ContextoDeDados ctx = JsonSerializer.Deserialize<ContextoDeDados>(File.ReadAllText(NOME_ARQUIVO), ObterConfiguracoes());
 
                 clientes = ctx.clientes;
                 alugueis = ctx.alugueis;
@@ -54,6 +50,7 @@ namespace ControleDeFestasInfantis.Infra.Json.Compartilhado
         private static JsonSerializerOptions ObterConfiguracoes()
         {
             JsonSerializerOptions opcoes = new();
+            opcoes.IncludeFields = true;
             opcoes.WriteIndented = true;
             opcoes.ReferenceHandler = ReferenceHandler.Preserve;
 

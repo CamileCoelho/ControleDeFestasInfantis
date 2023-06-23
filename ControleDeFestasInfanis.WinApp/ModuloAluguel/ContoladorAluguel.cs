@@ -260,19 +260,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
         public override void ConfigurarDesconto()
         {
-            Desconto desconto = repositorioDesconto.ObterDesconto();
+            TelaConfiguracaoDescontoForm tela = new(repositorioDesconto.ObterDesconto());
 
-            TelaConfiguracaoDescontoForm tela = new(desconto);
+            DialogResult opcaoEscolhida = tela.ShowDialog();
 
-            tela.ShowDialog();
-
-            if (tela.DialogResult == DialogResult.OK)
+            if (opcaoEscolhida == DialogResult.OK)
             {
                 Desconto novoDesconto = tela.ObterDesconto();
 
-                repositorioDesconto.GravarDesconto(novoDesconto);
+                repositorioDesconto.GravarDescontoEmArquivoJson(novoDesconto);
             }
-
         }
 
         public override UserControl ObterListagem()

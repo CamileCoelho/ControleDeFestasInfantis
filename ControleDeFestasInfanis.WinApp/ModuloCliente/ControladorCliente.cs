@@ -125,8 +125,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
                 return;
             }
 
-            CarregarAlugueisCliente(clienteSelecionado);
-
             if (clienteSelecionado.alugueisCliente.Count() == 0)
             {
                 MessageBox.Show($"Esse cliente não possuí alugueis!",
@@ -144,20 +142,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
             TelaAlugueisClienteForm tela = new(tabelaAlugueisCliente);
             tela.ShowDialog();
-        }
-
-        private void CarregarAlugueisCliente(Cliente clienteSelecionado)
-        {
-            foreach (Aluguel aluguel in repositorioAluguel.SelecionarTodos())
-            {
-                if (aluguel.cliente == clienteSelecionado)
-                {
-                    if (clienteSelecionado.alugueisCliente.Any(x => x == aluguel))
-                        continue;
-
-                    clienteSelecionado.alugueisCliente.Add(aluguel);
-                }
-            }
         }
 
         private void CarregarClientes()

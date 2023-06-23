@@ -50,8 +50,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             foreach (var aluguel in alugueis)
             {
                 grid.Rows.Add(aluguel.id, DateOnly.FromDateTime(aluguel.festa.data),
-                    aluguel.cliente.nome, aluguel.cliente.telefone, aluguel.festa.tema, 
-                    aluguel.pagamento.valorTotal, aluguel.pagamento.pgtoEfetuado, 
+                    aluguel.cliente.nome, aluguel.cliente.telefone, aluguel.festa.tema,
+                    "R$ " + aluguel.pagamento.valorTotal, aluguel.pagamento.pgtoEfetuado, 
                     aluguel.status, aluguel?.dataQuitacao.Date.ToString("dd/MM/yyyy"));
             }
         }

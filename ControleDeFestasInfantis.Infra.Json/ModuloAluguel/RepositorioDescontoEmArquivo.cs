@@ -17,25 +17,16 @@ namespace ControleDeFestasInfantis.Infra.Json.ModuloAluguel
                 CarregarDoArquivoJson();
         }
 
-        public void GravarDesconto(Desconto desconto)
+        public void GravarDescontoEmArquivoJson(Desconto novoDesconto)
         {
-            this.desconto = desconto;
+            desconto = novoDesconto;
 
-            JsonSerializerOptions config = ObterConfiguracoes();
-
-            File.WriteAllText(NOME_ARQUIVO, JsonSerializer.Serialize(this, config));
+            File.WriteAllText(NOME_ARQUIVO, JsonSerializer.Serialize(this, ObterConfiguracoes()));
         }
 
         public Desconto ObterDesconto()
         {
             return desconto;
-        }
-
-        public void GravarEmArquivoJson()
-        {
-            JsonSerializerOptions config = ObterConfiguracoes();
-
-            File.WriteAllText(NOME_ARQUIVO, JsonSerializer.Serialize(this, config));
         }
 
         private void CarregarDoArquivoJson()
@@ -56,6 +47,7 @@ namespace ControleDeFestasInfantis.Infra.Json.ModuloAluguel
         private static JsonSerializerOptions ObterConfiguracoes()
         {
             JsonSerializerOptions opcoes = new();
+            opcoes.IncludeFields = true;
             opcoes.WriteIndented = true;
             opcoes.ReferenceHandler = ReferenceHandler.Preserve;
 
