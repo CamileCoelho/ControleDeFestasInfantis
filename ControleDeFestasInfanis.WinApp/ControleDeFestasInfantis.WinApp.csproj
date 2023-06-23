@@ -18,8 +18,12 @@
       <SubType>UserControl</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="ModuloAluguel\TelaFestaPagamentoForm.cs">
+    <Compile Update="ModuloAluguel\TelaPgtoEntradaForm.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="ModuloCliente\TabelaAlugueisClienteControl.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="ModuloCliente\TabelaClienteControl.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

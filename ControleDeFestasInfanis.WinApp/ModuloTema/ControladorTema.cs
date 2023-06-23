@@ -1,18 +1,20 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloItem;
+﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
+using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
-using ControleDeFestasInfantis.WinApp.ModuloItem;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloTema
 {
     public class ControladorTema : ControladorBase
     {
+        IRepositorioAluguel repositorioAluguel;
         IRepositorioItem repositorioItem;
         IRepositorioTema repositorioTema;
         TabelaTemaControl tabelaTema;
         TabelaItensTema tabelaItensTema;
 
-        public ControladorTema(IRepositorioItem repositorioItem, IRepositorioTema repositorioTema)
+        public ControladorTema(IRepositorioAluguel repositorioAluguel, IRepositorioItem repositorioItem, IRepositorioTema repositorioTema)
         {
+            this.repositorioAluguel = repositorioAluguel;
             this.repositorioItem = repositorioItem;
             this.repositorioTema = repositorioTema;
         }
@@ -30,12 +32,26 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
+        public override bool SeparadorVisivel1 => true;
         public override bool AdicionarItensHabilitado => true;
         public override bool RemoverItensHabilitado => true;
+        public override bool AdicionarItensVisivel => true;
+        public override bool RemoverItensVisivel => true;
+
 
         public override void Inserir()
         {
-            TelaTemaForm tela = new();
+            if (CarregarItens().Count() == 0)
+            {
+                MessageBox.Show($"Você deve cadastrar ao menos um item para poder criar um tema!",
+                    "Inserção de Temas",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            TelaTemaForm tela = new(repositorioTema.SelecionarTodos());
 
             DialogResult opcaoEscolhida = tela.ShowDialog();
 
@@ -63,7 +79,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 return;
             }
 
-            TelaTemaForm telaTema = new();
+            TelaTemaForm telaTema = new(repositorioTema.SelecionarTodos());
 
             telaTema.ConfigurarTela(temaSelecionado);
 
@@ -81,8 +97,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public override void Excluir()
         {
-            //TO-DO  VERIFICAR SE CONTEM ALUGEUL PARA ESSE TEMA, SE SIM NÃO PODE REMOVER O TEMA
-
             Tema temaSelecionado = ObterTemaSelecionado();
 
             if (temaSelecionado == null)
@@ -90,11 +104,18 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
                 MessageBox.Show($"Selecione um tema primeiro!",
                     "Exclusão de temas",
                     MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (repositorioAluguel.SelecionarTodos().Any(x => x.festa.tema == temaSelecionado))
+            {
+                MessageBox.Show($"Não é possivel remover esse tema pois ele possuí vinculo com ao menos um Aluguel!",
+                    "Exclusão de temas",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
                 return;
             }
-
             DialogResult opcaoEscolhida =
                 MessageBox.Show($"Deseja excluir o tema {temaSelecionado.titulo}?",
                 "Exclusão de Temas",
@@ -122,6 +143,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
                 return;
             }
+            if (repositorioAluguel.SelecionarTodos().Any(a => a.festa.tema == temaEscolhido))
+            {
+                MessageBox.Show($"Você não pode editar os itens desse tema pois ele já foi locado, caso necessário sugerimos que crie um novo tema com os itens que deseja!",
+                    "Adição de Itens",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
 
             List<Item> itens = CarregarItens();
 
@@ -141,8 +171,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public override void RemoverItens()
         {
-            //TO-DO  VERIFICAR SE CONTEM ALUGEUL PARA ESSE TEMA, SE SIM NÃO PODE REMOVER ITENS
-
             Tema temaEscolhido = ObterTemaSelecionado();
 
             if (temaEscolhido == null)
@@ -157,6 +185,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             if (temaEscolhido.itens.Count() == 0)
             {
                 MessageBox.Show($"Você deve cadastrar itens em um tema para poder remove-los!",
+                    "Remoção de Itens",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            if (repositorioAluguel.SelecionarTodos().Any(a => a.festa.tema == temaEscolhido))
+            {
+                MessageBox.Show($"Você não pode editar os itens desse tema pois ele já foi locado, caso necessário sugerimos que crie um novo tema com os itens que deseja!",
                     "Remoção de Itens",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);

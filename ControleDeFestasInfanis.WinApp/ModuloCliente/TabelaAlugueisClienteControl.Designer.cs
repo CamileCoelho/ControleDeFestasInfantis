@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace ControleDeFestasInfantis.WinApp.ModuloCliente
+﻿namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 {
-    partial class TabelaClienteControl
+    partial class TabelaAlugueisClienteControl
     {
         /// <summary> 
         /// Required designer variable.

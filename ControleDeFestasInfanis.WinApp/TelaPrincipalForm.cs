@@ -10,6 +10,7 @@ using ControleDeFestasInfantis.WinApp.ModuloCliente;
 using ControleDeFestasInfantis.WinApp.ModuloAluguel;
 using ControleDeFestasInfantis.WinApp.ModuloItem;
 using ControleDeFestasInfantis.WinApp.ModuloTema;
+using ControleDeFestasInfantis.Infra.Json.ModuloAluguel;
 
 namespace ControleDeFestasInfantis.WinApp
 {
@@ -19,6 +20,7 @@ namespace ControleDeFestasInfantis.WinApp
 
         static ContextoDeDados contextoDeDados = new(carregarDados: true);
 
+        private IRepositorioDesconto repositorioDesconto = new RepositorioDescontoEmArquivo(carregarDados: true);
         private IRepositorioCliente repositorioCliente = new RepositorioClienteArquivo(contextoDeDados);
         private IRepositorioAluguel repositorioAluguel = new RepositorioAluguelArquivo(contextoDeDados);
         private IRepositorioItem repositorioItem = new RepositorioItemArquivo(contextoDeDados);
@@ -27,6 +29,8 @@ namespace ControleDeFestasInfantis.WinApp
         public TelaPrincipalForm()
         {
             InitializeComponent();
+
+            this.ConfigurarDialog();
 
             Tela = this;
         }
@@ -44,14 +48,14 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void contatosMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorCliente(repositorioCliente);
+            controlador = new ControladorCliente(repositorioAluguel, repositorioCliente);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void alugueisMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ContoladorAluguel(repositorioCliente, repositorioTema, repositorioAluguel);
+            controlador = new ContoladorAluguel(repositorioCliente, repositorioTema, repositorioAluguel, repositorioDesconto);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -65,7 +69,7 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void temasMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorTema(repositorioItem, repositorioTema);
+            controlador = new ControladorTema(repositorioAluguel, repositorioItem, repositorioTema);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -98,7 +102,9 @@ namespace ControleDeFestasInfantis.WinApp
             btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
             btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
             btnRemoverItens.ToolTipText = controlador.ToolTipRemoverItens;
-            btnFinalizarPgto.ToolTipText = controlador.ToolTipFinalizarPagamento;
+            btnConfigDesconto.ToolTipText = controlador.ToolTipFinalizarPagamento;
+            btnConfigDesconto.ToolTipText = controlador.ToolTipConfigDesconto;
+            btnVisualizar.ToolTipText = controlador.ToolTipVisualizar;
 
             btnInserir.Enabled = controlador.InserirHabilitado;
             btnEditar.Enabled = controlador.EditarHabilitado;
@@ -107,6 +113,25 @@ namespace ControleDeFestasInfantis.WinApp
             btnAdicionarItens.Enabled = controlador.AdicionarItensHabilitado;
             btnRemoverItens.Enabled = controlador.RemoverItensHabilitado;
             btnFinalizarPgto.Enabled = controlador.FinalizarPagamentoHabilitado;
+            btnConfigDesconto.Enabled = controlador.ConfigDescontoHabilitado;
+            btnVisualizar.Enabled = controlador.VisualizarHabilitado;
+
+            btnInserir.Visible = controlador.InserirVisivel;
+            btnEditar.Visible = controlador.EditarVisivel;
+            btnExcluir.Visible = controlador.ExcluirVisivel;
+            btnFiltrar.Visible = controlador.FiltrarVisivel;
+            btnAdicionarItens.Visible = controlador.AdicionarItensVisivel;
+            btnRemoverItens.Visible = controlador.RemoverItensVisivel;
+            btnFinalizarPgto.Visible = controlador.FinalizarPagamentoVisivel;
+            btnConfigDesconto.Visible = controlador.ConfigDescontoVisivel;
+            btnVisualizar.Visible = controlador.VisualizarVisivel;
+
+            toolStripSeparator1.Visible = controlador.SeparadorVisivel1;
+            toolStripSeparator2.Visible = controlador.SeparadorVisivel2;
+            toolStripSeparator3.Visible = controlador.SeparadorVisivel3;
+            toolStripSeparator4.Visible = controlador.SeparadorVisivel4;
+            toolStripSeparator5.Visible = controlador.SeparadorVisivel5;
+            toolStripSeparator6.Visible = controlador.SeparadorVisivel6;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -142,6 +167,16 @@ namespace ControleDeFestasInfantis.WinApp
         private void btnFinalizarPgto_Click(object sender, EventArgs e)
         {
             controlador.FinalizarPagamento();
+        }
+
+        private void btnConfigDesconto_Click(object sender, EventArgs e)
+        {
+            controlador.ConfigurarDesconto();
+        }
+
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            controlador.Visualizar();
         }
     }
 }

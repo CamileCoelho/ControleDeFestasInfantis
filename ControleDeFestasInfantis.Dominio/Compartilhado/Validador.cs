@@ -27,10 +27,10 @@ namespace ControleDeFestasInfantis.Dominio.Compartilhado
 
         public bool ValidaTelefone(string telefone)
         {
-            // formato (XX)XXXXX-XXXX
-            Regex Rgx = new(@"^\(\d{2}\)\ \d{5}-\d{4}$");
+            // formato (XX)9XXXX-XXXX
+            Regex rgx = new Regex(@"^\(\d{2}\)\s9\d{4}-\d{4}$");
 
-            if (Rgx.IsMatch(telefone))
+            if (rgx.IsMatch(telefone))
                 return false;
             else
                 return true;
@@ -39,9 +39,9 @@ namespace ControleDeFestasInfantis.Dominio.Compartilhado
         public bool ValidaFormatoEmail(string email)
         {
             // formato permitido: qualquer coisa antes do "@" seguido por pelo menos uma letra depois
-            Regex Rgx = new(@"^[^\s@]+@[^\s@]+\.[^\s@]+$");
+            Regex rgx = new(@"^[^\s@]+@[^\s@]+\.[^\s@]+$");
 
-            if (Rgx.IsMatch(email))
+            if (rgx.IsMatch(email))
                 return false;
             else
                 return true;
@@ -50,9 +50,9 @@ namespace ControleDeFestasInfantis.Dominio.Compartilhado
         public bool ValidaEmail(string email)
         { 
             // formato permitido: qualquer coisa antes do "@" seguido por pelo menos um caractere depois
-            Regex Rgx = new(@"^[^\s@]+@[^\s@]+$");
+            Regex rgx = new(@"^[^\s@]+@[^\s@]+$");
 
-            if (Rgx.IsMatch(email))
+            if (rgx.IsMatch(email))
                 return false;
             else
                 return true;

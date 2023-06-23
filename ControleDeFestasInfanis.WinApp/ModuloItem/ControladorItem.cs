@@ -31,8 +31,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
         public override bool ExcluirHabilitado => true;
 
         public override void Inserir()
-        {
-            TelaItemForm telaItem = new();
+        {           
+            TelaItemForm telaItem = new(repositorioItem.SelecionarTodos());
 
             DialogResult opcaoEscolhida = telaItem.ShowDialog();
 
@@ -60,7 +60,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
                 return;
             }
 
-            TelaItemForm tela = new();
+            TelaItemForm tela = new(repositorioItem.SelecionarTodos());
 
             tela.ConfigurarTela(itemSelecionado);
 

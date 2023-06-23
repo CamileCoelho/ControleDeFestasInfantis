@@ -8,12 +8,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
     public partial class TelaAluguelForm : Form
     {
         Aluguel aluguel { get; set; }
+        Desconto desconto { get; set; } 
 
-        public TelaAluguelForm(List<Cliente> clientes, List<Tema> temas)
+        public TelaAluguelForm(Desconto desconto, List<Cliente> clientes, List<Tema> temas)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
+
+            this.desconto = desconto;
 
             CarregarClientes(clientes);
 
@@ -22,17 +25,23 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
         public Aluguel ObterAluguel()
         {
+            int id = Convert.ToInt32(txtId.Text);
+
+            Pagamento pgto = new();
+
             Cliente cliente = (Cliente)cmbClientes.SelectedItem;
 
             Tema tema = (Tema)cmbTemas.SelectedItem;
 
             string cidade = txtCidade.Text;
+
             string rua = txtRua.Text;
 
-            string texto = txtNumero.Text;
+            string textoNumero = txtNumero.Text;
+
             int numero;
 
-            if (int.TryParse(texto, out numero))
+            if (int.TryParse(textoNumero, out numero))
             {
                 numero = Convert.ToInt32(txtNumero.Text);
             }
@@ -45,7 +54,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             Festa festa = new(tema, endereco, data, horarioInicio, horarioTermino);
 
-            return new(cliente, festa);
+            return new(id, pgto, cliente, festa);
         }
 
         internal void ConfigurarTela(Aluguel aluguelSelecionado)
@@ -78,14 +87,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
         }
 
-        private void txtNuemro_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void btnGravar_Click(object sender, EventArgs e)
         {
             aluguel = ObterAluguel();
@@ -103,6 +104,14 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             TelaPrincipalForm.Tela.AtualizarRodape("");
 
             return;
+        }
+
+        private void txtNuemro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

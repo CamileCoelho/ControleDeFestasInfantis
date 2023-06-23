@@ -1,4 +1,5 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloItem;
+﻿using ControleDeFestasInfantis.Dominio.ModuloCliente;
+using ControleDeFestasInfantis.Dominio.ModuloItem;
 using System.Text.RegularExpressions;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloItem
@@ -6,33 +7,27 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
     public partial class TelaItemForm : Form
     {
         private Item item { get; set; }
+        private Item itemSelecionado { get; set; }
+        private List<Item> itens { get; set; }
 
-        public TelaItemForm()
+        public TelaItemForm(List<Item> itens)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
-        }
 
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            item = ObterItem();
-
-            string status = item.Validar();
-
-            TelaPrincipalForm.Tela.AtualizarRodape(status);
-
-            if (status != "")
-                DialogResult = DialogResult.None;
+            this.itens = itens;
         }
 
         public Item ObterItem()
         {
-            string descricao = txtDescricao.Text;
+            int id = Convert.ToInt32(txtId.Text);
+
+            string descricao = txtDescricao.Text.Trim();
 
             string valor = txtValor.Text;
 
-            return new(descricao, valor);
+            return new(id, descricao, valor);
         }
 
         public void ConfigurarTela(Item itemSelecionado)
@@ -40,6 +35,24 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
             txtId.Text = itemSelecionado.id.ToString();
             txtDescricao.Text = itemSelecionado.descricao;
             txtValor.Text = itemSelecionado.valor.ToString();
+
+            this.itemSelecionado = itemSelecionado;
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            item = ObterItem();
+            string status = "";
+
+            if (itens.Where(i => item.id != itemSelecionado?.id).Any(x => x.descricao == item.descricao))
+                status = "Já existe um item cadastrado com esse nome!";
+            else
+                status = item.Validar();
+
+            TelaPrincipalForm.Tela.AtualizarRodape(status);
+
+            if (status != "")
+                DialogResult = DialogResult.None;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
