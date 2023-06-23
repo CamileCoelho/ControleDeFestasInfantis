@@ -1,4 +1,5 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
+﻿
+using ControleDeFestasInfantis.Dominio.ModuloAluguel;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 {

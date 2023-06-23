@@ -13,7 +13,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             InitializeComponent();
 
             this.ConfigurarDialog();
-            
+
             this.clientes = clientes;
         }
 

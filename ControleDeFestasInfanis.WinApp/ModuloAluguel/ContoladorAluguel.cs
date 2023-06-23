@@ -77,6 +77,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
                 TelaPrincipalForm.Tela.AtualizarRodape("");
 
+                aluguel.cliente.alugueisCliente.Add(aluguel);
+
                 if (telaPgto.DialogResult == DialogResult.Cancel)
                 {
                     tela.DialogResult = DialogResult.Cancel;

@@ -39,11 +39,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             return colunas;
         }
 
-        //public int ObterNumeroClienteSelecionado()
-        //{
-        //    return grid.SelecionarNumero<int>();
-        //}
-
         public void AtualizarRegistros(List<Aluguel> alugueisCliente)
         {
             grid.Rows.Clear();

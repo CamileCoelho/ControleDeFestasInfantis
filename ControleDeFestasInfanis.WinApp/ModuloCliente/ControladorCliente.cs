@@ -111,7 +111,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             }
         }
 
-        public override void Visualizar() 
+        public override void Visualizar()
         {
             Cliente clienteSelecionado = ObterClienteSelecionado();
 
@@ -125,16 +125,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
                 return;
             }
 
-            foreach (Aluguel aluguel in CarregarAlugueis())
-            {
-                if (aluguel.cliente == clienteSelecionado)
-                {
-                    if (clienteSelecionado.alugueisCliente.Any(x => x == aluguel))
-                        continue;
-
-                    clienteSelecionado.alugueisCliente.Add(aluguel);
-                }
-            }
+            CarregarAlugueisCliente(clienteSelecionado);
 
             if (clienteSelecionado.alugueisCliente.Count() == 0)
             {
@@ -150,9 +141,23 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
                 tabelaAlugueisCliente = new TabelaAlugueisClienteControl();
 
             tabelaAlugueisCliente.AtualizarRegistros(clienteSelecionado.alugueisCliente);
-            
+
             TelaAlugueisClienteForm tela = new(tabelaAlugueisCliente);
             tela.ShowDialog();
+        }
+
+        private void CarregarAlugueisCliente(Cliente clienteSelecionado)
+        {
+            foreach (Aluguel aluguel in repositorioAluguel.SelecionarTodos())
+            {
+                if (aluguel.cliente == clienteSelecionado)
+                {
+                    if (clienteSelecionado.alugueisCliente.Any(x => x == aluguel))
+                        continue;
+
+                    clienteSelecionado.alugueisCliente.Add(aluguel);
+                }
+            }
         }
 
         private void CarregarClientes()
@@ -160,11 +165,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             List<Cliente> cliente = repositorioCliente.SelecionarTodos();
 
             tabelaCliente.AtualizarRegistros(cliente);
-        }
-
-        private List<Aluguel> CarregarAlugueis()
-        {
-            return repositorioAluguel.SelecionarTodos();
         }
 
         public override UserControl ObterListagem()

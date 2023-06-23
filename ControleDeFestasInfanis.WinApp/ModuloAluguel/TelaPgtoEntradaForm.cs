@@ -24,7 +24,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public void RealizarPagamentoDaEntrada()
         {
-            aluguelSelecionado.pagamento.valorTotal = aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * desconto.porcentagemDesconto) / 100);
+            aluguelSelecionado.pagamento.valorTotal = aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguelSelecionado.cliente.qtdAlugueisRealizados) / 100);
             aluguelSelecionado.pagamento.valorFinal = aluguelSelecionado.pagamento.valorTotal - aluguelSelecionado.pagamento.valorEntrada;
             aluguelSelecionado.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Parcial;
         }
@@ -32,7 +32,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         public void ConfigurarTela(Aluguel aluguel)
         {
             txtCliente.Text = aluguel.cliente.nome;
-            txtValorTotal.Text = (aluguel.festa.tema.valorTotalTema - (aluguel.festa.tema.valorTotalTema * desconto.porcentagemDesconto / 100)).ToString();
+            txtValorTotal.Text = (aluguel.festa.tema.valorTotalTema - (aluguel.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguel.cliente.qtdAlugueisRealizados / 100)).ToString();
             txtValorEntrada.Text = (String.Format("{0:0.00}", aluguel.pagamento.valorEntrada).ToString());
             aluguel.formaPagamento = OpcoesPgtoEnum.Nenhum;
 
@@ -56,6 +56,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
             aluguelSelecionado.pagamento.valorEntrada = Convert.ToDecimal(String.Format("{0:0.00}", txtValorEntrada.Text));
 
+            aluguelSelecionado.pagamento.valorFinal = aluguelSelecionado.pagamento.valorTotal - aluguelSelecionado.pagamento.valorEntrada;
             aluguelSelecionado.formaPagamento = (OpcoesPgtoEnum)cmbPagamento.SelectedItem;
 
             if (aluguelSelecionado.pagamento.valorEntrada < aluguelSelecionado.pagamento.valorTotal * 40 / 100 || aluguelSelecionado.pagamento.valorEntrada > aluguelSelecionado.pagamento.valorTotal * 50 / 100)

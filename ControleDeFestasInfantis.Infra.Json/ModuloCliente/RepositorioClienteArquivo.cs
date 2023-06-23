@@ -1,4 +1,5 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloCliente;
+﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
+using ControleDeFestasInfantis.Dominio.ModuloCliente;
 
 namespace ControleDeFestasInfantis.Infra.Json.ModuloCliente
 {
