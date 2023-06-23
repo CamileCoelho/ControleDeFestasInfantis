@@ -10,6 +10,7 @@ using ControleDeFestasInfantis.WinApp.ModuloCliente;
 using ControleDeFestasInfantis.WinApp.ModuloAluguel;
 using ControleDeFestasInfantis.WinApp.ModuloItem;
 using ControleDeFestasInfantis.WinApp.ModuloTema;
+using ControleDeFestasInfantis.Infra.Json.ModuloAluguel;
 
 namespace ControleDeFestasInfantis.WinApp
 {
@@ -19,6 +20,7 @@ namespace ControleDeFestasInfantis.WinApp
 
         static ContextoDeDados contextoDeDados = new(carregarDados: true);
 
+        private IRepositorioDesconto repositorioDesconto = new RepositorioDescontoEmArquivo(carregarDados: true);
         private IRepositorioCliente repositorioCliente = new RepositorioClienteArquivo(contextoDeDados);
         private IRepositorioAluguel repositorioAluguel = new RepositorioAluguelArquivo(contextoDeDados);
         private IRepositorioItem repositorioItem = new RepositorioItemArquivo(contextoDeDados);
@@ -53,7 +55,7 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void alugueisMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ContoladorAluguel(repositorioCliente, repositorioTema, repositorioAluguel);
+            controlador = new ContoladorAluguel(repositorioCliente, repositorioTema, repositorioAluguel, repositorioDesconto);
 
             ConfigurarTelaPrincipal(controlador);
         }

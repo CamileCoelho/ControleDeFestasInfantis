@@ -72,8 +72,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
                 DialogResult = DialogResult.None;
             }
-
-            aluguelSelecionado.cliente.qtdAlugueisRealizados++;
         }
 
         private void txtValorEntrada_KeyPress(object sender, KeyPressEventArgs e)

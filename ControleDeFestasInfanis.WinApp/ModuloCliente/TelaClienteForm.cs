@@ -8,7 +8,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
         private Cliente clienteSelecionado { get; set; }
         private List<Cliente> clientes { get; set; }
 
-
         public TelaClienteForm(List<Cliente> clientes)
         {
             InitializeComponent();

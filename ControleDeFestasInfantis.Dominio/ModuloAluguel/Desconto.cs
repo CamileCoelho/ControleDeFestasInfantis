@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ControleDeFestasInfantis.Dominio.ModuloAluguel
+﻿namespace ControleDeFestasInfantis.Dominio.ModuloAluguel
 {
     public class Desconto
     {
@@ -21,6 +15,16 @@ namespace ControleDeFestasInfantis.Dominio.ModuloAluguel
         {
             this.porcentagemDesconto = porcentagemDesconto;
             this.porcentagemDescontoMaximo = porcentagemDescontoMaximo;
+        }
+
+        public string Validar()
+        {
+            Validador valida = new();
+
+            if (porcentagemDesconto > porcentagemDescontoMaximo)
+                return "A porcentagem de desconto não pode ultrapassar a porcentagem máxima!";
+
+            return "";
         }
     }
 }

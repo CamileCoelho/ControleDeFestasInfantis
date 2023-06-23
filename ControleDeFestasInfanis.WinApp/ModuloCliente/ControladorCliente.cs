@@ -10,7 +10,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
     {
         private IRepositorioAluguel repositorioAluguel;
         private IRepositorioCliente repositorioCliente;
-        private TabelaClienteControl listagemCliente;
+        private TabelaClienteControl tabelaCliente;
+        private TabelaAlugueisClienteControl tabelaAlugueisCliente;
 
         public ControladorCliente(IRepositorioAluguel repositorioAluguel, IRepositorioCliente repositorioCliente)
         {
@@ -117,30 +118,48 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             if (clienteSelecionado == null)
             {
                 MessageBox.Show($"Selecione um cliente primeiro!",
-                    "Exclusão de clientes",
+                    "Visalização de clientes",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
                 return;
             }
 
-            foreach (Aluguel a in CarregarAlugueis())
+            foreach (Aluguel aluguel in CarregarAlugueis())
             {
-                foreach (Aluguel a2 in clienteSelecionado.alugueisCliente)
+                if (aluguel.cliente == clienteSelecionado)
                 {
-                    if (a.cliente == clienteSelecionado && a2 != a)
-                    {
-                        clienteSelecionado.alugueisCliente.Add(a);
-                    }
+                    if (clienteSelecionado.alugueisCliente.Any(x => x == aluguel))
+                        continue;
+
+                    clienteSelecionado.alugueisCliente.Add(aluguel);
                 }
             }
+
+            if (clienteSelecionado.alugueisCliente.Count() == 0)
+            {
+                MessageBox.Show($"Esse cliente não possuí alugueis!",
+                    "Visalização de clientes",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            if (tabelaAlugueisCliente == null)
+                tabelaAlugueisCliente = new TabelaAlugueisClienteControl();
+
+            tabelaAlugueisCliente.AtualizarRegistros(clienteSelecionado.alugueisCliente);
+            
+            TelaAlugueisClienteForm tela = new(tabelaAlugueisCliente);
+            tela.ShowDialog();
         }
 
         private void CarregarClientes()
         {
             List<Cliente> cliente = repositorioCliente.SelecionarTodos();
 
-            listagemCliente.AtualizarRegistros(cliente);
+            tabelaCliente.AtualizarRegistros(cliente);
         }
 
         private List<Aluguel> CarregarAlugueis()
@@ -150,12 +169,12 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
         public override UserControl ObterListagem()
         {
-            if (listagemCliente == null)
-                listagemCliente = new TabelaClienteControl();
+            if (tabelaCliente == null)
+                tabelaCliente = new TabelaClienteControl();
 
             CarregarClientes();
 
-            return listagemCliente;
+            return tabelaCliente;
         }
 
         public override string ObterTipoCadastro()
@@ -165,7 +184,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
         private Cliente ObterClienteSelecionado()
         {
-            int id = listagemCliente.ObterNumeroClienteSelecionado();
+            int id = tabelaCliente.ObterNumeroClienteSelecionado();
 
             return repositorioCliente.SelecionarPorId(id);
         }

@@ -5,11 +5,11 @@ namespace ControleDeFestasInfantis.Dominio.ModuloCliente
     [Serializable]
     public class Cliente : EntidadeBase<Cliente>
     {
-        public List<Aluguel> alugueisCliente { get; set; }
+        public List<Aluguel> alugueisCliente { get; set; } 
         public string nome { get; set; }
         public string telefone { get; set; }
         public string email { get; set; }
-        public int qtdAlugueisRealizados { get; set; }
+        public int qtdAlugueisRealizados { get { return alugueisCliente.Where(x => x.pagamento.pgtoEfetuado == PgtoEfetuadoEnum.Parcial).Count(); } }
 
         public Cliente()
         {
@@ -23,7 +23,6 @@ namespace ControleDeFestasInfantis.Dominio.ModuloCliente
             this.telefone = telefone;
             this.email = email;
             this.alugueisCliente = alugueisCliente;
-            this.qtdAlugueisRealizados = 0;
         }
 
         public override void AtualizarInformacoes(Cliente registroAtualizado)
@@ -31,7 +30,6 @@ namespace ControleDeFestasInfantis.Dominio.ModuloCliente
             nome = registroAtualizado.nome;
             telefone = registroAtualizado.telefone;
             email = registroAtualizado.email;
-            qtdAlugueisRealizados = registroAtualizado.qtdAlugueisRealizados;
         }
 
         public override string Validar()

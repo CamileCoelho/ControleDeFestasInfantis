@@ -8,12 +8,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
     public partial class TelaAluguelForm : Form
     {
         Aluguel aluguel { get; set; }
+        Desconto desconto { get; set; } 
 
-        public TelaAluguelForm(List<Cliente> clientes, List<Tema> temas)
+        public TelaAluguelForm(Desconto desconto, List<Cliente> clientes, List<Tema> temas)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
+
+            this.desconto = desconto;
 
             CarregarClientes(clientes);
 
@@ -29,16 +32,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             Cliente cliente = (Cliente)cmbClientes.SelectedItem;
 
             Tema tema = (Tema)cmbTemas.SelectedItem;
-            
+
             string cidade = txtCidade.Text;
 
             string rua = txtRua.Text;
 
-            string texto = txtNumero.Text;
+            string textoNumero = txtNumero.Text;
 
             int numero;
 
-            if (int.TryParse(texto, out numero))
+            if (int.TryParse(textoNumero, out numero))
             {
                 numero = Convert.ToInt32(txtNumero.Text);
             }

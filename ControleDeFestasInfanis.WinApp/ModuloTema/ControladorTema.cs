@@ -143,6 +143,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
                 return;
             }
+            if (repositorioAluguel.SelecionarTodos().Any(a => a.festa.tema == temaEscolhido))
+            {
+                MessageBox.Show($"Você não pode editar os itens desse tema pois ele já foi locado, caso necessário sugerimos que crie um novo tema com os itens que deseja!",
+                    "Adição de Itens",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
 
             List<Item> itens = CarregarItens();
 
@@ -162,8 +171,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public override void RemoverItens()
         {
-            //TO-DO  VERIFICAR SE CONTEM ALUGEUL PARA ESSE TEMA, SE SIM NÃO PODE REMOVER ITENS
-
             Tema temaEscolhido = ObterTemaSelecionado();
 
             if (temaEscolhido == null)
@@ -178,6 +185,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             if (temaEscolhido.itens.Count() == 0)
             {
                 MessageBox.Show($"Você deve cadastrar itens em um tema para poder remove-los!",
+                    "Remoção de Itens",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            if (repositorioAluguel.SelecionarTodos().Any(a => a.festa.tema == temaEscolhido))
+            {
+                MessageBox.Show($"Você não pode editar os itens desse tema pois ele já foi locado, caso necessário sugerimos que crie um novo tema com os itens que deseja!",
                     "Remoção de Itens",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
