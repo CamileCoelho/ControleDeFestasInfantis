@@ -55,7 +55,7 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void alugueisMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ContoladorAluguel(repositorioCliente, repositorioTema, repositorioAluguel, repositorioDesconto);
+            controlador = new ControladorAluguel(repositorioCliente, repositorioTema, repositorioAluguel, repositorioDesconto);
 
             ConfigurarTelaPrincipal(controlador);
         }

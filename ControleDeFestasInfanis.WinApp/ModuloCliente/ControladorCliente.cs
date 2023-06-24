@@ -22,7 +22,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
         public override string ToolTipInserir { get { return "Inserir novo cliente"; } }
         public override string ToolTipEditar { get { return "Editar cliente existente"; } }
         public override string ToolTipExcluir { get { return "Excluir cliente existente"; } }
-        public override string ToolTipVisualizar { get { return "Visualizar historico de augueis de um cliente existente"; } }
+        public override string ToolTipVisualizar { get { return "Visualizar historico de alugueis de um cliente existente"; } }
 
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
