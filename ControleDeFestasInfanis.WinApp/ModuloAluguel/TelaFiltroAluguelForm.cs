@@ -7,22 +7,20 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         public TelaFiltroAluguelForm()
         {
             InitializeComponent();
+
+            this.ConfigurarDialog();
         }
 
         public StatusAluguelEnum ObterFiltroAluguel()
         {
-            if (rdbConcluidas.Checked)
-            {
+            if (rdbConcluidas.Checked == true)
                 return StatusAluguelEnum.Finalizado;
-            }
-            else if (rdbPendentes.Checked)
-            {
+
+            else if (rdbPendentes.Checked == true)
                 return StatusAluguelEnum.Em_andamento;
-            }
-            else
-            {
-                return StatusAluguelEnum.Todos;
-            }
+
+            return StatusAluguelEnum.Todos;
         }
     }
 }
+

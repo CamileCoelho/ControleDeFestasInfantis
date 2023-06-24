@@ -157,24 +157,26 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                List<Aluguel> aluguels;
+                List<Aluguel> alugueis;
 
                 StatusAluguelEnum status = telaFiltroAluguel.ObterFiltroAluguel();
 
                 switch (status)
                 {
                     case StatusAluguelEnum.Em_andamento:
-                        aluguels = repositorioAluguel.SelecionarPendentes();
+                        alugueis = repositorioAluguel.SelecionarPendentes();
                         break;
 
                     case StatusAluguelEnum.Finalizado:
-                        aluguels = repositorioAluguel.SelecionarConcluidas();
+                        alugueis = repositorioAluguel.SelecionarConcluidas();
                         break;
 
                     default:
-                        aluguels = repositorioAluguel.SelecionarTodos();
+                        alugueis = repositorioAluguel.SelecionarTodos();
                         break;
                 }
+
+                CarregarAlugueis();
             }
         }
 

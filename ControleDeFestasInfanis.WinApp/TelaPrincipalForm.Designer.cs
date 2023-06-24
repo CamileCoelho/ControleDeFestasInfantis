@@ -56,9 +56,12 @@
             toolStripSeparator6 = new ToolStripSeparator();
             labelTipoDoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
+            pictureBox1 = new PictureBox();
             menuStrip1.SuspendLayout();
             rodape.SuspendLayout();
             toolStrip1.SuspendLayout();
+            panelRegistros.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -80,8 +83,9 @@
             // 
             // clientesMenuItem
             // 
+            clientesMenuItem.Image = (Image)resources.GetObject("clientesMenuItem.Image");
             clientesMenuItem.Name = "clientesMenuItem";
-            clientesMenuItem.Size = new Size(116, 22);
+            clientesMenuItem.Size = new Size(180, 22);
             clientesMenuItem.Text = "Clientes";
             clientesMenuItem.Click += contatosMenuItem_Click;
             // 
@@ -94,22 +98,25 @@
             // 
             // alugueisMenuItem
             // 
+            alugueisMenuItem.Image = (Image)resources.GetObject("alugueisMenuItem.Image");
             alugueisMenuItem.Name = "alugueisMenuItem";
-            alugueisMenuItem.Size = new Size(169, 22);
+            alugueisMenuItem.Size = new Size(180, 22);
             alugueisMenuItem.Text = "Alugueis";
             alugueisMenuItem.Click += alugueisMenuItem_Click;
             // 
             // itensParaLocaçãoMenuItem
             // 
+            itensParaLocaçãoMenuItem.Image = (Image)resources.GetObject("itensParaLocaçãoMenuItem.Image");
             itensParaLocaçãoMenuItem.Name = "itensParaLocaçãoMenuItem";
-            itensParaLocaçãoMenuItem.Size = new Size(169, 22);
+            itensParaLocaçãoMenuItem.Size = new Size(180, 22);
             itensParaLocaçãoMenuItem.Text = "Itens para locação";
             itensParaLocaçãoMenuItem.Click += itensParaLocaçãoMenuItem_Click;
             // 
             // temasMenuItem
             // 
+            temasMenuItem.Image = (Image)resources.GetObject("temasMenuItem.Image");
             temasMenuItem.Name = "temasMenuItem";
-            temasMenuItem.Size = new Size(169, 22);
+            temasMenuItem.Size = new Size(180, 22);
             temasMenuItem.Text = "Temas";
             temasMenuItem.Click += temasMenuItem_Click;
             // 
@@ -305,11 +312,21 @@
             // panelRegistros
             // 
             panelRegistros.BorderStyle = BorderStyle.FixedSingle;
+            panelRegistros.Controls.Add(pictureBox1);
             panelRegistros.Dock = DockStyle.Fill;
             panelRegistros.Location = new Point(0, 49);
             panelRegistros.Name = "panelRegistros";
             panelRegistros.Size = new Size(1184, 586);
             panelRegistros.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-1, -1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1184, 586);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // TelaPrincipalForm
             // 
@@ -337,6 +354,8 @@
             rodape.PerformLayout();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            panelRegistros.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -370,5 +389,6 @@
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton btnVisualizar;
         private ToolStripSeparator toolStripSeparator6;
+        private PictureBox pictureBox1;
     }
 }
