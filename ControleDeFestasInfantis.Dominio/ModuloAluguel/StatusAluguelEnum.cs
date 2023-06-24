@@ -2,6 +2,7 @@
 {
     public enum StatusAluguelEnum
     {
+        Todos,
         Em_andamento,
         Finalizado
     }

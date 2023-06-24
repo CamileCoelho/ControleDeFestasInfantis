@@ -1,4 +1,5 @@
-﻿using ControleDeFestasInfantis.Dominio.ModuloTema;
+﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
+using ControleDeFestasInfantis.Dominio.ModuloTema;
 
 namespace ControleDeFestasInfantis.Dominio.Compartilhado
 {
@@ -15,5 +16,6 @@ namespace ControleDeFestasInfantis.Dominio.Compartilhado
         List<T> SelecionarTodos();
 
         T SelecionarPorId(int id);
+       
     }
 }

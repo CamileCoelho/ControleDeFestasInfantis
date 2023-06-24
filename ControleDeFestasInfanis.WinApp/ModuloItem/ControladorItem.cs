@@ -111,7 +111,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
                 CarregarItens();
             }
         }
-
         public override UserControl ObterListagem()
         {
             if (tabelaItens == null)
