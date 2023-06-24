@@ -27,10 +27,12 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         public override string ToolTipFiltrar => "Filtrar alugueis";
         public override string ToolTipFinalizarPagamento => "Finalizar pagamento de um aluguelSelecionado existente";
         public override string ToolTipConfigDesconto => "Configurar percentuais de desconto";
+        public override string ToolTipHome => "Home";
 
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
+        public override bool HomeVisivel => true;
         public override bool FiltrarHabilitado => true;
         public override bool FiltrarVisivel => true;
         public override bool SeparadorVisivel1 => true;
@@ -299,6 +301,14 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         {
             List<Aluguel> alugueis = repositorioAluguel.SelecionarTodos();
             tabelaAlugueis.AtualizarRegistros(alugueis);
+        }
+
+        public override void Home()
+        {
+            TelaPrincipalForm tela = new TelaPrincipalForm();
+
+            DialogResult opcaoEscolhida = tela.ShowDialog();
+
         }
     }
 }

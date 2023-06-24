@@ -105,10 +105,12 @@ namespace ControleDeFestasInfantis.WinApp
             btnConfigDesconto.ToolTipText = controlador.ToolTipFinalizarPagamento;
             btnConfigDesconto.ToolTipText = controlador.ToolTipConfigDesconto;
             btnVisualizar.ToolTipText = controlador.ToolTipVisualizar;
+            btnHome.ToolTipText = controlador.ToolTipHome;
 
             btnInserir.Enabled = controlador.InserirHabilitado;
             btnEditar.Enabled = controlador.EditarHabilitado;
             btnExcluir.Enabled = controlador.ExcluirHabilitado;
+            btnHome.Enabled = controlador.HomeHabilitado;
             btnFiltrar.Enabled = controlador.FiltrarHabilitado;
             btnAdicionarItens.Enabled = controlador.AdicionarItensHabilitado;
             btnRemoverItens.Enabled = controlador.RemoverItensHabilitado;
@@ -119,6 +121,7 @@ namespace ControleDeFestasInfantis.WinApp
             btnInserir.Visible = controlador.InserirVisivel;
             btnEditar.Visible = controlador.EditarVisivel;
             btnExcluir.Visible = controlador.ExcluirVisivel;
+            btnHome.Visible = controlador.HomeVisivel;
             btnFiltrar.Visible = controlador.FiltrarVisivel;
             btnAdicionarItens.Visible = controlador.AdicionarItensVisivel;
             btnRemoverItens.Visible = controlador.RemoverItensVisivel;
@@ -177,6 +180,11 @@ namespace ControleDeFestasInfantis.WinApp
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
             controlador.Visualizar();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            controlador.Home();
         }
     }
 }

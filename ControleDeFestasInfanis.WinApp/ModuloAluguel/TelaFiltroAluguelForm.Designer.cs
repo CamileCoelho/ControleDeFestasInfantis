@@ -55,10 +55,10 @@
             rdbPendentes.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             rdbPendentes.Location = new Point(25, 71);
             rdbPendentes.Name = "rdbPendentes";
-            rdbPendentes.Size = new Size(254, 21);
+            rdbPendentes.Size = new Size(226, 21);
             rdbPendentes.TabIndex = 13;
             rdbPendentes.TabStop = true;
-            rdbPendentes.Text = "VisualizarVisualizar Alugueis em aberto";
+            rdbPendentes.Text = "Visualizar Alugueis em andamento";
             rdbPendentes.UseVisualStyleBackColor = true;
             // 
             // rdbTodos

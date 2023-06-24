@@ -2,6 +2,7 @@
 using ControleDeFestasInfantis.Dominio.ModuloCliente;
 using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
+using ControleDeFestasInfantis.WinApp.ModuloTema;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloCliente
@@ -23,10 +24,11 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
         public override string ToolTipEditar { get { return "Editar cliente existente"; } }
         public override string ToolTipExcluir { get { return "Excluir cliente existente"; } }
         public override string ToolTipVisualizar { get { return "Visualizar historico de alugueis de um cliente existente"; } }
-
+        public override string ToolTipHome { get { return "Home"; } }
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
+        public override bool HomeHabilitado => true;
         public override bool SeparadorVisivel5 => true;
         public override bool VisualizarHabilitado => true;
         public override bool VisualizarVisivel => true;
@@ -171,6 +173,14 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             int id = tabelaCliente.ObterNumeroClienteSelecionado();
 
             return repositorioCliente.SelecionarPorId(id);
+        }
+
+        public override void Home()
+        {
+            TelaPrincipalForm tela = new TelaPrincipalForm();
+
+            DialogResult opcaoEscolhida = tela.ShowDialog();
+
         }
     }
 }

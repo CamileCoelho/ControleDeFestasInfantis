@@ -24,6 +24,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         public override string ToolTipEditar => "Editar tema existente";
 
         public override string ToolTipExcluir => "Excluir tema existente";
+        public override string ToolTipHome => "Home";
 
         public override string ToolTipAdicionarItens => "Adicionar itens em um tema existente";
 
@@ -246,6 +247,14 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         private List<Item> CarregarItens()
         {
             return repositorioItem.SelecionarTodos();
+        }
+
+        public override void Home()
+        {
+            TelaPrincipalForm tela = new TelaPrincipalForm();
+
+            DialogResult opcaoEscolhida = tela.ShowDialog();
+
         }
     }
 }

@@ -54,6 +54,7 @@
             toolStripSeparator5 = new ToolStripSeparator();
             btnVisualizar = new ToolStripButton();
             toolStripSeparator6 = new ToolStripSeparator();
+            btnHome = new ToolStripButton();
             labelTipoDoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
             pictureBox1 = new PictureBox();
@@ -85,7 +86,7 @@
             // 
             clientesMenuItem.Image = (Image)resources.GetObject("clientesMenuItem.Image");
             clientesMenuItem.Name = "clientesMenuItem";
-            clientesMenuItem.Size = new Size(180, 22);
+            clientesMenuItem.Size = new Size(116, 22);
             clientesMenuItem.Text = "Clientes";
             clientesMenuItem.Click += contatosMenuItem_Click;
             // 
@@ -100,7 +101,7 @@
             // 
             alugueisMenuItem.Image = (Image)resources.GetObject("alugueisMenuItem.Image");
             alugueisMenuItem.Name = "alugueisMenuItem";
-            alugueisMenuItem.Size = new Size(180, 22);
+            alugueisMenuItem.Size = new Size(169, 22);
             alugueisMenuItem.Text = "Alugueis";
             alugueisMenuItem.Click += alugueisMenuItem_Click;
             // 
@@ -108,7 +109,7 @@
             // 
             itensParaLocaçãoMenuItem.Image = (Image)resources.GetObject("itensParaLocaçãoMenuItem.Image");
             itensParaLocaçãoMenuItem.Name = "itensParaLocaçãoMenuItem";
-            itensParaLocaçãoMenuItem.Size = new Size(180, 22);
+            itensParaLocaçãoMenuItem.Size = new Size(169, 22);
             itensParaLocaçãoMenuItem.Text = "Itens para locação";
             itensParaLocaçãoMenuItem.Click += itensParaLocaçãoMenuItem_Click;
             // 
@@ -116,7 +117,7 @@
             // 
             temasMenuItem.Image = (Image)resources.GetObject("temasMenuItem.Image");
             temasMenuItem.Name = "temasMenuItem";
-            temasMenuItem.Size = new Size(180, 22);
+            temasMenuItem.Size = new Size(169, 22);
             temasMenuItem.Text = "Temas";
             temasMenuItem.Click += temasMenuItem_Click;
             // 
@@ -138,7 +139,7 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator1, btnFiltrar, toolStripSeparator2, btnAdicionarItens, btnRemoverItens, toolStripSeparator3, btnFinalizarPgto, toolStripSeparator4, btnConfigDesconto, toolStripSeparator5, btnVisualizar, toolStripSeparator6, labelTipoDoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator1, btnFiltrar, toolStripSeparator2, btnAdicionarItens, btnRemoverItens, toolStripSeparator3, btnFinalizarPgto, toolStripSeparator4, btnConfigDesconto, toolStripSeparator5, btnVisualizar, toolStripSeparator6, btnHome, labelTipoDoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1184, 25);
@@ -303,6 +304,16 @@
             toolStripSeparator6.Size = new Size(6, 25);
             toolStripSeparator6.Visible = false;
             // 
+            // btnHome
+            // 
+            btnHome.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnHome.Image = (Image)resources.GetObject("btnHome.Image");
+            btnHome.ImageTransparentColor = Color.Magenta;
+            btnHome.Name = "btnHome";
+            btnHome.Size = new Size(23, 22);
+            btnHome.Text = "Home";
+            btnHome.Click += btnHome_Click;
+            // 
             // labelTipoDoCadastro
             // 
             labelTipoDoCadastro.Name = "labelTipoDoCadastro";
@@ -390,5 +401,6 @@
         private ToolStripButton btnVisualizar;
         private ToolStripSeparator toolStripSeparator6;
         private PictureBox pictureBox1;
+        private ToolStripButton btnHome;
     }
 }
