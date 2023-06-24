@@ -32,7 +32,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
-        public override bool HomeVisivel => true;
+        public override bool HomeHabilitado => true;
         public override bool FiltrarHabilitado => true;
         public override bool FiltrarVisivel => true;
         public override bool SeparadorVisivel1 => true;
