@@ -68,7 +68,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             {
                 Aluguel aluguel = tela.ObterAluguel();
 
-                TelaPgtoEntradaForm telaPgto = new(repositorioDesconto.ObterDesconto());
+                Desconto desconto = repositorioDesconto.ObterDesconto();
+
+                TelaPgtoEntradaForm telaPgto = new(desconto);
 
                 telaPgto.ConfigurarTela(aluguel);  
                 telaPgto.ShowDialog();
