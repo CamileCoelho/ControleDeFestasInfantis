@@ -188,7 +188,7 @@
             Controls.Add(btnGravar);
             Name = "TelaTemaAdicaoForm";
             ShowIcon = false;
-            Text = "Adição de Itens";
+            Text = "Adição De Itens";
             ((System.ComponentModel.ISupportInitialize)numQuantidadeItem).EndInit();
             ResumeLayout(false);
             PerformLayout();

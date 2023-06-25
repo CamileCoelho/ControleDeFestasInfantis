@@ -10,15 +10,18 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         {
             InitializeComponent();
 
+            this.ConfigurarDialog();
+
             this.desconto = desconto;
 
-            ConfigurarTela(desconto);
+            ConfigurarTela();
         }
 
-        public void ConfigurarTela(Desconto desconto)
+        public void ConfigurarTela()
         {
             numPorcentagemDesconto.Value = desconto.porcentagemDesconto;
             numDescontoMaximo.Value = desconto.porcentagemDescontoMaximo;
+
         }
 
         public Desconto ObterDesconto()

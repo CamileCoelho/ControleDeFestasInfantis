@@ -174,7 +174,7 @@
             MinimizeBox = false;
             MinimumSize = new Size(530, 400);
             Name = "TelaPgtoEntradaForm";
-            Text = "TelaPgtoEntradaForm";
+            Text = "Pagamento Da Entrada";
             ResumeLayout(false);
             PerformLayout();
         }

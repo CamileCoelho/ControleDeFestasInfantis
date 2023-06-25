@@ -123,7 +123,7 @@
             Controls.Add(numDescontoMaximo);
             Controls.Add(numPorcentagemDesconto);
             Name = "TelaConfiguracaoDescontoForm";
-            Text = "Configurar Desconto";
+            Text = "Configuração Do Desconto";
             ((System.ComponentModel.ISupportInitialize)numPorcentagemDesconto).EndInit();
             ((System.ComponentModel.ISupportInitialize)numDescontoMaximo).EndInit();
             ResumeLayout(false);

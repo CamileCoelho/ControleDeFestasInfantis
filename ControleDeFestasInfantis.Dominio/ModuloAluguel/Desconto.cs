@@ -21,6 +21,10 @@
         {
             Validador valida = new();
 
+            if (porcentagemDesconto < 0)
+                return "A porcentagem de desconto não pode ser menor que zero!";
+            if (porcentagemDescontoMaximo < 0)
+                return "A porcentagem máxima de desconto não pode ser menor que zero!";
             if (porcentagemDesconto > porcentagemDescontoMaximo)
                 return "A porcentagem de desconto não pode ultrapassar a porcentagem máxima!";
 

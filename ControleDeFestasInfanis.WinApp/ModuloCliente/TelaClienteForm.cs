@@ -43,9 +43,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
         private void btnGravar_Click(object sender, EventArgs e)
         {
             string status = "";
-            
+
             cliente = ObterCliente();
-            
+
             if (clientes.Where(i => cliente.id != clienteSelecionado?.id).Any(x => x.nome == cliente.nome))
                 status = $"Já existe um cliente cadastrado com esse nome!";
             else

@@ -144,7 +144,7 @@
             groupBoxLocalizacao.Controls.Add(txtData);
             groupBoxLocalizacao.Controls.Add(txtRua);
             groupBoxLocalizacao.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBoxLocalizacao.Location = new Point(102, 131);
+            groupBoxLocalizacao.Location = new Point(102, 106);
             groupBoxLocalizacao.Name = "groupBoxLocalizacao";
             groupBoxLocalizacao.Size = new Size(395, 382);
             groupBoxLocalizacao.TabIndex = 66;
@@ -252,7 +252,7 @@
             btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancelar.ImageAlign = ContentAlignment.BottomRight;
-            btnCancelar.Location = new Point(403, 569);
+            btnCancelar.Location = new Point(403, 514);
             btnCancelar.Margin = new Padding(4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 41);
@@ -267,7 +267,7 @@
             btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnGravar.ImageAlign = ContentAlignment.BottomRight;
-            btnGravar.Location = new Point(288, 569);
+            btnGravar.Location = new Point(288, 514);
             btnGravar.Margin = new Padding(4);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(94, 41);
@@ -291,7 +291,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(572, 656);
+            ClientSize = new Size(547, 584);
             Controls.Add(cmbClientes);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
@@ -303,10 +303,9 @@
             MaximumSize = new Size(588, 695);
             MdiChildrenMinimizedAnchorBottom = false;
             MinimizeBox = false;
-            MinimumSize = new Size(588, 695);
             Name = "TelaAluguelForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "TelaAluguelForm";
+            Text = "Cadastro De Aluguel";
             groupBoxLocalizacao.ResumeLayout(false);
             groupBoxLocalizacao.PerformLayout();
             ResumeLayout(false);

@@ -140,7 +140,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
 
             tabelaAlugueisCliente.AtualizarRegistros(clienteSelecionado.alugueisCliente);
 
-            TelaAlugueisClienteForm tela = new(tabelaAlugueisCliente);
+            TelaAlugueisClienteForm tela = new(tabelaAlugueisCliente, clienteSelecionado);
             tela.ShowDialog();
         }
 
