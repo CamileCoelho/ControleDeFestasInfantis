@@ -24,8 +24,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public void ConfigurarTela(Aluguel aluguel)
         {
+            decimal porcentagemDescontoTotal = aluguel.cliente.qtdAlugueisRealizados * desconto.porcentagemDesconto;
+
+            if (aluguel.cliente.qtdAlugueisRealizados * desconto.porcentagemDesconto >= desconto.porcentagemDescontoMaximo)
+            {
+                porcentagemDescontoTotal = desconto.porcentagemDescontoMaximo;
+            }
+
             txtCliente.Text = aluguel.cliente.nome;
-            txtValorTotal.Text = (String.Format("{0:0.00}", (aluguel.festa.tema.valorTotalTema - (aluguel.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguel.cliente.qtdAlugueisRealizados / 100))));
+            txtValorTotal.Text = (String.Format("{0:0.00}", (aluguel.festa.tema.valorTotalTema - (aluguel.festa.tema.valorTotalTema * porcentagemDescontoTotal / 100))));
             txtValorEntrada.Text = (String.Format("{0:0.00}", aluguel.pagamento.valorEntrada));
             aluguel.formaPagamento = OpcoesPgtoEnum.Nenhum;
 
@@ -34,9 +41,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         public Pagamento RealizarPagamentoDaEntrada()
         {
+            decimal porcentagemDescontoTotal = aluguelSelecionado.cliente.qtdAlugueisRealizados * desconto.porcentagemDesconto;
+
+            if (aluguelSelecionado.cliente.qtdAlugueisRealizados * desconto.porcentagemDesconto >= desconto.porcentagemDescontoMaximo)
+            {
+                porcentagemDescontoTotal = desconto.porcentagemDescontoMaximo;
+            }
+
             decimal valorEntrada = Convert.ToDecimal(String.Format("{0:0.00}", txtValorEntrada.Text));
             decimal valorFinal = Convert.ToDecimal(String.Format("{0:0.00}", (aluguelSelecionado.pagamento.valorTotal - aluguelSelecionado.pagamento.valorEntrada)));
-            decimal valorTotal = Convert.ToDecimal(String.Format("{0:0.00}", aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguelSelecionado.cliente.qtdAlugueisRealizados) / 100)));
+            decimal valorTotal = Convert.ToDecimal(String.Format("{0:0.00}", aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * porcentagemDescontoTotal) / 100)));
 
             return new(valorEntrada, valorFinal, valorTotal);
         }
@@ -54,8 +68,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            decimal porcentagemDescontoTotal = aluguelSelecionado.cliente.qtdAlugueisRealizados * desconto.porcentagemDesconto;
+
+            if (aluguelSelecionado.cliente.qtdAlugueisRealizados * desconto.porcentagemDesconto >= desconto.porcentagemDescontoMaximo)
+            {
+                porcentagemDescontoTotal = desconto.porcentagemDescontoMaximo;
+            }
+
             aluguelSelecionado.pagamento.valorEntrada = Convert.ToDecimal(String.Format("{0:0.00}", txtValorEntrada.Text));
-            aluguelSelecionado.pagamento.valorTotal = Convert.ToDecimal(String.Format("{0:0.00}", aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguelSelecionado.cliente.qtdAlugueisRealizados) / 100)));
+            aluguelSelecionado.pagamento.valorTotal = Convert.ToDecimal(String.Format("{0:0.00}", aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * porcentagemDescontoTotal) / 100)));
             aluguelSelecionado.pagamento.valorFinal = Convert.ToDecimal(String.Format("{0:0.00}", (aluguelSelecionado.pagamento.valorTotal - aluguelSelecionado.pagamento.valorEntrada)));
             aluguelSelecionado.formaPagamento = (OpcoesPgtoEnum)cmbPagamento.SelectedItem;
             aluguelSelecionado.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Parcial;

@@ -48,6 +48,7 @@
             numPorcentagemDesconto.Size = new Size(94, 29);
             numPorcentagemDesconto.TabIndex = 0;
             numPorcentagemDesconto.Value = new decimal(new int[] { 100, 0, 0, 131072 });
+            numPorcentagemDesconto.KeyPress += numPorcentagemDesconto_KeyPress;
             // 
             // numDescontoMaximo
             // 
@@ -59,6 +60,7 @@
             numDescontoMaximo.Size = new Size(94, 29);
             numDescontoMaximo.TabIndex = 1;
             numDescontoMaximo.Value = new decimal(new int[] { 1500, 0, 0, 131072 });
+            numDescontoMaximo.KeyPress += numDescontoMaximo_KeyPress;
             // 
             // label1
             // 
