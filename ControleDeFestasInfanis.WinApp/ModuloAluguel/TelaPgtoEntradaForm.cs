@@ -22,21 +22,23 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             this.desconto = desconto;
         }
 
-        public void RealizarPagamentoDaEntrada()
-        {
-            aluguelSelecionado.pagamento.valorTotal = aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguelSelecionado.cliente.qtdAlugueisRealizados) / 100);
-            aluguelSelecionado.pagamento.valorFinal = aluguelSelecionado.pagamento.valorTotal - aluguelSelecionado.pagamento.valorEntrada;
-            aluguelSelecionado.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Parcial;
-        }
-
         public void ConfigurarTela(Aluguel aluguel)
         {
             txtCliente.Text = aluguel.cliente.nome;
-            txtValorTotal.Text = (aluguel.festa.tema.valorTotalTema - (aluguel.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguel.cliente.qtdAlugueisRealizados / 100)).ToString("###,###.00");
-            txtValorEntrada.Text = (String.Format("{0:0.00}", aluguel.pagamento.valorEntrada).ToString());
+            txtValorTotal.Text = (String.Format("{0:0.00}", (aluguel.festa.tema.valorTotalTema - (aluguel.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguel.cliente.qtdAlugueisRealizados / 100))));
+            txtValorEntrada.Text = (String.Format("{0:0.00}", aluguel.pagamento.valorEntrada));
             aluguel.formaPagamento = OpcoesPgtoEnum.Nenhum;
 
-            this.aluguelSelecionado = aluguel;
+            aluguelSelecionado = aluguel;
+        }
+
+        public Pagamento RealizarPagamentoDaEntrada()
+        {
+            decimal valorEntrada = Convert.ToDecimal(String.Format("{0:0.00}", txtValorEntrada.Text));
+            decimal valorFinal = Convert.ToDecimal(String.Format("{0:0.00}", (aluguelSelecionado.pagamento.valorTotal - aluguelSelecionado.pagamento.valorEntrada)));
+            decimal valorTotal = Convert.ToDecimal(String.Format("{0:0.00}", aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguelSelecionado.cliente.qtdAlugueisRealizados) / 100)));
+
+            return new(valorEntrada, valorFinal, valorTotal);
         }
 
         private void CarregarOpcoesDePgto()
@@ -52,16 +54,16 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            RealizarPagamentoDaEntrada();
-
             aluguelSelecionado.pagamento.valorEntrada = Convert.ToDecimal(String.Format("{0:0.00}", txtValorEntrada.Text));
-
-            aluguelSelecionado.pagamento.valorFinal = aluguelSelecionado.pagamento.valorTotal - aluguelSelecionado.pagamento.valorEntrada;
+            aluguelSelecionado.pagamento.valorTotal = Convert.ToDecimal(String.Format("{0:0.00}", aluguelSelecionado.festa.tema.valorTotalTema - ((aluguelSelecionado.festa.tema.valorTotalTema * desconto.porcentagemDesconto * aluguelSelecionado.cliente.qtdAlugueisRealizados) / 100)));
+            aluguelSelecionado.pagamento.valorFinal = Convert.ToDecimal(String.Format("{0:0.00}", (aluguelSelecionado.pagamento.valorTotal - aluguelSelecionado.pagamento.valorEntrada)));
             aluguelSelecionado.formaPagamento = (OpcoesPgtoEnum)cmbPagamento.SelectedItem;
+            aluguelSelecionado.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Parcial;
 
             if (aluguelSelecionado.pagamento.valorEntrada < aluguelSelecionado.pagamento.valorTotal * 40 / 100 || aluguelSelecionado.pagamento.valorEntrada > aluguelSelecionado.pagamento.valorTotal * 50 / 100)
             {
-                TelaPrincipalForm.Tela.AtualizarRodape($"O valor de entrada mínimo é de R$ {aluguelSelecionado.pagamento.valorTotal * 40 / 100} e o valor máximo é de R$ {aluguelSelecionado.pagamento.valorTotal * 50 / 100}!");
+                TelaPrincipalForm.Tela.AtualizarRodape($"O valor de entrada mínimo é de R$ {aluguelSelecionado.pagamento.valorTotal * 40 / 100}" +
+                    $" e o valor máximo é de R$ {aluguelSelecionado.pagamento.valorTotal * 50 / 100}!");
 
                 DialogResult = DialogResult.None;
 

@@ -20,6 +20,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             grid.ConfigurarGridZebrado();
             grid.ConfigurarGridSomenteLeitura();
             grid.Columns.AddRange(ObterColunas());
+
+            TelaPrincipalForm.Tela.AtualizarRodape("");
         }
         private DataGridViewColumn[] ObterColunas()
         {

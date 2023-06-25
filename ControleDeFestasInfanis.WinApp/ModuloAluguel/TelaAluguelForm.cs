@@ -2,21 +2,19 @@
 using ControleDeFestasInfantis.Dominio.ModuloCliente;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
 using ControleDeFestasInfantis.WinApp.ModuloTema;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 {
     public partial class TelaAluguelForm : Form
     {
         Aluguel aluguel { get; set; }
-        Desconto desconto { get; set; } 
 
-        public TelaAluguelForm(Desconto desconto, List<Cliente> clientes, List<Tema> temas)
+        public TelaAluguelForm(List<Cliente> clientes, List<Tema> temas)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
-
-            this.desconto = desconto;
 
             CarregarClientes(clientes);
 
@@ -59,9 +57,13 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
         internal void ConfigurarTela(Aluguel aluguelSelecionado)
         {
+            TelaPrincipalForm.Tela.AtualizarRodape("Você pode apenas editar a localização e a data de sua festa!");
+
             txtId.Text = aluguelSelecionado.id.ToString();
             cmbClientes.SelectedItem = aluguelSelecionado.cliente;
+            cmbClientes.Enabled = false;
             cmbTemas.SelectedItem = aluguelSelecionado.festa.tema;
+            cmbTemas.Enabled = false;
             txtCidade.Text = aluguelSelecionado.festa.endereco.cidade;
             txtRua.Text = aluguelSelecionado.festa.endereco.rua;
             txtNumero.Text = (aluguelSelecionado.festa.endereco.numero).ToString();

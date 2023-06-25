@@ -144,7 +144,7 @@
             MaximumSize = new Size(850, 550);
             Name = "TelaItemForm";
             ShowIcon = false;
-            Text = "Cadastro De Itens";
+            Text = "Cadastro De Item";
             ResumeLayout(false);
             PerformLayout();
         }

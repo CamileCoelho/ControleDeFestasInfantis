@@ -47,8 +47,9 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             {
                 grid.Rows.Add(aluguel.id, DateOnly.FromDateTime(aluguel.festa.data),
                 aluguel.cliente.nome, aluguel.cliente.telefone, aluguel.festa.tema,
-                "R$ " + aluguel.pagamento.valorTotal, aluguel.pagamento.pgtoEfetuado,
-                aluguel.status, aluguel?.dataQuitacao.Date.ToString("dd/MM/yyyy"));
+                "R$ " + (aluguel.pagamento.valorTotal).ToString("###,###.00"), 
+                aluguel.pagamento.pgtoEfetuado, aluguel.status, 
+                aluguel?.dataQuitacao.Date.ToString("dd/MM/yyyy"));
             }
         }
     }

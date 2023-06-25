@@ -119,7 +119,7 @@
             Controls.Add(label1);
             Name = "TelaTemaForm";
             ShowIcon = false;
-            Text = "Cadastro de Temas";
+            Text = "Cadastro De Tema";
             ResumeLayout(false);
             PerformLayout();
         }

@@ -152,7 +152,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "TelaTemaRemocaoForm";
-            Text = "TelaTemaRemocaoForm";
+            Text = "Remoção De Itens";
             ResumeLayout(false);
             PerformLayout();
         }

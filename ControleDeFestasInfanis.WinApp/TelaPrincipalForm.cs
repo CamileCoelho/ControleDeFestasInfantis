@@ -102,7 +102,7 @@ namespace ControleDeFestasInfantis.WinApp
             btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
             btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
             btnRemoverItens.ToolTipText = controlador.ToolTipRemoverItens;
-            btnConfigDesconto.ToolTipText = controlador.ToolTipFinalizarPagamento;
+            btnFinalizarPgto.ToolTipText = controlador.ToolTipFinalizarPagamento;
             btnConfigDesconto.ToolTipText = controlador.ToolTipConfigDesconto;
             btnVisualizar.ToolTipText = controlador.ToolTipVisualizar;
 

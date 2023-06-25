@@ -163,7 +163,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
             Name = "TelaClienteForm";
-            Text = "TelaClienteForm";
+            Text = "Cadastro De Cliente";
             ResumeLayout(false);
             PerformLayout();
         }

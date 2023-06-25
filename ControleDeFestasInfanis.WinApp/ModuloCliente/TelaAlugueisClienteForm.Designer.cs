@@ -40,14 +40,13 @@
             panelAlugueisCliente.Size = new Size(776, 426);
             panelAlugueisCliente.TabIndex = 39;
             // 
-            // TelaVisualizacaoAlugueisClienteForm
+            // TelaAlugueisClienteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(panelAlugueisCliente);
-            Name = "TelaVisualizacaoAlugueisClienteForm";
-            Text = "TelaVisualizacaoAlugueisClienteForm";
+            Name = "TelaAlugueisClienteForm";
             ResumeLayout(false);
         }
 

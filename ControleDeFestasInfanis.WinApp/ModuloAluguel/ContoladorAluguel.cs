@@ -60,7 +60,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 return;
             }
 
-            TelaAluguelForm tela = new(repositorioDesconto.ObterDesconto(), repositorioCliente.SelecionarTodos(), repositorioTema.SelecionarTodos());
+            TelaAluguelForm tela = new(repositorioCliente.SelecionarTodos(), repositorioTema.SelecionarTodos());
 
             DialogResult opcaoEscolhida = tela.ShowDialog();
 
@@ -68,16 +68,10 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             {
                 Aluguel aluguel = tela.ObterAluguel();
 
-                repositorioAluguel.Inserir(aluguel);
-
                 TelaPgtoEntradaForm telaPgto = new(repositorioDesconto.ObterDesconto());
 
-                telaPgto.ConfigurarTela(aluguel);                
+                telaPgto.ConfigurarTela(aluguel);  
                 telaPgto.ShowDialog();
-
-                TelaPrincipalForm.Tela.AtualizarRodape("");
-
-                aluguel.cliente.alugueisCliente.Add(aluguel);
 
                 if (telaPgto.DialogResult == DialogResult.Cancel)
                 {
@@ -87,6 +81,14 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
                     return;
                 }
+
+                aluguel.pagamento = telaPgto.RealizarPagamentoDaEntrada();
+                aluguel.pagamento.pgtoEfetuado = PgtoEfetuadoEnum.Parcial;
+                aluguel.cliente.alugueisCliente.Add(aluguel);
+
+                TelaPrincipalForm.Tela.AtualizarRodape("");
+
+                repositorioAluguel.Inserir(aluguel);
             }
 
             CarregarAlugueis();
@@ -115,8 +117,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 return;
             }
 
-            TelaAluguelForm tela = new(repositorioDesconto.ObterDesconto(),
-                repositorioCliente.SelecionarTodos(), repositorioTema.SelecionarTodos());
+            TelaAluguelForm tela = new(repositorioCliente.SelecionarTodos(), repositorioTema.SelecionarTodos());
 
             tela.ConfigurarTela(aluguelSelecionado);
 
@@ -126,23 +127,11 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             {
                 Aluguel aluguel = tela.ObterAluguel();
 
+                aluguel.pagamento = aluguelSelecionado.pagamento;
+
                 repositorioAluguel.Editar(aluguelSelecionado, aluguel);
 
-                TelaPgtoEntradaForm telaPgto = new(repositorioDesconto.ObterDesconto());
-
-                telaPgto.ConfigurarTela(aluguel);
-                telaPgto.ShowDialog();
-
                 TelaPrincipalForm.Tela.AtualizarRodape("");
-
-                if (telaPgto.DialogResult == DialogResult.Cancel)
-                {
-                    tela.DialogResult = DialogResult.Cancel;
-
-                    TelaPrincipalForm.Tela.AtualizarRodape("");
-
-                    return;
-                }
             }
 
             CarregarAlugueis();

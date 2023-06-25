@@ -171,7 +171,8 @@
             MinimizeBox = false;
             MinimumSize = new Size(530, 400);
             Name = "TelaPgtoFinalForm";
-            Text = "TelaPgtoFinalForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Finalizar Pagamento";
             ResumeLayout(false);
             PerformLayout();
         }

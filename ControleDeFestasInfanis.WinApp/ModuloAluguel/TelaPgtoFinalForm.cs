@@ -19,8 +19,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         internal void ConfigurarTela(Aluguel aluguelSelecionado)
         {
             txtCliente.Text = aluguelSelecionado.cliente.nome;
-            txtValorTotal.Text = aluguelSelecionado.pagamento.valorTotal.ToString();
-            txtValorFinal.Text = aluguelSelecionado.pagamento.valorFinal.ToString();
+            txtValorTotal.Text = aluguelSelecionado.pagamento.valorTotal.ToString("###,###.00");
+            txtValorFinal.Text = aluguelSelecionado.pagamento.valorFinal.ToString("###,###.00");
 
             this.aluguel = aluguelSelecionado;
         }
