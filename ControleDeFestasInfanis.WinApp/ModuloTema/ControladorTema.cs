@@ -234,7 +234,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
             tabelaTema.AtualizarRegistros(temas);
         }
 
-        public Tema ObterTemaSelecionado()
+        private Tema ObterTemaSelecionado()
         {
             int id = tabelaTema.ObterNumeroTemaSelecionado();
 
