@@ -34,27 +34,27 @@
             clientesMenuItem = new ToolStripMenuItem();
             festasToolStripMenuItem = new ToolStripMenuItem();
             alugueisMenuItem = new ToolStripMenuItem();
-            itensParaLocaçãoMenuItem = new ToolStripMenuItem();
             temasMenuItem = new ToolStripMenuItem();
+            itensParaLocaçãoMenuItem = new ToolStripMenuItem();
             rodape = new StatusStrip();
             lableRodape = new ToolStripStatusLabel();
             toolStrip1 = new ToolStrip();
+            btnHome = new ToolStripButton();
+            toolStripSeparator0 = new ToolStripSeparator();
             btnInserir = new ToolStripButton();
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
-            btnFiltrar = new ToolStripButton();
-            toolStripSeparator2 = new ToolStripSeparator();
             btnAdicionarItens = new ToolStripButton();
             btnRemoverItens = new ToolStripButton();
-            toolStripSeparator3 = new ToolStripSeparator();
+            toolStripSeparator2 = new ToolStripSeparator();
             btnFinalizarPgto = new ToolStripButton();
-            toolStripSeparator4 = new ToolStripSeparator();
+            toolStripSeparator3 = new ToolStripSeparator();
             btnConfigDesconto = new ToolStripButton();
-            toolStripSeparator5 = new ToolStripSeparator();
+            toolStripSeparator4 = new ToolStripSeparator();
             btnVisualizar = new ToolStripButton();
-            toolStripSeparator6 = new ToolStripSeparator();
-            btnHome = new ToolStripButton();
+            btnFiltrar = new ToolStripButton();
+            toolStripSeparator5 = new ToolStripSeparator();
             labelTipoDoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
             pictureBox1 = new PictureBox();
@@ -92,7 +92,7 @@
             // 
             // festasToolStripMenuItem
             // 
-            festasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { alugueisMenuItem, itensParaLocaçãoMenuItem, temasMenuItem });
+            festasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { alugueisMenuItem, temasMenuItem, itensParaLocaçãoMenuItem });
             festasToolStripMenuItem.Name = "festasToolStripMenuItem";
             festasToolStripMenuItem.Size = new Size(51, 20);
             festasToolStripMenuItem.Text = "Festas";
@@ -105,14 +105,6 @@
             alugueisMenuItem.Text = "Alugueis";
             alugueisMenuItem.Click += alugueisMenuItem_Click;
             // 
-            // itensParaLocaçãoMenuItem
-            // 
-            itensParaLocaçãoMenuItem.Image = (Image)resources.GetObject("itensParaLocaçãoMenuItem.Image");
-            itensParaLocaçãoMenuItem.Name = "itensParaLocaçãoMenuItem";
-            itensParaLocaçãoMenuItem.Size = new Size(169, 22);
-            itensParaLocaçãoMenuItem.Text = "Itens para locação";
-            itensParaLocaçãoMenuItem.Click += itensParaLocaçãoMenuItem_Click;
-            // 
             // temasMenuItem
             // 
             temasMenuItem.Image = (Image)resources.GetObject("temasMenuItem.Image");
@@ -120,6 +112,14 @@
             temasMenuItem.Size = new Size(169, 22);
             temasMenuItem.Text = "Temas";
             temasMenuItem.Click += temasMenuItem_Click;
+            // 
+            // itensParaLocaçãoMenuItem
+            // 
+            itensParaLocaçãoMenuItem.Image = (Image)resources.GetObject("itensParaLocaçãoMenuItem.Image");
+            itensParaLocaçãoMenuItem.Name = "itensParaLocaçãoMenuItem";
+            itensParaLocaçãoMenuItem.Size = new Size(169, 22);
+            itensParaLocaçãoMenuItem.Text = "Itens para locação";
+            itensParaLocaçãoMenuItem.Click += itensParaLocaçãoMenuItem_Click;
             // 
             // rodape
             // 
@@ -139,12 +139,32 @@
             // 
             // toolStrip1
             // 
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator1, btnFiltrar, toolStripSeparator2, btnAdicionarItens, btnRemoverItens, toolStripSeparator3, btnFinalizarPgto, toolStripSeparator4, btnConfigDesconto, toolStripSeparator5, btnVisualizar, toolStripSeparator6, btnHome, labelTipoDoCadastro });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnHome, toolStripSeparator0, btnConfigDesconto, toolStripSeparator1, btnInserir, btnEditar, btnExcluir, toolStripSeparator2, btnAdicionarItens, btnRemoverItens, toolStripSeparator3, btnFinalizarPgto, toolStripSeparator4, btnVisualizar, btnFiltrar, toolStripSeparator5, labelTipoDoCadastro });
             toolStrip1.Location = new Point(0, 24);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1184, 25);
             toolStrip1.TabIndex = 2;
             toolStrip1.Text = "toolStrip1";
+            // 
+            // btnHome
+            // 
+            btnHome.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnHome.Enabled = false;
+            btnHome.Image = (Image)resources.GetObject("btnHome.Image");
+            btnHome.ImageTransparentColor = Color.Magenta;
+            btnHome.Name = "btnHome";
+            btnHome.Padding = new Padding(6);
+            btnHome.Size = new Size(32, 32);
+            btnHome.Text = "Home";
+            btnHome.ToolTipText = "Botão Home indisponível.";
+            btnHome.Visible = false;
+            btnHome.Click += btnHome_Click;
+            // 
+            // toolStripSeparator0
+            // 
+            toolStripSeparator0.Name = "toolStripSeparator0";
+            toolStripSeparator0.Size = new Size(6, 35);
+            toolStripSeparator0.Visible = false;
             // 
             // btnInserir
             // 
@@ -194,26 +214,6 @@
             toolStripSeparator1.Size = new Size(6, 35);
             toolStripSeparator1.Visible = false;
             // 
-            // btnFiltrar
-            // 
-            btnFiltrar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnFiltrar.Enabled = false;
-            btnFiltrar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnFiltrar.Image = (Image)resources.GetObject("btnFiltrar.Image");
-            btnFiltrar.ImageTransparentColor = Color.Magenta;
-            btnFiltrar.Name = "btnFiltrar";
-            btnFiltrar.Padding = new Padding(6);
-            btnFiltrar.Size = new Size(32, 32);
-            btnFiltrar.Text = "Filtrar";
-            btnFiltrar.Visible = false;
-            btnFiltrar.Click += btnFiltrar_Click;
-            // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 35);
-            toolStripSeparator2.Visible = false;
-            // 
             // btnAdicionarItens
             // 
             btnAdicionarItens.DisplayStyle = ToolStripItemDisplayStyle.Image;
@@ -240,11 +240,11 @@
             btnRemoverItens.Visible = false;
             btnRemoverItens.Click += btnConcluirItens_Click;
             // 
-            // toolStripSeparator3
+            // toolStripSeparator2
             // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 35);
-            toolStripSeparator3.Visible = false;
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(6, 35);
+            toolStripSeparator2.Visible = false;
             // 
             // btnFinalizarPgto
             // 
@@ -259,11 +259,11 @@
             btnFinalizarPgto.Visible = false;
             btnFinalizarPgto.Click += btnFinalizarPgto_Click;
             // 
-            // toolStripSeparator4
+            // toolStripSeparator3
             // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 35);
-            toolStripSeparator4.Visible = false;
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(6, 35);
+            toolStripSeparator3.Visible = false;
             // 
             // btnConfigDesconto
             // 
@@ -278,11 +278,11 @@
             btnConfigDesconto.Visible = false;
             btnConfigDesconto.Click += btnConfigDesconto_Click;
             // 
-            // toolStripSeparator5
+            // toolStripSeparator4
             // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 35);
-            toolStripSeparator5.Visible = false;
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(6, 35);
+            toolStripSeparator4.Visible = false;
             // 
             // btnVisualizar
             // 
@@ -298,21 +298,25 @@
             btnVisualizar.Visible = false;
             btnVisualizar.Click += btnVisualizar_Click;
             // 
-            // toolStripSeparator6
+            // btnFiltrar
             // 
-            toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(6, 25);
-            toolStripSeparator6.Visible = false;
+            btnFiltrar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnFiltrar.Enabled = false;
+            btnFiltrar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFiltrar.Image = (Image)resources.GetObject("btnFiltrar.Image");
+            btnFiltrar.ImageTransparentColor = Color.Magenta;
+            btnFiltrar.Name = "btnFiltrar";
+            btnFiltrar.Padding = new Padding(6);
+            btnFiltrar.Size = new Size(32, 32);
+            btnFiltrar.Text = "Filtrar";
+            btnFiltrar.Visible = false;
+            btnFiltrar.Click += btnFiltrar_Click;
             // 
-            // btnHome
+            // toolStripSeparator5
             // 
-            btnHome.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnHome.Image = (Image)resources.GetObject("btnHome.Image");
-            btnHome.ImageTransparentColor = Color.Magenta;
-            btnHome.Name = "btnHome";
-            btnHome.Size = new Size(23, 22);
-            btnHome.Text = "Home";
-            btnHome.Click += btnHome_Click;
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(6, 25);
+            toolStripSeparator5.Visible = false;
             // 
             // labelTipoDoCadastro
             // 
@@ -399,8 +403,8 @@
         private ToolStripButton btnFinalizarPgto;
         private ToolStripSeparator toolStripSeparator4;
         private ToolStripButton btnVisualizar;
-        private ToolStripSeparator toolStripSeparator6;
         private PictureBox pictureBox1;
         private ToolStripButton btnHome;
+        private ToolStripSeparator toolStripSeparator0;
     }
 }

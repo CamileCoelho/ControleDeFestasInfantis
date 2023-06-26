@@ -44,12 +44,12 @@
         public virtual bool ConfigDescontoVisivel { get { return false; } }
         public virtual bool VisualizarVisivel { get { return false; } }
 
+        public virtual bool SeparadorVisivel0 { get { return true; } }
         public virtual bool SeparadorVisivel1 { get { return false; } }
         public virtual bool SeparadorVisivel2 { get { return false; } }
         public virtual bool SeparadorVisivel3 { get { return false; } }
         public virtual bool SeparadorVisivel4 { get { return false; } }
-        public virtual bool SeparadorVisivel5 { get { return false; } }
-        public virtual bool SeparadorVisivel6 { get { return true; } }
+        public virtual bool SeparadorVisivel5 { get { return true; } }
 
         public abstract void Inserir();
 

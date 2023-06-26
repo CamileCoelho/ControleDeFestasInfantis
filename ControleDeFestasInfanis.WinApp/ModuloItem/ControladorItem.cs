@@ -23,11 +23,12 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
         public override string ToolTipInserir => "Inserir novo item";
         public override string ToolTipEditar => "Editar item existente";
         public override string ToolTipExcluir => "Exluir item existente";
-        public override string ToolTipHome => "Home";
+        public override string ToolTipHome => "Voltar a tela inicial";
+
+        public override bool HomeHabilitado => true;
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
-        public override bool HomeHabilitado => true;
 
         public override void Inserir()
         {           
@@ -138,14 +139,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloItem
             int id = tabelaItens.ObterNumeroItemSelecionado();
 
             return repositorioItem.SelecionarPorId(id);
-        }
-
-        public override void Home()
-        {
-            TelaPrincipalForm tela = new TelaPrincipalForm();
-
-            DialogResult opcaoEscolhida = tela.ShowDialog();
-
         }
     }
 }

@@ -20,16 +20,17 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             this.repositorioCliente = repositorioCliente;
         }
 
-        public override string ToolTipInserir { get { return "Inserir novo cliente"; } }
-        public override string ToolTipEditar { get { return "Editar cliente existente"; } }
-        public override string ToolTipExcluir { get { return "Excluir cliente existente"; } }
-        public override string ToolTipVisualizar { get { return "Visualizar historico de alugueis de um cliente existente"; } }
-        public override string ToolTipHome { get { return "Home"; } }
+        public override string ToolTipInserir => "Inserir novo cliente"; 
+        public override string ToolTipEditar => "Editar cliente existente"; 
+        public override string ToolTipExcluir => "Excluir cliente existente"; 
+        public override string ToolTipVisualizar => "Visualizar historico de alugueis de um cliente existente"; 
+        public override string ToolTipHome => "Voltar a tela inicial"; 
+
+        public override bool HomeHabilitado => true;
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
-        public override bool HomeHabilitado => true;
-        public override bool SeparadorVisivel5 => true;
+        public override bool SeparadorVisivel4 => true;
         public override bool VisualizarHabilitado => true;
         public override bool VisualizarVisivel => true;
 
@@ -173,14 +174,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             int id = tabelaCliente.ObterNumeroClienteSelecionado();
 
             return repositorioCliente.SelecionarPorId(id);
-        }
-
-        public override void Home()
-        {
-            TelaPrincipalForm tela = new TelaPrincipalForm();
-
-            DialogResult opcaoEscolhida = tela.ShowDialog();
-
         }
     }
 }

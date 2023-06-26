@@ -129,12 +129,12 @@ namespace ControleDeFestasInfantis.WinApp
             btnConfigDesconto.Visible = controlador.ConfigDescontoVisivel;
             btnVisualizar.Visible = controlador.VisualizarVisivel;
 
+            toolStripSeparator0.Visible = controlador.SeparadorVisivel0;
             toolStripSeparator1.Visible = controlador.SeparadorVisivel1;
             toolStripSeparator2.Visible = controlador.SeparadorVisivel2;
             toolStripSeparator3.Visible = controlador.SeparadorVisivel3;
             toolStripSeparator4.Visible = controlador.SeparadorVisivel4;
             toolStripSeparator5.Visible = controlador.SeparadorVisivel5;
-            toolStripSeparator6.Visible = controlador.SeparadorVisivel6;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -184,7 +184,8 @@ namespace ControleDeFestasInfantis.WinApp
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            controlador.Home();
+            Application.Restart();
+            Environment.Exit(0);
         }
     }
 }

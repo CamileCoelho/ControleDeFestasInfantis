@@ -22,15 +22,15 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         public override string ToolTipInserir => "Inserir novo tema";
         public override string ToolTipEditar => "Editar tema existente";
         public override string ToolTipExcluir => "Excluir tema existente";
-        public override string ToolTipHome => "Home";
         public override string ToolTipAdicionarItens => "Adicionar itens em um tema existente";
         public override string ToolTipRemoverItens => "Remover itens de um tema existente";
+        public override string ToolTipHome => "Voltar a tela inicial";
 
+        public override bool HomeHabilitado => true;
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
-        public override bool SeparadorVisivel1 => true;
-        public override bool HomeHabilitado => true;
+        public override bool SeparadorVisivel2 => true;
         public override bool AdicionarItensHabilitado => true;
         public override bool RemoverItensHabilitado => true;
         public override bool AdicionarItensVisivel => true;
@@ -244,14 +244,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloTema
         private List<Item> CarregarItens()
         {
             return repositorioItem.SelecionarTodos();
-        }
-
-        public override void Home()
-        {
-            TelaPrincipalForm tela = new TelaPrincipalForm();
-
-            DialogResult opcaoEscolhida = tela.ShowDialog();
-
         }
     }
 }

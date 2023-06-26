@@ -13,10 +13,10 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
         public StatusAluguelEnum ObterFiltroAluguel()
         {
-            if (rdbConcluidas.Checked == true)
+            if (rdbFinalizados.Checked == true)
                 return StatusAluguelEnum.Finalizado;
 
-            else if (rdbPendentes.Checked == true)
+            else if (rdbEmAndamento.Checked == true)
                 return StatusAluguelEnum.Em_andamento;
 
             return StatusAluguelEnum.Todos;

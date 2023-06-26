@@ -21,21 +21,22 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             this.repositorioDesconto = repositorioDesconto;
         }
 
-        public override string ToolTipInserir => "Realizar novo aluguelSelecionado";
-        public override string ToolTipEditar => "Editar aluguelSelecionado existente";
-        public override string ToolTipExcluir => "Excluir aluguelSelecionado existente";
+        public override string ToolTipInserir => "Realizar novo aluguel";
+        public override string ToolTipEditar => "Editar aluguel existente";
+        public override string ToolTipExcluir => "Excluir aluguel existente";
         public override string ToolTipFiltrar => "Filtrar alugueis";
-        public override string ToolTipFinalizarPagamento => "Finalizar pagamento de um aluguelSelecionado existente";
+        public override string ToolTipFinalizarPagamento => "Finalizar pagamento de um aluguel existente";
         public override string ToolTipConfigDesconto => "Configurar percentuais de desconto";
-        public override string ToolTipHome => "Home";
-
+        public override string ToolTipHome => "Voltar a tela inicial";
+        
+        public override bool HomeHabilitado => true;
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
-        public override bool HomeHabilitado => true;
         public override bool FiltrarHabilitado => true;
         public override bool FiltrarVisivel => true;
         public override bool SeparadorVisivel1 => true;
+        public override bool SeparadorVisivel2 => true;
         public override bool SeparadorVisivel4 => true;
         public override bool FinalizarPagamentoHabilitado => true;
         public override bool FinalizarPagamentoVisivel => true;
@@ -63,7 +64,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 return;
             }
 
-            TelaAluguelForm tela = new(repositorioCliente.SelecionarTodos(), repositorioTema.SelecionarTodos());
+            TelaAluguelForm tela = new(repositorioCliente.SelecionarTodos(), 
+                repositorioTema.SelecionarTodos());
 
             DialogResult opcaoEscolhida = tela.ShowDialog();
 
@@ -122,7 +124,8 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 return;
             }
 
-            TelaAluguelForm tela = new(repositorioCliente.SelecionarTodos(), repositorioTema.SelecionarTodos());
+            TelaAluguelForm tela = new(repositorioCliente.SelecionarTodos(), 
+                repositorioTema.SelecionarTodos());
 
             tela.ConfigurarTela(aluguelSelecionado);
 
@@ -140,37 +143,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
 
             CarregarAlugueis();
-        }
-
-        public override void Filtrar()
-        {
-            TelaFiltroAluguelForm telaFiltroAluguel = new TelaFiltroAluguelForm();
-
-            DialogResult opcaoEscolhida = telaFiltroAluguel.ShowDialog();
-
-            if (opcaoEscolhida == DialogResult.OK)
-            {
-                List<Aluguel> alugueis;
-
-                StatusAluguelEnum status = telaFiltroAluguel.ObterFiltroAluguel();
-
-                switch (status)
-                {
-                    case StatusAluguelEnum.Em_andamento:
-                        alugueis = repositorioAluguel.SelecionarPendentes();
-                        break;
-
-                    case StatusAluguelEnum.Finalizado:
-                        alugueis = repositorioAluguel.SelecionarConcluidas();
-                        break;
-
-                    default:
-                        alugueis = repositorioAluguel.SelecionarTodos();
-                        break;
-                }
-
-                CarregarAlugueis();
-            }
         }
 
         public override void Excluir()
@@ -266,6 +238,38 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             }
         }
 
+        public override void Filtrar()
+        {
+            TelaFiltroAluguelForm telaFiltroAluguel = new();
+
+            DialogResult opcaoEscolhida = telaFiltroAluguel.ShowDialog();
+
+            if (opcaoEscolhida == DialogResult.OK)
+            {
+                List<Aluguel> alugueis;
+
+                StatusAluguelEnum status = telaFiltroAluguel.ObterFiltroAluguel();
+
+                switch (status)
+                {
+                    case StatusAluguelEnum.Em_andamento:
+                        alugueis = repositorioAluguel.SelecionarPendentes();
+                        tabelaAlugueis.AtualizarRegistros(alugueis);
+                        break;
+
+                    case StatusAluguelEnum.Finalizado:
+                        alugueis = repositorioAluguel.SelecionarConcluidas();
+                        tabelaAlugueis.AtualizarRegistros(alugueis);
+                        break;
+
+                    default:
+                        alugueis = repositorioAluguel.SelecionarTodos();
+                        tabelaAlugueis.AtualizarRegistros(alugueis);
+                        break;
+                }
+            }
+        }
+
         public override UserControl ObterListagem()
         {
             if (tabelaAlugueis == null)
@@ -292,14 +296,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
         {
             List<Aluguel> alugueis = repositorioAluguel.SelecionarTodos();
             tabelaAlugueis.AtualizarRegistros(alugueis);
-        }
-
-        public override void Home()
-        {
-            TelaPrincipalForm tela = new TelaPrincipalForm();
-
-            DialogResult opcaoEscolhida = tela.ShowDialog();
-
         }
     }
 }
