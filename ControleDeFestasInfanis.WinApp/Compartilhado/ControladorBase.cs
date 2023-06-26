@@ -8,6 +8,8 @@
 
         public abstract string ToolTipExcluir { get; }
 
+        public abstract string ToolTipHome { get; }
+
         public virtual string? ToolTipFiltrar { get { return "Filtro indisponível"; } }
 
         public virtual string? ToolTipAdicionarItens { get { return "Adição indisponível"; } }
@@ -23,6 +25,7 @@
         public virtual bool InserirHabilitado { get { return false; } }
         public virtual bool EditarHabilitado { get { return false; } }
         public virtual bool ExcluirHabilitado { get { return false; } }
+        public virtual bool HomeHabilitado { get { return false; } }
         public virtual bool FiltrarHabilitado { get { return false; } }
         public virtual bool AdicionarItensHabilitado { get { return false; } }
         public virtual bool RemoverItensHabilitado { get { return false; } }
@@ -33,6 +36,7 @@
         public virtual bool InserirVisivel { get { return true; } }
         public virtual bool EditarVisivel { get { return true; } }
         public virtual bool ExcluirVisivel { get { return true; } }
+        public virtual bool HomeVisivel {get {return true;} }
         public virtual bool FiltrarVisivel { get { return false; } }
         public virtual bool AdicionarItensVisivel { get { return false; } }
         public virtual bool RemoverItensVisivel { get { return false; } }
@@ -40,12 +44,12 @@
         public virtual bool ConfigDescontoVisivel { get { return false; } }
         public virtual bool VisualizarVisivel { get { return false; } }
 
+        public virtual bool SeparadorVisivel0 { get { return true; } }
         public virtual bool SeparadorVisivel1 { get { return false; } }
         public virtual bool SeparadorVisivel2 { get { return false; } }
         public virtual bool SeparadorVisivel3 { get { return false; } }
         public virtual bool SeparadorVisivel4 { get { return false; } }
-        public virtual bool SeparadorVisivel5 { get { return false; } }
-        public virtual bool SeparadorVisivel6 { get { return true; } }
+        public virtual bool SeparadorVisivel5 { get { return true; } }
 
         public abstract void Inserir();
 
@@ -64,7 +68,10 @@
         public virtual void ConfigurarDesconto() { }
 
         public virtual void Visualizar() { }
-                
+
+        public virtual void Home() { }
+
+
         public abstract UserControl ObterListagem();
 
         public abstract string ObterTipoCadastro();

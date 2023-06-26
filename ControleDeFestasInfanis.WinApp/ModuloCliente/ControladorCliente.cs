@@ -2,6 +2,7 @@
 using ControleDeFestasInfantis.Dominio.ModuloCliente;
 using ControleDeFestasInfantis.Dominio.ModuloItem;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
+using ControleDeFestasInfantis.WinApp.ModuloTema;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloCliente
@@ -19,15 +20,17 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             this.repositorioCliente = repositorioCliente;
         }
 
-        public override string ToolTipInserir { get { return "Inserir novo cliente"; } }
-        public override string ToolTipEditar { get { return "Editar cliente existente"; } }
-        public override string ToolTipExcluir { get { return "Excluir cliente existente"; } }
-        public override string ToolTipVisualizar { get { return "Visualizar historico de augueis de um cliente existente"; } }
+        public override string ToolTipInserir => "Inserir novo cliente"; 
+        public override string ToolTipEditar => "Editar cliente existente"; 
+        public override string ToolTipExcluir => "Excluir cliente existente"; 
+        public override string ToolTipVisualizar => "Visualizar historico de alugueis de um cliente existente"; 
+        public override string ToolTipHome => "Voltar a tela inicial"; 
 
+        public override bool HomeHabilitado => true;
         public override bool InserirHabilitado => true;
         public override bool EditarHabilitado => true;
         public override bool ExcluirHabilitado => true;
-        public override bool SeparadorVisivel5 => true;
+        public override bool SeparadorVisivel4 => true;
         public override bool VisualizarHabilitado => true;
         public override bool VisualizarVisivel => true;
 
@@ -144,13 +147,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             tela.ShowDialog();
         }
 
-        private void CarregarClientes()
-        {
-            List<Cliente> cliente = repositorioCliente.SelecionarTodos();
-
-            tabelaCliente.AtualizarRegistros(cliente);
-        }
-
         public override UserControl ObterListagem()
         {
             if (tabelaCliente == null)
@@ -164,6 +160,13 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
         public override string ObterTipoCadastro()
         {
             return "Cadastro de Cliente";
+        }
+
+        private void CarregarClientes()
+        {
+            List<Cliente> cliente = repositorioCliente.SelecionarTodos();
+
+            tabelaCliente.AtualizarRegistros(cliente);
         }
 
         private Cliente ObterClienteSelecionado()
