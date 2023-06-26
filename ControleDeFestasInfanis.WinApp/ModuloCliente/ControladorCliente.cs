@@ -147,13 +147,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             tela.ShowDialog();
         }
 
-        private void CarregarClientes()
-        {
-            List<Cliente> cliente = repositorioCliente.SelecionarTodos();
-
-            tabelaCliente.AtualizarRegistros(cliente);
-        }
-
         public override UserControl ObterListagem()
         {
             if (tabelaCliente == null)
@@ -167,6 +160,13 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
         public override string ObterTipoCadastro()
         {
             return "Cadastro de Cliente";
+        }
+
+        private void CarregarClientes()
+        {
+            List<Cliente> cliente = repositorioCliente.SelecionarTodos();
+
+            tabelaCliente.AtualizarRegistros(cliente);
         }
 
         private Cliente ObterClienteSelecionado()

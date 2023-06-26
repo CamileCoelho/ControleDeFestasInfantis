@@ -285,7 +285,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             return "Cadastro de Alugueis";
         }
 
-        public Aluguel ObterAluguelSelecionado()
+        private Aluguel ObterAluguelSelecionado()
         {
             int id = tabelaAlugueis.ObterNumeroAluguelSelecionado();
 
