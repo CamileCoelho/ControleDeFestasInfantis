@@ -10,7 +10,7 @@ namespace ControleDeFestasInfantis.Dominio.ModuloAluguel
         public Pagamento pagamento { get; set; }
         public Cliente cliente { get; set; }
         public Festa festa { get; set; }
-        public DateTime dataQuitacao { get; set; }
+        public DateTime? dataQuitacao { get; set; }
 
         public Aluguel()
         {

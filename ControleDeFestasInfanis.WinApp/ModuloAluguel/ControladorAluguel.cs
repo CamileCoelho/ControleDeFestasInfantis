@@ -54,7 +54,7 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 
                 return;
             }
-            if (repositorioTema.SelecionarTodos().Any(x => x.itens.Count() == 0))
+            if (repositorioTema.SelecionarTodos().All(x => x.itens.Count() == 0))
             {
                 MessageBox.Show($"Você deve cadastrar ao menos um tema com itens dentro para poder realizar um aluguel!",
                     "Inserção de Alugueis",
