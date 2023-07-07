@@ -51,8 +51,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloCliente
             else
                 status = cliente.Validar();
 
-            TelaPrincipalForm.Tela.AtualizarRodape(status);
-
             if (status != "")
                 DialogResult = DialogResult.None;
         }

@@ -31,6 +31,9 @@ namespace ControleDeFestasInfantis.Infra.Json.Compartilhado
 
         public void GravarEmArquivoJson()
         {
+            if (!File.Exists(NOME_ARQUIVO))
+
+
             File.WriteAllText(NOME_ARQUIVO, JsonSerializer.Serialize(this, ObterConfiguracoes()));
         }
 

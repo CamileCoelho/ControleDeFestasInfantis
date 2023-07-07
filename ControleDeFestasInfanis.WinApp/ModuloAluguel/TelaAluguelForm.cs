@@ -1,8 +1,6 @@
 ﻿using ControleDeFestasInfantis.Dominio.ModuloAluguel;
 using ControleDeFestasInfantis.Dominio.ModuloCliente;
 using ControleDeFestasInfantis.Dominio.ModuloTema;
-using ControleDeFestasInfantis.WinApp.ModuloTema;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
 {
@@ -78,14 +76,14 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
             {
                 cmbClientes.Items.Add(cliente);
             }
-
         }
 
         private void CarregarTemas(List<Tema> temas)
         {
             foreach (Tema tema in temas)
             {
-                cmbTemas.Items.Add(tema);
+                if(tema.itens.Count() > 0)
+                    cmbTemas.Items.Add(tema);
             }
         }
 
@@ -102,8 +100,6 @@ namespace ControleDeFestasInfantis.WinApp.ModuloAluguel
                 DialogResult = DialogResult.None;
                 return;
             }
-
-            TelaPrincipalForm.Tela.AtualizarRodape("");
 
             return;
         }
