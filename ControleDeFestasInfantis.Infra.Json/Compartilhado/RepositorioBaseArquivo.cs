@@ -36,6 +36,8 @@
         public virtual void Editar(T registroSelecionado, T registroAtualizado)
         {
             registroSelecionado.AtualizarInformacoes(registroAtualizado);
+
+            contextoDeDados.GravarEmArquivoJson();
         }
 
         public void Excluir(T registroSelecionado)
