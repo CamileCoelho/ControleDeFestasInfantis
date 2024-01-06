@@ -1,0 +1,12 @@
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\bin\Debug\net6.0\NoteKeeper.Dominio.deps.json
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\bin\Debug\net6.0\NoteKeeper.Dominio.dll
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\bin\Debug\net6.0\NoteKeeper.Dominio.pdb
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\obj\Debug\net6.0\NoteKeeper.Dominio.csproj.AssemblyReference.cache
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\obj\Debug\net6.0\NoteKeeper.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\obj\Debug\net6.0\NoteKeeper.Dominio.AssemblyInfoInputs.cache
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\obj\Debug\net6.0\NoteKeeper.Dominio.AssemblyInfo.cs
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\obj\Debug\net6.0\NoteKeeper.Dominio.csproj.CoreCompileInputs.cache
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\obj\Debug\net6.0\NoteKeeper.Dominio.dll
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\obj\Debug\net6.0\refint\NoteKeeper.Dominio.dll
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\obj\Debug\net6.0\NoteKeeper.Dominio.pdb
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Dominio\obj\Debug\net6.0\ref\NoteKeeper.Dominio.dll

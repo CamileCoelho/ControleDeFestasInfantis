@@ -1,0 +1,17 @@
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\bin\Debug\net6.0\NoteKeeper.Infra.Orm.deps.json
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\bin\Debug\net6.0\NoteKeeper.Infra.Orm.dll
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\bin\Debug\net6.0\NoteKeeper.Infra.Orm.pdb
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\bin\Debug\net6.0\NoteKeeper.Dominio.dll
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\bin\Debug\net6.0\NoteKeeper.Dominio.pdb
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\obj\Debug\net6.0\NoteKeeper.Infra.Orm.csproj.AssemblyReference.cache
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\obj\Debug\net6.0\NoteKeeper.Infra.Orm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\obj\Debug\net6.0\NoteKeeper.Infra.Orm.AssemblyInfoInputs.cache
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\obj\Debug\net6.0\NoteKeeper.Infra.Orm.AssemblyInfo.cs
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\obj\Debug\net6.0\NoteKeeper.Infra.Orm.csproj.CoreCompileInputs.cache
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\obj\Debug\net6.0\NoteKeeper.Infra.Orm.csproj.CopyComplete
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\obj\Debug\net6.0\NoteKeeper.Infra.Orm.dll
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\obj\Debug\net6.0\refint\NoteKeeper.Infra.Orm.dll
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\obj\Debug\net6.0\NoteKeeper.Infra.Orm.pdb
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\obj\Debug\net6.0\ref\NoteKeeper.Infra.Orm.dll
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\bin\Debug\net6.0\NoteKeeper.Infra.Orm.runtimeconfig.json
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Infra.Orm\obj\Debug\net6.0\NoteKeeper.Infra.Orm.genruntimeconfig.cache

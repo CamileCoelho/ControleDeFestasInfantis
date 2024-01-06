@@ -1,0 +1,12 @@
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\bin\Debug\net6.0\NoteKeeper.Aplicacao.deps.json
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\bin\Debug\net6.0\NoteKeeper.Aplicacao.dll
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\bin\Debug\net6.0\NoteKeeper.Aplicacao.pdb
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\obj\Debug\net6.0\NoteKeeper.Aplicacao.csproj.AssemblyReference.cache
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\obj\Debug\net6.0\NoteKeeper.Aplicacao.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\obj\Debug\net6.0\NoteKeeper.Aplicacao.AssemblyInfoInputs.cache
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\obj\Debug\net6.0\NoteKeeper.Aplicacao.AssemblyInfo.cs
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\obj\Debug\net6.0\NoteKeeper.Aplicacao.csproj.CoreCompileInputs.cache
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\obj\Debug\net6.0\NoteKeeper.Aplicacao.dll
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\obj\Debug\net6.0\refint\NoteKeeper.Aplicacao.dll
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\obj\Debug\net6.0\NoteKeeper.Aplicacao.pdb
+C:\Users\jesi1\source\repos\NoteKeeper\NoteKeeper.Aplicacao\obj\Debug\net6.0\ref\NoteKeeper.Aplicacao.dll
